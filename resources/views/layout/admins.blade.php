@@ -26,7 +26,7 @@
 @section('css')
 
 
-    @show
+@show
    
 </head>
 
@@ -63,6 +63,12 @@
                             <li><a href="/admin/admin/create">管理员添加</a>
                             </li>
                             <li><a href="/admin/admin">管理员查看</a>
+                    <li class="active">
+                        <a href="index.html"><i class="fa fa-list"></i> <span class="nav-label">分类管理</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/admin/type/create">分类添加</a>
+                            </li>
+                            <li><a href="/admin/type">分类查看</a>
                             </li>
                             
                         </ul>
@@ -83,6 +89,15 @@
                             <li><a href="/admin/friend/create">链接添加</a>
                             </li>
                             <li><a href="/admin/friend">链接查看</a>
+							</li>
+                        </ul>
+                    </li>
+					<li>
+                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">商品小图管理</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/admin/goods/create">商品小图添加</a>
+                            </li>
+                            <li><a href="/admin/goods">商品查看</a>
                             </li>
                             
                         </ul>
@@ -216,7 +231,6 @@
 
                         </div>
                     </div>
-                
                 </div> -->
                 <div class="footer">
                     <div class="pull-right">

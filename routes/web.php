@@ -35,9 +35,17 @@ Route::group([], function(){
 	//后台的用户管理
 	Route::resource('admin/admin',"Admin\AdminController");
 	Route::get('/admin/usajax','Admin\UserController@ajaxupdate');
-});
+
+
+	// 后台的分类管理
+	Route::resource('admin/type',"Admin\TypeController");
+    // 后台的商品管理
+	Route::resource('admin/shop',"Admin\ShopController");
+
 
 
 	//友情连接管理
-	Route::resource('/admin/friend',"Admin\FrilinkController");
+	Route::resource('admin/friend',"Admin\FrilinkController");
+
+});
 
