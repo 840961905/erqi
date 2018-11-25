@@ -80,7 +80,7 @@
                     <li>
                         <a href="index.html"><i class="fa fa-chain"></i> <span class="nav-label">友情链接管理</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="/admin/friend/add">链接添加</a>
+                            <li><a href="/admin/friend/create">链接添加</a>
                             </li>
                             <li><a href="/admin/friend">链接查看</a>
                             </li>

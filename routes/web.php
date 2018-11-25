@@ -24,6 +24,11 @@ Route::any('/admin/logout','Admin\LoginController@logout');
 
 Route::group([], function(){
 
+	Route::get('/', function () {
+	    return view('welcome');
+	});
+
+
 	//后台的首页
 	Route::get('/admin', 'Admin\IndexController@index');
 
@@ -32,4 +37,7 @@ Route::group([], function(){
 	Route::get('/admin/usajax','Admin\UserController@ajaxupdate');
 });
 
+
+	//友情连接管理
+	Route::resource('/admin/friend',"Admin\FrilinkController");
 
