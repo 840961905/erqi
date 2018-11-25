@@ -1,0 +1,94 @@
+@extends('layout.admins')
+
+@section('title',$title)
+
+@section('css')
+    <link href="/admins/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/admins/css/animate.css" rel="stylesheet">
+    <link href="/admins/css/style.css?v=2.2.0" rel="stylesheet">
+@endsection
+
+
+@section('content')
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>友情连接 <small>添加链接</small></h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                               
+                            </div>
+                        </div>
+                         @if (count($errors) > 0)
+                            <div class="alert alert-success alert-dismissable">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li style='font-size:14px'>{{$error}}</li> 
+                                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+            
+                        <form action="/admin/friend" method="post" class="form-horizontal">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                            <div class="ibox-content">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">名称</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="fname">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">地址</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="href">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div> 
+                                <div class="form-group">
+                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-6">
+
+                                        {{csrf_field()}}
+
+                                        <input type="submit"  class="btn btn-default" value="添加">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div> 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+@endsection
+
+
+@section('js')
+    
+     <!-- iCheck -->
+    <script src="/admins/js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+
+        $('.alert').delay(1000).fadeOut(2000);
+
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+   
+@endsection
