@@ -18,38 +18,10 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         //
-        // dd($_GET);
-
-        // dd($request->num, $request->username);
-
-        // dd($request->all());
-        //一个条件的搜索
-        // $res = User::where('username','like','%'.$request->username.'%')->paginate($request->input('num',10));
-
-        //多个条件的搜索
-        $res = Admin::orderBy('id','asc')
-            ->where(function($query) use($request){
-                //检测关键字
-                $username = $request->input('username');
-                $email = $request->input('email');
-                //如果用户名不为空
-                if(!empty($username)) {
-                    $query->where('username','like','%'.$username.'%');
-                }
-                //如果邮箱不为空
-                if(!empty($email)) {
-                    $query->where('email','like','%'.$email.'%');
-                }
-            })
-        ->paginate($request->input('num', 10));
-
-            // dd($res);
-
+        $res = Admin::all();
         return view('admin.admin.index',[
-            'title'=>'用户的列表页面',
-            'res'=>$res,
-            'request'=>$request
-
+            'title'=>'管理员的列表页面',
+            'res'=>$res
         ]);
     }
 
@@ -70,7 +42,7 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
         //表单验证
      /*   $this->validate($request, [
@@ -91,19 +63,20 @@ class AdminController extends Controller
             'profile.required'=>'请上传图片'
         ]);*/
 
-        dd(123123123);
-        $res = $request->except('_token','profile','repass');
+        
+        $res = $request->except('_token','pri');
+        // dd($res);
 
-        if($request->hasFile('profile')){
+        if($request->hasFile('pri')){
             //自定义名字
             $name = rand(11111,99999).time();
 
             //获取后缀
-            $suffix = $request->file('profile')->getClientOriginalExtension();
+            $suffix = $request->file('pri')->getClientOriginalExtension();
 
-            $request->file('profile')->move('./uploads/adminpri/',$name.'.'.$suffix);
+            $request->file('pri')->move('./uploads/adminpri/',$name.'.'.$suffix);
 
-            $res['profile'] = '/uploads/adminpri/'.$name.'.'.$suffix;
+            $res['pri'] = '/uploads/adminpri/'.$name.'.'.$suffix;
 
         }
 
@@ -117,18 +90,17 @@ class AdminController extends Controller
         // dd()
 
         //存数据
-        
-
+        // dd($res);
         try{
 
             $data = Admin::create($res);
-            
+            // dd($data);
             if($data){
                 return redirect('/admin/admin')->with('success','添加成功');
             }
 
         }catch(\Exception $e){
-
+            // dd($data);
             return back()->with('error','添加失败');
         }
     }
@@ -157,7 +129,7 @@ class AdminController extends Controller
         $res = Admin::find($id);
 
         return view('admin.admin.edit',[
-            'title'=>'用户的修改页面',
+            'title'=>'管理员的修改页面',
             'res'=>$res
         ]);
     }
@@ -175,18 +147,18 @@ class AdminController extends Controller
 
         //unlink
 
-        $res = $request->except('_token','profile','_method');
-
-        if($request->hasFile('profile')){
+        $res = $request->except('_token','pri','_method');
+        // dd($res);
+        if($request->hasFile('pri')){
             //自定义名字
-            $name = rand(111,999).time();
+            $name = rand(11111,99999).time();
 
             //获取后缀
-            $suffix = $request->file('profile')->getClientOriginalExtension();
+            $suffix = $request->file('pri')->getClientOriginalExtension();
 
-            $request->file('profile')->move('./uploads',$name.'.'.$suffix);
+            $request->file('pri')->move('./uploads/adminpri',$name.'.'.$suffix);
 
-            $res['profile'] = '/uploads/'.$name.'.'.$suffix;
+            $res['pri'] = '/uploads/adminpri/'.$name.'.'.$suffix;
 
         }
 
@@ -222,12 +194,15 @@ class AdminController extends Controller
         //unlink
 
          try{
-
-            $res = Admin::destroy($id);
-            
-            if($res){
-                return redirect('/admin/admin')->with('success','删除成功');
+            if($id == 1 || $id == session('uid')){
+                return back()->with('error','你想啥呢？');
+            } else {
+                $res = Admin::destroy($id);
+                if($res){
+                    return redirect('/admin/admin')->with('success','删除成功');
+                }
             }
+            
 
         }catch(\Exception $e){
 

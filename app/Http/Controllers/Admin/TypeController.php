@@ -33,7 +33,7 @@ class TypeController extends Controller
 
         return view('admin.type.index',[
             'title'=>'分类列表',
-            'request'=>$request,
+            // 'request'=>$request,
             'res'=>$res
 
         ]);

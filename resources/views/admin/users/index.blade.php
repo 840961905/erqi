@@ -51,24 +51,30 @@
                                     <thead>
                                         <tr>
                                             <th>序号</th>
-                                            <th>名称</th>
-                                            <th>地址</th>
-                                            <th>添加时间</th>
+                                            <th>用户名</th>
+                                            <th>性别</th>
+                                            <th>电话</th>
+                                            <th>邮箱</th>
+                                            <th>头像</th>
+                                            <th>状态</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                    	@foreach($finfo as $v)
+                                    	@foreach($res as $v)
                                         <tr class="gradeX">
                                             <td>{{$v->id}}</td>
-                                            <td>{{$v->fname}}
-                                            </td>
-                                            <td>{{$v->href}}</td>
-                                            <td>{{$v->addtime}}</td>
+                                            <td>{{$v->aname}}</td>
+                                            <td>{{$v->sex}}</td>
+                                            <td>{{$v->phone}}</td>
+                                            <td>{{$v->email}}</td>
+                                            <td><img src="{{$v->img}}" alt="" width="100px" style="border-radius: 50%;"></td>
+                                            <td>{{$v->status}}</td>
+
                             			 <td class="center ">
-		                                      <a href="/admin/friend/{{$v->id}}/edit" class="btn btn-info">修改</a>
-		                                      <form action="/admin/friend/{{$v->id}}" method='post' style='display:inline'>
+		                                      <a href="/admin/users/{{$v->id}}/edit" class="btn btn-info">修改</a>
+		                                      <form action="/admin/users/{{$v->id}}" method='post' style='display:inline'>
 		                                      {{csrf_field()}}
 
 		                                      {{method_field("DELETE")}}

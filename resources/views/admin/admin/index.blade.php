@@ -16,19 +16,15 @@
                 <div class="container">
 
                     @if(session('success'))
-                        <div class="alert alert-info">
-                            <ul>
-                                <li style='list-style:none;font-size:14px'>{{session('success')}}</li>
-                            </ul>
-                        </div>
+                    <div class="alert alert-danger alert-dismissable">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><li>{{session('success')}}</li>
+                    </div>
                     @endif
 
                     @if(session('error'))
-                        <div class="alert alert-success alert-dismissable">
-                            <ul>
-                                <li style='list-style:none;font-size:14px'>{{session('error')}}</li>
-                            </ul>
-                        </div>
+                    <div class="alert alert-danger alert-dismissable">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><li>{{session('error')}}</li>
+                    </div>
                     @endif
 
                     
@@ -38,7 +34,7 @@
                     <div class="col-lg-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>友情连接管理 <small>所有链接</small></h5>
+                                <h5>管理员管理 <small>所有管理员</small></h5>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
                                         <i class="fa fa-chevron-up"></i>
@@ -51,24 +47,50 @@
                                     <thead>
                                         <tr>
                                             <th>序号</th>
-                                            <th>名称</th>
-                                            <th>地址</th>
-                                            <th>添加时间</th>
+                                            <th>用户名</th>
+                                            <th>权限</th>
+                                            <th>头像</th>
+                                            <th>状态</th>
+                                            <th>最后登录时间</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                    	@foreach($finfo as $v)
+                                    	@foreach($res as $v)
                                         <tr class="gradeX">
                                             <td>{{$v->id}}</td>
-                                            <td>{{$v->fname}}
+                                            <td>{{$v->username}}
                                             </td>
-                                            <td>{{$v->href}}</td>
-                                            <td>{{$v->addtime}}</td>
+                                            <td>
+                                                @switch($v->account)
+                                                    @case(0)
+                                                        超级管理员
+                                                        @break
+                                                    @case(1)
+                                                        CEO
+                                                        @break
+                                                    @case(2)
+                                                        CTO
+                                                        @break
+                                                    @case(3)
+                                                        COO
+                                                        @break
+                                                    @case(4)
+                                                        正式员工
+                                                        @break
+                                                    @case(5)
+                                                        临时工
+                                                        @break
+                                                @endswitch
+                                            </td>
+                                            <td ><img src="{{$v->pri}}" alt="" width="100px" style="border-radius: 50%;"></td>
+                                            <td>{{$v->status}}</td>
+                                            <td>{{date('Y-m-d H:i:s',$v->lasttime)}}</td>
+
                             			 <td class="center ">
-		                                      <a href="/admin/friend/{{$v->id}}/edit" class="btn btn-info">修改</a>
-		                                      <form action="/admin/friend/{{$v->id}}" method='post' style='display:inline'>
+		                                      <a href="/admin/admin/{{$v->id}}/edit" class="btn btn-info">修改</a>
+		                                      <form action="/admin/admin/{{$v->id}}" method='post' style='display:inline'>
 		                                      {{csrf_field()}}
 
 		                                      {{method_field("DELETE")}}

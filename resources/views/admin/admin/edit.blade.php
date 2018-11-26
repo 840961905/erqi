@@ -25,34 +25,24 @@
                 </a>
             </div>
         </div>
+            @if(session('success'))
+                <div class="alert alert-danger alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><li>{{session('success')}}</li>
+                </div>
+            @endif
 
-                    @if(session('success'))
-                    <div class="alert alert-danger alert-dismissable">
-                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><li>{{session('success')}}</li>
-                    </div>
-                    @endif
-
-                    @if(session('error'))
-                    <div class="alert alert-danger alert-dismissable">
-                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><li>{{session('error')}}</li>
-                    </div>
-                    @endif
+            @if(session('error'))
+                <div class="alert alert-danger alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><li>{{session('error')}}</li>
+                </div>
+            @endif
         <div class="ibox-content">
-            <form method="post" action="/admin/admin" class="form-horizontal" enctype="multipart/form-data">
+            <form method="post" action="/admin/admin/{{$res->id}}" class="form-horizontal" enctype="multipart/form-data">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">用户名</label>
 
                     <div class="col-sm-7">
-                        <input type="text" class="form-control" name="username">
-                    </div>
-                </div>
-                <div class="hr-line-dashed"></div>
-                
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">密码</label>
-
-                    <div class="col-sm-7">
-                        <input type="password" class="form-control" name="password">
+                        <input type="text" class="form-control" value="{{$res ->username}}" name="username">
                     </div>
                 </div>
                 <div class="hr-line-dashed"></div>
@@ -61,12 +51,12 @@
 
                     <div class="col-sm-3">
                         <select class="form-control m-b" name="account">
-                            <option value="5">临时工</option>
-                            <option value="4">正式员工</option>
-                            <option value="3">COO</option>
-                            <option value="2">CTO</option>
-                            <option value="1">CEO</option>
-                            <option value="0">超级管理员</option>
+                            <option value="0" @if($res->account == 0) selected @endif >超级管理员</option>
+                            <option value="1" @if($res->account == 1) selected @endif >CEO</option>
+                            <option value="2" @if($res->account == 2) selected @endif >CTO</option>
+                            <option value="3" @if($res->account == 3) selected @endif >COO</option>
+                            <option value="4" @if($res->account == 4) selected @endif >正式员工</option>
+                            <option value="5" @if($res->account == 5) selected @endif >临时工</option>
                         </select>
                     </div>
                 </div>
@@ -76,6 +66,7 @@
                    <label class="col-sm-2 control-label">头像</label>
                    <div class="col-sm-7">
                        <input type="file" name="pri" class="form-control">
+                       <img src="{{$res -> pri}}" alt="" width="100px">
                    </div>
                 </div>
 
@@ -84,18 +75,20 @@
 
                     <label class="col-sm-2 control-label">状态</label>
                     <label class="control-label">
-                        <input type="radio" value="1" id="optionsRadios1" name="status" checked >开启
+                        <input type="radio" value="1" id="optionsRadios1" name="status"  @if($res->status == 1) checked @endif >开启
                     </label>
                     <label class="control-label"> &nbsp;|&nbsp; </label>
                     <label class="control-label">
-                        <input type="radio" checked="" value="0" id="optionsRadios1" name="status">关闭
+                        <input type="radio"  value="0" id="optionsRadios1" name="status"  @if($res->status == 0) checked @endif>关闭
                     </label>
                 </div>
                 <div class="hr-line-dashed"></div>
                 <div class="row">
                     {{csrf_field()}}
+                    {{method_field('PUT')}}
+
                     <div class="col-sm-4 col-sm-offset-2">
-                        <input type="submit"class="btn btn-primary" value="提交">
+                        <button class="btn btn-primary" type="submit">修改</button>
                     </div>
                 </div>
             </form>

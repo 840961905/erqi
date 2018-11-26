@@ -37,15 +37,45 @@
                 <ul class="nav" id="side-menu">
                     <li class="nav-header">
 
-                        <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="/admins/img/profile_small.jpg" />
-                             </span>
+                        <div class="dropdown profile-element"> 
+                            <span>
+                                <img alt="image" class="img-circle" src="{{session('pri')}}" width="64px">
+                            </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="admin#">
-                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Beaut-zihan</strong>
-                             </span> <span class="text-muted text-xs block">超级管理员 <b class="caret"></b></span> </span>
+                                <span class="clear"> 
+                                    <span class="block m-t-xs"> 
+                                        <strong class="font-bold">{{session('uname')}}</strong>
+                                    </span> 
+                                    <span class="text-muted text-xs block"> 
+                                        @switch(session('uname'))
+                                            @case(0)
+                                                超级管理员
+                                                @break
+                                            @case(1)
+                                                CEO
+                                                @break
+                                            @case(2)
+                                                CTO
+                                                @break
+                                            @case(3)
+                                                COO
+                                                @break
+                                            @case(4)
+                                                正式员工
+                                                @break
+                                            @case(5)
+                                                临时工
+                                                @break
+                                        @endswitch
+                                        <b class="caret">
+                                        </b>
+                                    </span> 
+                                </span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="form_avatar.html">修改头像</a>
+                                <li><a href="/admin/profile">修改头像</a>
+                                </li>
+                                <li><a href="/admin/passchange">修改密码</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li><a href="/admin/logout">安全退出</a>
@@ -63,7 +93,17 @@
                             <li><a href="/admin/admin/create">管理员添加</a>
                             </li>
                             <li><a href="/admin/admin">管理员查看</a>
-                    <li class="active">
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-users"></i> <span class="nav-label">用户管理</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/admin/users">浏览用户</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="index.html"><i class="fa fa-list"></i> <span class="nav-label">分类管理</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/admin/type/create">分类添加</a>
@@ -201,7 +241,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="login.html">
+                            <a href="/admin/logout">
                                 <i class="fa fa-sign-out"></i> 退出
                             </a>
                         </li>
@@ -209,7 +249,7 @@
 
                 </nav>
             </div>
-           <div class="row">
+           <div class="row" style="margin-left:0px;">
                 <!-- <div class="col-lg-12">
                     <div class="wrapper wrapper-content">
                         <div class="row">

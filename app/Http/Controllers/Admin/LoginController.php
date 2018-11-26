@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Gregwar\Captcha\CaptchaBuilder;
 use Gregwar\Captcha\PhraseBuilder;
+
+use App\Model\Admin\Admin;
+
 use Session;
 use DB;
 use Hash;
@@ -49,10 +52,10 @@ class LoginController extends Controller
 
     	//判断密码
     	//hash
-    	/*if (!Hash::check($request->password, $rs->password)) {
+    	if (!Hash::check($request->password, $rs->password)) {
 		    
 		    return back()->with('error','用户名或者密码错误');
-		}*/
+		}
 
 		//加密解密
         
@@ -62,18 +65,22 @@ class LoginController extends Controller
             
         // }
         //密码对比 没有加密
-		if($request->password != $rs->password){
+		// if($request->password != $rs->password){
 
-		    return back()->with('error','用户名或者密码错误');
+		//     return back()->with('error','用户名或者密码错误');
 			
-		}
+		// }
 
 		//判断验证码
 		
 
 		//存点信息  session
-		session(['uid'=>$rs->id]);
+        session(['uid'=>$rs->id]);
+        session(['account'=>$rs->account]);
+		session(['pri'=>$rs->pri]);
 		session(['uname'=>$rs->username]);
+        $time  = ['lasttime' => time()];
+        Admin::where('id',$rs ->id) ->update($time);
 		return redirect('/admin');
     	
     }
@@ -150,8 +157,12 @@ class LoginController extends Controller
     public function logout()
     {
     	//清空session
-    	session(['uid'=>'']);
-
+        // dd(123123);
+        session(['uid'=>'']);
+        session(['pri'=>'']);
+        session(['account'=>'']);
+    	session(['uname'=>'']);
+        // dd(session('uid'));
     	return redirect('/admin/login');
     }
 }
