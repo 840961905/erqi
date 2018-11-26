@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FriendRequest extends FormRequest
+class AdsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,12 @@ class FriendRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'href' => 'required|url',
-            'fname' => 'required',
+       return [
+            'title' => 'required',
+            'img' => 'required',
+            'position' => 'required',
+            'href' => 'required',
+           
         ];
     }
 
@@ -37,9 +40,10 @@ class FriendRequest extends FormRequest
     public function messages()
     {
         return [
-            'fname.required'  => '名称不能为空',
-            'href.required'  => '地址不能为空',
-            'href.url'  => '地址格式不正确',
+            'title.required'  => '标题不能为空',
+            'img.required'  => '广告图片不能为空',
+            'href.required'  => '跳转地址不能为空',
+            'position.required'  => '所在位置不能为空',
         ];
     }
 }

@@ -38,7 +38,7 @@
                     <div class="col-lg-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>友情连接管理 <small>所有链接</small></h5>
+                                <h5>广告管理 <small>所有广告</small></h5>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
                                         <i class="fa fa-chevron-up"></i>
@@ -51,32 +51,48 @@
                                     <thead>
                                         <tr>
                                             <th>序号</th>
-                                            <th>名称</th>
-                                            <th>地址</th>
-                                            <th>添加时间</th>
+                                            <th>标题</th>
+                                            <th>跳转地址</th>
+                                            <th>广告图片</th>
+                                            <th>所在位置</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                    	@foreach($finfo as $v)
+                                    	@foreach($adsinfo as $v)
                                         <tr class="gradeX">
                                             <td>{{$v->id}}</td>
-                                            <td>{{$v->fname}}
-                                            </td>
+                                            <td>{{$v->title}}</td>
                                             <td>{{$v->href}}</td>
-                                            <td>{{$v->addtime}}</td>
-                            			 <td class="center ">
-		                                      <a href="/admin/friend/{{$v->id}}/edit" class="btn btn-info">修改</a>
-		                                      <form action="/admin/friend/{{$v->id}}" method='post' style='display:inline'>
-		                                      {{csrf_field()}}
+                                            <td> 
+                                                <img src="{{$v->img}}" alt="" width="120" height="60">
+                                            </td>
+                                            <td>
+                                                @if ($v->position == 'up')
 
-		                                      {{method_field("DELETE")}}
-		                                      <button class='btn btn-danger'>删除</button>
+                                                    上部(小图)
+                                                @elseif ($v->position == 'middle')
+                                                    中部(滚动图)
 
-		                                      </form>
-		                                   </td>
+                                                @else
+                                                    底部(固定图)
 
+                                                @endif
+                                              
+                                            </td>   
+                                            <td class="center ">
+                                                <a href="/admin/advertisement/{{$v->id}}/edit" class="btn btn-info">修改</a>
+                                                <form action="/admin/advertisement/{{$v->id}}" method='post' style='display:inline'>
+                                                    {{csrf_field()}}
+
+
+                                                    {{method_field("DELETE")}}
+                                                    <button class='btn btn-danger'>删除</button>
+
+
+                                                </form>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody> 

@@ -49,7 +49,12 @@ Route::group(['middleware'=>'login'], function(){
 
 
 	//友情连接管理
-	Route::resource('admin/friend',"Admin\FrilinkController");
+	Route::resource('/admin/friend',"Admin\FrilinkController");
 
+	//广告管理
+	Route::resource('/admin/advertisement',"Admin\AdsController");
+
+	//轮播管理
+	Route::resource('/admin/slider',"Admin\SliderController");
 });
 

@@ -30,8 +30,7 @@
                             <div class="alert alert-success alert-dismissable">
                                 <ul>
                                     @foreach ($errors->all() as $error)
-                                    <li style='font-size:14px'>{{$error}}</li> 
-                                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                                    <li style='list-style:none;font-size:14px'>{{$error}}</li> 
                                     @endforeach
                                 </ul>
                             </div>

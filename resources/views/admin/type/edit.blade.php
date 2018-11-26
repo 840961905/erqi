@@ -3,8 +3,7 @@
 @section('title',$title)
 
 @section('content')
-   <div class="row wrapper border-bottom white-bg page-heading" style="
-    margin-left: 0px;>
+   <div class="row wrapper border-bottom white-bg page-heading" style="margin-left: 0px;">
        <div class="col-lg-10">
            <h2>分类管理</h2>
            <ol class="breadcrumb">

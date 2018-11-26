@@ -60,6 +60,15 @@ class FrilinkController extends Controller
     public function show($id)
     {
         //
+        $res = Friend::destroy($id);
+
+        if($res){
+
+            echo 1;
+        } else {
+
+            echo 0;
+        }
     }
 
    

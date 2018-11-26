@@ -6,6 +6,7 @@
     <link href="/admins/css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="/admins/css/animate.css" rel="stylesheet">
     <link href="/admins/css/style.css?v=2.2.0" rel="stylesheet">
+
 @endsection
 
 
@@ -15,7 +16,7 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>友情连接 <small>添加链接</small></h5>
+                            <h5>广告管理  <small>添加广告</small></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -29,20 +30,20 @@
                          @if (count($errors) > 0)
                             <div class="alert alert-success alert-dismissable">
                                 <ul>
-                                    @foreach ($errors->all() as $error)
+                                   @foreach ($errors->all() as $error)
                                     <li style='list-style:none;font-size:14px'>{{$error}}</li> 
                                     @endforeach
                                 </ul>
                             </div>
                         @endif
             
-                        <form action="/admin/friend" method="post" class="form-horizontal">
+                        <form action="/admin/advertisement" method="post" class="form-horizontal" enctype='multipart/form-data'>
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <div class="ibox-content">
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">名称</label>
+                                    <label class="col-sm-2 control-label">标题</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="fname">
+                                        <input type="text" class="form-control" name="title">
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
@@ -53,6 +54,25 @@
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div> 
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">图片</label>
+                                    <div class="col-sm-6">
+                                        <input type="file" class="form-control" name="img">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">位置</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control m-b" name="position">
+                                            <option>请选择</option>
+                                            <option value="up">上部(小图)</option>
+                                            <option value="middle">中部(滚动图)</option>
+                                            <option value="buttom">底部(固定图)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
                                 <div class="form-group">
                                     <div class="col-sm-4"></div>
                                     <div class="col-sm-6">

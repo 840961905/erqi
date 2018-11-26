@@ -142,9 +142,24 @@
                             
                         </ul>
                     </li>
-
-                </ul>
-
+                    <li>
+                        <a href="index.html"><i class="fa fa-paper-plane"></i> <span class="nav-label">广告管理</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/admin/advertisement/create">广告添加</a>
+                            </li>
+                            <li><a href="/admin/advertisement">广告查看</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-retweet"></i> <span class="nav-label">轮播管理</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/admin/slider/create">轮播添加</a>
+                            </li>
+                            <li><a href="/admin/slider">轮播查看</a>
+                            </li>
+                        </ul>
+                    </li>
             </div>
         </nav>
         <!--  @section('content')
@@ -154,8 +169,8 @@
             <div class="row border-bottom">
                 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                     <div class="navbar-header">
-                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="admin#"><i class="fa fa-bars"></i> </a>
-                        <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary "><i class="fa fa-bars"></i> </a>
+                        <form role="search" class="navbar-form-custom" method="post" action="">
                             <div class="form-group">
                                 <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
                             </div>
@@ -249,29 +264,12 @@
 
                 </nav>
             </div>
-           <div class="row" style="margin-left:0px;">
-                <!-- <div class="col-lg-12">
-                    <div class="wrapper wrapper-content">
-                        <div class="row">
-                            
-                            <div class="col-lg-4" style="width:100%">
-                                <div class="ibox float-e-margins">
-                                    <div class="ibox-title">
-                                        <h5>后台首页</h5>
-                                    </div>
-                                    <div class="ibox-content"> -->
-                                       @section('content')
+           <div class="row">
 
-                                       @show
-                      <!--                 </div>
-                              </div>
-                                
-                            </div>
-                            
+               @section('content')
 
-                        </div>
-                    </div>
-                </div> -->
+               @show
+
                 <div class="footer">
                     <div class="pull-right">
                         By：<a href="http://www.zi-han.net" target="_blank">zihan's blog</a>

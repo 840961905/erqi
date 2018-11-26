@@ -38,7 +38,7 @@
                     <div class="col-lg-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>友情连接管理 <small>所有链接</small></h5>
+                                <h5>轮播管理 <small>所有轮播</small></h5>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
                                         <i class="fa fa-chevron-up"></i>
@@ -51,32 +51,32 @@
                                     <thead>
                                         <tr>
                                             <th>序号</th>
-                                            <th>名称</th>
                                             <th>地址</th>
-                                            <th>添加时间</th>
+                                            <th>图片</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                    	@foreach($finfo as $v)
+                                    	@foreach($sliderinfo as $v)
                                         <tr class="gradeX">
                                             <td>{{$v->id}}</td>
-                                            <td>{{$v->fname}}
+                                            <td>{{$v->url}}</td>
+                                            <td> 
+                                                <img src="{{$v->img}}" alt="" width="120" height="60">
                                             </td>
-                                            <td>{{$v->href}}</td>
-                                            <td>{{$v->addtime}}</td>
-                            			 <td class="center ">
-		                                      <a href="/admin/friend/{{$v->id}}/edit" class="btn btn-info">修改</a>
-		                                      <form action="/admin/friend/{{$v->id}}" method='post' style='display:inline'>
-		                                      {{csrf_field()}}
+                                            <td class="center ">
+                                                <a href="/admin/slider/{{$v->id}}/edit" class="btn btn-info">修改</a>
+                                                <form action="/admin/slider/{{$v->id}}" method='post' style='display:inline'>
+                                                    {{csrf_field()}}
 
-		                                      {{method_field("DELETE")}}
-		                                      <button class='btn btn-danger'>删除</button>
 
-		                                      </form>
-		                                   </td>
+                                                    {{method_field("DELETE")}}
+                                                    <button class='btn btn-danger'>删除</button>
 
+
+                                                </form>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody> 

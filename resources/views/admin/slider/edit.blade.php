@@ -15,7 +15,7 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>友情连接 <small>添加链接</small></h5>
+                            <h5>轮播管理 <small>轮播修改</small></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -25,8 +25,8 @@
                                 </a>
                                
                             </div>
-                        </div>
-                         @if (count($errors) > 0)
+                        </div>                      
+                        @if (count($errors) > 0)
                             <div class="alert alert-success alert-dismissable">
                                 <ul>
                                     @foreach ($errors->all() as $error)
@@ -35,21 +35,27 @@
                                 </ul>
                             </div>
                         @endif
-            
-                        <form action="/admin/friend" method="post" class="form-horizontal">
-                            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                        <form action="/admin/slider/{{$sliderinfo->id}}" method="post" class="form-horizontal" enctype='multipart/form-data'>
                             <div class="ibox-content">
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">名称</label>
+                                    <label class="col-sm-2 control-label">序号</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="fname">
+                                        <input type="text" class="form-control" name="id" value='{{$sliderinfo->id}}' disabled>
                                     </div>
                                 </div>
-                                <div class="hr-line-dashed"></div>
+                                <div class="hr-line-dashed"></div> 
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">地址</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="href">
+                                        <input type="text" class="form-control" name="url" value='{{$sliderinfo->url}}'>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div> 
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">广告图片</label>
+                                    <div class="col-sm-6">
+                                        <img src="{{$sliderinfo->img}}" alt="" width="100px" >
+                                        <input type="file" class="form-control" name="img">
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div> 
@@ -59,7 +65,9 @@
 
                                         {{csrf_field()}}
 
-                                        <input type="submit"  class="btn btn-default" value="添加">
+                                        {{method_field('PUT')}}
+
+                                        <input type="submit"  class="btn btn-default" value="修改">
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div> 
@@ -81,13 +89,13 @@
     <script>
 
         $('.alert').delay(1000).fadeOut(2000);
-
         $(document).ready(function () {
             $('.i-checks').iCheck({
                 checkboxClass: 'icheckbox_square-green',
                 radioClass: 'iradio_square-green',
             });
         });
+</script>
     </script>
    
 @endsection
