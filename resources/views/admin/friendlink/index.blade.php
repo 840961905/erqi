@@ -101,7 +101,6 @@
     <script>
 
         $('.alert').delay(1000).fadeOut(2000);
-
         $(document).ready(function () {
             $('.dataTables-example').dataTable();
 

@@ -2,122 +2,190 @@
 
 @section('title',$title)
 
-@section('content')
-   <div class="row wrapper border-bottom white-bg page-heading" style="
-    margin-left: 0px;">
-       <div class="col-lg-10">
-           <h2>商品管理</h2>
-           <ol class="breadcrumb">
-               <li>
-                   <a href="/admin">主页</a>
-               </li>
-               
-               <li>
-                   <strong>{{$title}}</strong>
-               </li>
-           </ol>
-       </div>
-       <div class="col-lg-2">
-
-       </div>
-       <div class="col-sm-12" style="margin-top:10px;">
-           <div class="ibox float-e-margins">
-               <div class="ibox-title">
-                  
-                   <div class="ibox-tools">
-                       <a class="collapse-link">
-                           <i class="fa fa-chevron-up"></i>
-                       </a>
-                       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                           <i class="fa fa-wrench"></i>
-                       </a>
-                       <ul class="dropdown-menu dropdown-user">
-                           <li><a href="form_editors.html#">选项1</a>
-                           </li>
-                           <li><a href="form_editors.html#">选项2</a>
-                           </li>
-                       </ul>
-                       <a class="close-link">
-                           <i class="fa fa-times"></i>
-                       </a>
-                   </div>
-               </div>
-               <div class="ibox-content ">
-                  
-                   <form role="form" class="form-horizontal m-t col-sm-6">
-                       <div class="form-group draggable ui-draggable">
-                           <label class="col-sm-3 control-label">文本框：</label>
-                           <div class="col-sm-9">
-                               <input type="text" name="" class="form-control" placeholder="请输入文本">
-                              
-                           </div>
-                       </div>
-                       <div class="form-group draggable ui-draggable">
-                           <label class="col-sm-3 control-label">密码框：</label>
-                           <div class="col-sm-9">
-                               <input type="password" class="form-control" name="password" placeholder="请输入密码">
-                           </div>
-                       </div>
-                       <div class="form-group draggable ui-draggable">
-                           <label class="col-sm-3 control-label">下拉列表：</label>
-                           <div class="col-sm-9">
-                               <select class="form-control" name="">
-                                   <option>选项 1</option>
-                                   <option>选项 2</option>
-                                   <option>选项 3</option>
-                                   <option>选项 4</option>
-                               </select>
-                           </div>
-                       </div>
-                       <div class="form-group draggable ui-draggable">
-                           <label class="col-sm-3 control-label">文件域：</label>
-                           <div class="col-sm-9">
-                               <input type="file" name="" class="form-control">
-                           </div>
-                       </div>
-                       <div class="form-group draggable ui-draggable">
-                           <label class="col-sm-3 control-label">纯文本：</label>
-
-                           <div class="col-sm-9">
-                               <p class="form-control-static">这里是纯文字信息</p>
-                           </div>
-                       </div>
-                       <div class="form-group draggable ui-draggable">
-                           <label class="col-sm-3 control-label">单选框：
-                           </label>
-
-                           <div class="col-sm-9">
-                               <label class="radio-inline">
-                                   <input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios">选项1</label>
-                               <label class="radio-inline">
-                                   <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios">选项2</label>
-
-                           </div>
-                       </div>
-                       <div class="form-group draggable ui-draggable">
-                           <label class="col-sm-3 control-label">复选框：</label>
-
-                           <div class="col-sm-9">
-                               <label class="checkbox-inline">
-                                   <input type="checkbox" value="option1" id="inlineCheckbox1">选项1</label>
-                               <label class="checkbox-inline">
-                                   <input type="checkbox" value="option2" id="inlineCheckbox2">选项2</label>
-                               <label class="checkbox-inline">
-                                   <input type="checkbox" value="option3" id="inlineCheckbox3">选项3</label>
-                           </div>
-                       </div>
-                       <div class="hr-line-dashed"></div>
-                       <div class="form-group draggable ui-draggable">
-                           <div class="col-sm-12 col-sm-offset-3">
-                               <button class="btn btn-primary" type="submit">保存内容</button>
-                               <button class="btn btn-white" type="submit">取消</button>
-                           </div>
-                       </div>
-                   </form>
-                   <div class="clearfix"></div>
-               </div>
-           </div>
-       </div>
-   </div>
-  
+@section('css')
+    <link href="/admins/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/admins/css/animate.css" rel="stylesheet">
+    <link href="/admins/css/style.css?v=2.2.0" rel="stylesheet">
 @endsection
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+<script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+@section('content')
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>商品管理 <small>{{$title}}</small></h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                               
+                            </div>
+                        </div>
+                        <div class="ibox-content ">
+                           
+                            <form action="/admin/shop" method="post" role="form" class="form-horizontal m-t col-sm-6" enctype="multipart/form-data">
+                                <div class="form-group draggable ui-draggable">
+                                    <label class="col-sm-3 control-label">分类名：</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" name="tid">
+                                            <option>--请选择--</option>
+                                            @foreach($rs as $v)
+                                            <option value='{{$v->id}}'>{{$v->tname}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group draggable ui-draggable">
+                                    <label class="col-sm-3 control-label">商品名称：</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="gname" class="form-control" placeholder="商品名称">
+                                       
+                                    </div>
+                                </div>
+                                <div class="form-group draggable ui-draggable">
+                                    <label class="col-sm-3 control-label">商品说明：</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="info" class="form-control" placeholder="商品说明">
+                                       
+                                    </div>
+                                </div>
+                                <div class="form-group draggable ui-draggable">
+                                    <label class="col-sm-3 control-label">商品价格：</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="price" class="form-control" placeholder="商品价格">
+                                       
+                                    </div>
+                                </div>
+                                <div class="form-group draggable ui-draggable">
+                                    <label class="col-sm-3 control-label">服务说明:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="fwsm" class="form-control" placeholder="服务说明">
+                                       
+                                    </div>
+                                </div>
+                                <div class="form-group draggable ui-draggable">
+                                    <label class="col-sm-3 control-label">商品编码：</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="bianma" class="form-control" placeholder="商品名称">
+                                       
+                                    </div>
+                                </div>
+                                
+                               <div class="form-group draggable ui-draggable">
+                                   <label class="col-sm-3 control-label">商品版本：</label>
+                                   <div class="col-sm-9">
+                                       <input type="text" name="size" class="form-control" placeholder="商品版本">
+                                      
+                                   </div>
+                               </div>
+                               <div class="form-group draggable ui-draggable">
+                                   <label class="col-sm-3 control-label">商品颜色：</label>
+                                   <div class="col-sm-9">
+                                       <input type="text" name="color" class="form-control" placeholder="商品颜色">
+                                      
+                                   </div>
+                               </div>
+                               <div class="form-group draggable ui-draggable">
+                                   <label class="col-sm-3 control-label">商品库存：</label>
+                                   <div class="col-sm-9">
+                                       <input type="text" name="stock" class="form-control" placeholder="商品库存">
+                                      
+                                   </div>
+                               </div>
+                               <div class="form-group draggable ui-draggable">
+                                   <label class="col-sm-3 control-label">商品描述：</label>
+                                   <div class="col-sm-9">
+                                       <div class="mws-form-item">
+                                            <script id="editor" name='text' type="text/plain" style="width:760px;height:500px;"></script>
+                                        </div>
+                                      
+                                   </div>
+                               </div>
+                                <div class="form-group draggable ui-draggable">
+                                    <label class="col-sm-3 control-label">商品图片：</label>
+                                    <div class="col-sm-9">
+                                        <input type="file" name="gimg[]" class="form-control" multiple>
+                                    </div>
+                                </div>
+                                <div class="form-group draggable ui-draggable">
+                                    <label class="col-sm-3 control-label">商品状态：
+                                    </label>
+
+                                    <div class="col-sm-9">
+                                        <label class="radio-inline">
+                                            <input type="radio" checked="" value="1" id="optionsRadios1" name="status">上架</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" value="0" id="optionsRadios2" name="status">下架</label>
+
+                                    </div>
+                                </div>
+                                <div class="form-group draggable ui-draggable">
+                                    <label class="col-sm-3 control-label">商品关键字：
+                                    </label>
+
+                                    <div class="col-sm-9">
+                                        <label class="radio-inline">
+                                            <input type="radio" checked="" value="1" id="optionsRadios1" name="keywords">热卖</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" value="2" id="optionsRadios2" name="keywords">爆款</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" checked="" value="3" id="optionsRadios1" name="keywords">新品</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" value="4" id="optionsRadios2" name="keywords">特惠</label>
+
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group draggable ui-draggable">
+                                    <div class="col-sm-12 col-sm-offset-3">
+                                        {{csrf_field()}}
+                                        <input type="submit" value="保存内容" class="btn btn-primary">
+                                        
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="clearfix"></div>
+                        </div>
+            
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+@endsection
+
+
+@section('js')
+    
+     <!-- iCheck -->
+    <script src="/admins/js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+
+        $('.alert').delay(1000).fadeOut(2000);
+
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+   
+    <script>
+     var ue = UE.getEditor('editor');
+    </script>
+@endsection
+
+
+
