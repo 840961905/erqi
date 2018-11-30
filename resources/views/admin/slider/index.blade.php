@@ -53,6 +53,7 @@
                                             <th>序号</th>
                                             <th>地址</th>
                                             <th>图片</th>
+                                            <th>添加时间</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -65,17 +66,10 @@
                                             <td> 
                                                 <img src="{{$v->img}}" alt="" width="120" height="60">
                                             </td>
+                                            <td>{{$v->addtime}}</td>
                                             <td class="center ">
                                                 <a href="/admin/slider/{{$v->id}}/edit" class="btn btn-info">修改</a>
-                                                <form action="/admin/slider/{{$v->id}}" method='post' style='display:inline'>
-                                                    {{csrf_field()}}
-
-
-                                                    {{method_field("DELETE")}}
-                                                    <button class='btn btn-danger'>删除</button>
-
-
-                                                </form>
+                                                <a href="javascript:void(0)" class='remove btn btn-danger'>删除</a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -99,6 +93,35 @@
 
     <!-- Page-Level Scripts -->
     <script>
+
+         //删除数据
+        $('.remove').click(function(){
+
+            //提示信息
+            var res =  confirm('你确定删除吗??');
+
+            if(!res) return;
+
+             //参数发送到控制器中   id
+             //获取id
+            var gid = $(this).parents('tr').find('td').first().text();
+
+            //console.log(gid);
+
+            var rem = $(this);
+
+            $.get('/admin/sdel',{gid:gid},function(data){
+            console.log(data);
+
+
+                if(data == 1){
+
+                    rem.parents('tr').remove();
+                    //location.reload();
+                }   
+            })
+
+        })
 
         $('.alert').delay(1000).fadeOut(2000);
 

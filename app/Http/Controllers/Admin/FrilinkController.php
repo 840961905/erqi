@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FriendRequest;
 use App\Model\Admin\Friend;
+use DB;
 
 class FrilinkController extends Controller
 {
@@ -35,13 +36,14 @@ class FrilinkController extends Controller
 
         $res = $request->except('_token');
         
-        $res['addtime'] = time(); 
 
         try{
 
        		$friendlink = Friend::create($res);  
             
             if($friendlink){
+                return redirect('/admin/friend')->with('success','添加成功');
+            }else{
                 return redirect('/admin/friend')->with('success','添加成功');
             }
 
@@ -109,24 +111,21 @@ class FrilinkController extends Controller
 
     }
 
-    public function destroy($id)
+   public function fdel(Request $request)
     {
-        //
 
-        try{
+        $id = $request->gid;
 
-            $res = Friend::destroy($id);
-            
-            if($res){
-                return redirect('/admin/friend')->with('success','删除成功');
-            }
+        $res = DB::table('Friend')->where('id',$id)->delete();
 
-        }catch(\Exception $e){
 
-            return back()->with('error','删除失败');
+        if($res){
+
+            echo 1;
+        } else {
+
+            echo 0;
         }
-
-
     }
 
 }

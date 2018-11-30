@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdsRequest;
 use App\Model\Admin\Ads;
+use DB;
 
  
 class AdsController extends Controller
@@ -120,6 +121,8 @@ class AdsController extends Controller
             
             if($advertisement){
                 return redirect('/admin/advertisement')->with('success','修改成功');
+            }else{
+                return redirect('/admin/advertisement')->with('success','修改成功');
             }
 
         }catch(\Exception $e){
@@ -129,21 +132,20 @@ class AdsController extends Controller
 
     }
 
-    public function destroy($id)
+    public function adel(Request $request)
     {
-        //
 
-        try{
+        $id = $request->gid;
 
-            $res = Ads::destroy($id);
-            
-            if($res){
-                return redirect('/admin/advertisement')->with('success','删除成功');
-            }
+        $res = DB::table('ads')->where('id',$id)->delete();
 
-        }catch(\Exception $e){
 
-            return back()->with('error','删除失败');
+        if($res){
+
+            echo 1;
+        } else {
+
+            echo 0;
         }
     }
 

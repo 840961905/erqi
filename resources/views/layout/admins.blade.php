@@ -173,6 +173,15 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-tasks"></i> <span class="nav-label">商品分类广告管理</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/admin/typeads/create">分类广告添加</a>
+                            </li>
+                            <li><a href="/admin/typeads">分类广告查看</a>
+                            </li>
+                        </ul>
+                    </li>
             </div>
         </nav>
         <!--  @section('content')

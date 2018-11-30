@@ -84,15 +84,22 @@ Route::group(['middleware'=>['login','adminper']], function(){
 	Route::resource('admin/comment',"Admin\CommentController");
 	Route::get('admin/comment/status/{id}','Admin\CommentController@status');
 	
-	
+
 	//友情连接管理
+	Route::get('/admin/fdel','Admin\FrilinkController@fdel');
 	Route::resource('/admin/friend',"Admin\FrilinkController");
 
 	//广告管理
+	Route::get('/admin/adel','Admin\AdsController@adel');
 	Route::resource('/admin/advertisement',"Admin\AdsController");
 
 	//轮播管理
+	Route::get('/admin/sdel','Admin\SliderController@sdel');
 	Route::resource('/admin/slider',"Admin\SliderController");
+
+	//分类广告管理
+	Route::get('/admin/del','Admin\TypeadsController@del');
+	Route::resource('/admin/typeads',"Admin\TypeadsController");
 });
 
 Route::group([], function(){

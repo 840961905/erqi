@@ -68,13 +68,7 @@
                                             <td>{{$v->addtime}}</td>
                             			 <td class="center ">
 		                                      <a href="/admin/friend/{{$v->id}}/edit" class="btn btn-info">修改</a>
-		                                      <form action="/admin/friend/{{$v->id}}" method='post' style='display:inline'>
-		                                      {{csrf_field()}}
-
-		                                      {{method_field("DELETE")}}
-		                                      <button class='btn btn-danger'>删除</button>
-
-		                                      </form>
+		                                      <a href="javascript:void(0)" class='remove btn btn-danger'>删除</a>
 		                                   </td>
 
                                         </tr>
@@ -99,6 +93,35 @@
 
     <!-- Page-Level Scripts -->
     <script>
+
+         //删除数据
+        $('.remove').click(function(){
+
+            //提示信息
+            var res =  confirm('你确定删除吗??');
+
+            if(!res) return;
+
+             //参数发送到控制器中   id
+             //获取id
+            var gid = $(this).parents('tr').find('td').first().text();
+
+            //console.log(gid);
+
+            var rem = $(this);
+
+            $.get('/admin/fdel',{gid:gid},function(data){
+            console.log(data);
+
+
+                if(data == 1){
+
+                    rem.parents('tr').remove();
+                    //location.reload();
+                }   
+            })
+
+        })
 
         $('.alert').delay(1000).fadeOut(2000);
         $(document).ready(function () {

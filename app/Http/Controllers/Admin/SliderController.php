@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SliderRequest;
 use App\Model\Admin\Slider;
+use DB;
 
 class SliderController extends Controller
 {
@@ -128,21 +129,20 @@ class SliderController extends Controller
 
     }
 
-    public function destroy($id)
+   public function sdel(Request $request)
     {
-        //
 
-        try{
+        $id = $request->gid;
 
-            $res = Slider::destroy($id);
-            
-            if($res){
-                return redirect('/admin/slider')->with('success','删除成功');
-            }
+        $res = DB::table('slider')->where('id',$id)->delete();
 
-        }catch(\Exception $e){
 
-            return back()->with('error','删除失败');
+        if($res){
+
+            echo 1;
+        } else {
+
+            echo 0;
         }
     }
 }

@@ -38,7 +38,7 @@
                     <div class="col-lg-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>广告管理 <small>所有广告</small></h5>
+                                <h5>分类广告管理 <small>所有分类广告</small></h5>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
                                         <i class="fa fa-chevron-up"></i>
@@ -51,11 +51,9 @@
                                     <thead>
                                         <tr>
                                             <th>序号</th>
-                                            <th>标题</th>
+                                            <th>所属顶级分类</th>
                                             <th>跳转地址</th>
                                             <th>广告图片</th>
-                                            <th>所在位置</th>
-                                            <th>添加时间</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -64,27 +62,21 @@
                                     	@foreach($adsinfo as $v)
                                         <tr class="gradeX">
                                             <td>{{$v->id}}</td>
-                                            <td>{{$v->title}}</td>
+                                            <td>
+                                            @foreach($tadsinfo as $v1)
+                                         
+                                                @if($v->tid==$v1->id)
+                                                    {{$v1->tname}}
+                                                @endif
+                                            
+                                            @endforeach
+                                            </td>
                                             <td>{{$v->href}}</td>
                                             <td> 
                                                 <img src="{{$v->img}}" alt="" width="120" height="60">
                                             </td>
-                                            <td>
-                                                @if ($v->position == 'up')
-
-                                                    上部(小图)
-                                                @elseif ($v->position == 'middle')
-                                                    中部(滚动图)
-
-                                                @else
-                                                    底部(固定图)
-
-                                                @endif
-                                              
-                                            </td>   
-                                            <td>{{$v->addtime}}</td> 
                                             <td class="center ">
-                                                <a href="/admin/advertisement/{{$v->id}}/edit" class="btn btn-info">修改</a>
+                                                <a href="/admin/typeads/{{$v->id}}/edit" class="btn btn-info">修改</a>
                                                 <a href="javascript:void(0)" class='remove btn btn-danger'>删除</a>
                                             </td>
                                         </tr>
@@ -110,7 +102,7 @@
     <!-- Page-Level Scripts -->
     <script>
 
-         //删除数据
+        //删除数据
         $('.remove').click(function(){
 
             //提示信息
@@ -126,7 +118,7 @@
 
             var rem = $(this);
 
-            $.get('/admin/adel',{gid:gid},function(data){
+            $.get('/admin/del',{gid:gid},function(data){
             console.log(data);
 
 
@@ -138,6 +130,7 @@
             })
 
         })
+
 
         $('.alert').delay(1000).fadeOut(2000);
 
@@ -167,6 +160,7 @@
 
         });
 
+        
     </script>
    
 @endsection

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdsRequest extends FormRequest
+class TypeadsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,9 @@ class AdsRequest extends FormRequest
      */
     public function rules()
     {
-       return [
-            'title' => 'required',
-            'position' => 'required',
-            'href' => 'required',
-           
+        return [
+            'tid' => 'required',      
+            'href' => 'required',          
         ];
     }
 
@@ -39,9 +37,9 @@ class AdsRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required'  => '标题不能为空',
+            'tid.required'  => '商品顶级分类不能为空',
             'href.required'  => '跳转地址不能为空',
-            'position.required'  => '所在位置不能为空',
         ];
     }
 }
+
