@@ -56,21 +56,6 @@
                     </div>
                 </div>
                 <div class="hr-line-dashed"></div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">权限</label>
-
-                    <div class="col-sm-3">
-                        <select class="form-control m-b" name="account">
-                            <option value="5">临时工</option>
-                            <option value="4">正式员工</option>
-                            <option value="3">COO</option>
-                            <option value="2">CTO</option>
-                            <option value="1">CEO</option>
-                            <option value="0">超级管理员</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="hr-line-dashed"></div>
 
                 <div class="form-group draggable ui-draggable">
                    <label class="col-sm-2 control-label">头像</label>
@@ -88,7 +73,7 @@
                     </label>
                     <label class="control-label"> &nbsp;|&nbsp; </label>
                     <label class="control-label">
-                        <input type="radio" checked="" value="0" id="optionsRadios1" name="status">关闭
+                        <input type="radio" value="0" id="optionsRadios1" name="status">关闭
                     </label>
                 </div>
                 <div class="hr-line-dashed"></div>

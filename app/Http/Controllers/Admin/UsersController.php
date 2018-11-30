@@ -66,7 +66,18 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        //根据ID获取相应的数据
+        $res = Users::find($id);
+
+        //获取用户地址信息     ->orderBy('defaultadr','desc')
+        $user_adr_data = Users::find($id)->typec()->get();
+
+        return view('admin.users.edit',[
+            'title'=>'用户浏览详情页面',
+            'res'=>$res,
+            'uadata'=>$user_adr_data
+        ]);
     }
 
     /**

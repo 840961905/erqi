@@ -29,4 +29,12 @@ class Admin extends Model
 	 * @var array
 	 */
 	protected $guarded = [];
+
+    /**
+    * 属于该用户的身份。
+    */
+    public function roles()
+    {
+        return $this->belongsToMany('App\Model\Admin\Role','admin_role');
+    }
 }

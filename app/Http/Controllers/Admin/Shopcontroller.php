@@ -279,4 +279,27 @@ class Shopcontroller extends Controller
         }
 
     }
+
+
+    public function text()
+    {
+        $id = $_GET['id'];
+        $res = DB::table('goods')->value('text');
+        return view('admin.shop.text',[
+            'title'=>'商品的详细信息',
+            'res'=>$res
+        ]);
+    }
+
+
+    public function imgs()
+    {
+        $id = $_GET['id'];
+        $res = DB::table('goodsimg')->where('goodsimg.gid',$id)->get();
+       
+        return view('admin.shop.imgs',[
+            'title'=>'商品的图片',
+            'res'=>$res
+        ]);
+    }
 }

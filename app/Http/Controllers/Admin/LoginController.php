@@ -76,9 +76,9 @@ class LoginController extends Controller
 
 		//存点信息  session
         session(['uid'=>$rs->id]);
-        session(['account'=>$rs->account]);
 		session(['pri'=>$rs->pri]);
-		session(['uname'=>$rs->username]);
+        session(['uname'=>$rs->username]);
+		session(['status'=>$rs->status]);
         $time  = ['lasttime' => time()];
         Admin::where('id',$rs ->id) ->update($time);
 		return redirect('/admin');
@@ -123,7 +123,7 @@ class LoginController extends Controller
      */
     public function profile()
     {
-    	return view('admin.profile',['title'=>'修改头像']);
+    	return view('admin.admin.profile',['title'=>'修改头像']);
     }
 
     /**
@@ -133,36 +133,98 @@ class LoginController extends Controller
      */
     public function upload(Request $request)
     {
-    	//获取上传的文件对象
-        $file = $request->file('profile');
-        //判断文件是否有效
-        if($file->isValid()){
-        	//上传文件的后缀名
-            $entension = $file->getClientOriginalExtension();
-            //修改名字
-            $newName = date('YmdHis').mt_rand(1000,9999).'.'.$entension;
-            //移动文件
-            $path = $file->move('./uploads',$newName);
+        if($request->hasFile('pri')){
+            //自定义名字
+            $name = rand(11111,99999).time();
 
-            $filepath = '/uploads/'.$newName;
+            //获取后缀
+            $suffix = $request->file('pri')->getClientOriginalExtension();
 
-            $res['profile'] = $filepath;
-            DB::table('user')->where('id',session('uid'))->update($res);
-            //返回文件的路径
-            return  $filepath;
+            $request->file('pri')->move('./uploads/adminpri/',$name.'.'.$suffix);
+
+            $res['pri'] = '/uploads/adminpri/'.$name.'.'.$suffix;
+
+        }
+        // 获取当前管理员id
+        $id = $request->id;
+        try{
+            // 查找当前用户原头像路径
+            $imgs = Admin::find($id);
+            // 删除原头像
+            unlink('.'.$imgs->pri);
+            // 修改数据库
+            $data = Admin::where('id', $id)->update($res);
+            // 判断成功与否
+            if($data){
+                // 将新头像路径存入session
+                session(['pri' => '/uploads/adminpri/'.$name.'.'.$suffix]);
+                return redirect('/admin')->with('success','修改成功');
+            }
+
+        }catch(\Exception $e){
+            return back()->with('error','添加失败');
         }
     }
 
     //退出
     public function logout()
     {
-    	//清空session
+        //清空session
         // dd(123123);
         session(['uid'=>'']);
         session(['pri'=>'']);
-        session(['account'=>'']);
-    	session(['uname'=>'']);
+        session(['uname'=>'']);
+        session(['status'=>'']);
         // dd(session('uid'));
-    	return redirect('/admin/login');
+        return redirect('/admin/login');
+    }
+    // 显示修改密码界面
+    public function passchange()
+    {   
+        // 获取GET里的id
+        $id = $_GET['id'];
+        return view('admin.admin.passchange',['title'=>'修改密码','id'=>$id]);
+    }
+    // 执行修改密码
+    public function dopasschange(Request $request)
+    {   
+        // 获取GET里的id
+        $id = $_GET['id'];
+        // 获取表单信息
+        $ypass = $request ->post('yuanpass');
+        $pass = $request ->post('password');
+        $repass = $request ->post('repass');
+
+
+        try{
+            // 查询用户数据
+            $rs = Admin::where('id',$id)->first();
+            // 判断原密码对错
+            if (!Hash::check($ypass, $rs->password)) {
+                return back()->with('error','原密码错误');
+            }
+            // 判断密码一致
+            if ($pass != $repass) {
+                return back()->with('error','两次密码不一致');
+            }
+            // 加密密码
+            $arr['password'] = Hash::make($pass);
+            // 上传密码
+            $res = Admin::where('id',$id)->update($arr);
+            // 判断上传结果
+            if(!$res){
+                return back()->with('error','修改失败');
+            }
+            // 清空session
+            session(['uid'=>'']);
+            session(['pri'=>'']);
+            session(['uname'=>'']);
+            session(['status'=>'']);
+
+            return redirect('/admin/login')->with('success','修改成功');
+        }catch(\Exception $e){
+
+            return back()->with('error','修改失败');
+        }
     }
 }

@@ -29,4 +29,12 @@ class Users extends Model
 	 * @var array
 	 */
 	protected $guarded = [];
+
+
+
+    /*  一对多的查询 */
+    public function typec()
+    {
+        return $this->hasMany('App\Model\Admin\Address', 'uid');
+    }
 }

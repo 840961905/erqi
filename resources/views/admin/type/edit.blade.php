@@ -47,7 +47,7 @@
                        <div class="form-group draggable ui-draggable">
                            <label class="col-sm-3 control-label">分类名：</label>
                            <div class="col-sm-9">
-                               <input type="text" name="tname" class="form-control" placeholder="{{$res->tname}}">
+                               <input type="text" name="tname" class="form-control" placeholder="{{$res->tname}}" value="{{$res->tname}}">
                                
                            </div>
                        </div>

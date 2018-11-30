@@ -47,35 +47,16 @@
                                         <strong class="font-bold">{{session('uname')}}</strong>
                                     </span> 
                                     <span class="text-muted text-xs block"> 
-                                        @switch(session('uname'))
-                                            @case(0)
-                                                超级管理员
-                                                @break
-                                            @case(1)
-                                                CEO
-                                                @break
-                                            @case(2)
-                                                CTO
-                                                @break
-                                            @case(3)
-                                                COO
-                                                @break
-                                            @case(4)
-                                                正式员工
-                                                @break
-                                            @case(5)
-                                                临时工
-                                                @break
-                                        @endswitch
+                                        操作列表
                                         <b class="caret">
                                         </b>
                                     </span> 
                                 </span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="/admin/profile">修改头像</a>
+                                <li><a href="/admin/profile?id={{session('uid')}}">修改头像</a>
                                 </li>
-                                <li><a href="/admin/passchange">修改密码</a>
+                                <li><a href="/admin/passchange?id={{session('uid')}}">修改密码</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li><a href="/admin/logout">安全退出</a>
@@ -87,12 +68,36 @@
                         </div>
 
                     </li>
+					<li>
+                        <a href="index.html"><i class="fa fa-user-md"></i> <span class="nav-label">网站管理</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/admin/hinfo">网站设置</a></li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="index.html"><i class="fa fa-user-md"></i> <span class="nav-label">管理员管理</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/admin/admin/create">管理员添加</a>
                             </li>
                             <li><a href="/admin/admin">管理员查看</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-smile-o"></i> <span class="nav-label">角色管理</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/admin/role/create">角色添加</a>
+                            </li>
+                            <li><a href="/admin/role">角色查看</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-key"></i> <span class="nav-label">权限管理</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/admin/permission/create">权限添加</a>
+                            </li>
+                            <li><a href="/admin/permission">权限查看</a>
                             </li>
                         </ul>
                     </li>
@@ -121,6 +126,14 @@
                             <li><a href="/admin/shop">商品查看</a>
                             </li>
                             
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">订单管理</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/admin/orders">订单查看</a></li>
+                            <li><a href="/admin/orderstatu">订单状态管理</a></li>
+                            <li><a href="/admin/comment">订单评论管理</a></li>
                         </ul>
                     </li>
                     <li>
@@ -188,7 +201,7 @@
                                 <li>
                                     <div class="dropdown-messages-box">
                                         <a href="profile.html" class="pull-left">
-                                            <img alt="image" class="img-circle" src="img/a7.jpg">
+                                            <img alt="image" class="img-circle" src="">
                                         </a>
                                         <div class="media-body">
                                             <small class="pull-right">46小时前</small>
@@ -202,7 +215,7 @@
                                 <li>
                                     <div class="dropdown-messages-box">
                                         <a href="profile.html" class="pull-left">
-                                            <img alt="image" class="img-circle" src="img/a4.jpg">
+                                            <img alt="image" class="img-circle" src="">
                                         </a>
                                         <div class="media-body ">
                                             <small class="pull-right text-navy">25小时前</small>

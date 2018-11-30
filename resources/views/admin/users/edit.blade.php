@@ -26,36 +26,73 @@
                                
                             </div>
                         </div>                      
-                        @if (count($errors) > 0)
-                            <div class="alert alert-success alert-dismissable">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                    <li style='font-size:14px'>{{$error}}</li> 
-                                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                                    @endforeach
-                                </ul>
+                        @if(session('success'))
+                            <div class="alert alert-danger alert-dismissable">
+                                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><li>{{session('success')}}</li>
                             </div>
                         @endif
-                        <form action="/admin/friend/{{$finfo->id}}" method="post" class="form-horizontal">
+
+                        @if(session('error'))
+                            <div class="alert alert-danger alert-dismissable">
+                                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><li>{{session('error')}}</li>
+                            </div>
+                        @endif
+                        <form action="/admin/friend/{{$res->id}}" method="post" class="form-horizontal">
                             <div class="ibox-content">
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">序号</label>
+                                    <label class="col-sm-2 control-label">用户名</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="id" value='{{$finfo->id}}' disabled>
+                                        <input type="text" class="form-control" value='{{$res->aname}}' disabled>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">名称</label>
+                                    <label class="col-sm-2 control-label">性别</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="fname" value='{{$finfo->fname}}'>
+                                        <input type="text" class="form-control" value='@if($res->sex == 1)男@else女@endif' disabled>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">地址</label>
+                                    <label class="col-sm-2 control-label">手机号</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="href" value='{{$finfo->href}}'>
+                                        <input type="text" class="form-control" value='{{$res->phone}}' disabled>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">邮箱</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" value='{{$res->email}}' disabled>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">头像</label>
+                                    <div class="col-sm-6">
+                                        <img src="{{$res->img}}">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">状态</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="status" value='@if($res->status == 1)正常@else冻结@endif' >
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">注册时间</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" value='{{date('Y-m-d H:i:s',$res->addtime)}}' disabled>
+
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">送货地址</label>
+                                    <div class="col-sm-6">
+                                        <input type="button" data-toggle="modal" data-target="#my1Modal" class="btn btn-info" value="点击查看">
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div> 
@@ -79,6 +116,59 @@
         </div>
 
 
+
+<!-- 送货地址模态框 start -->
+<div class="modal fade bs-example-modal-lg" id="my1Modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{$res->aname}} 用户地址查看</h4>
+      </div>
+      <div class="modal-body">
+        <!-- <p>此用户还没有添加任何地址！！！</p> -->
+        @if(count($uadata) == 0)
+           <p>此用户还没有添加任何地址！！！</p> 
+        @endif
+        @foreach($uadata as $v)
+        <div class="row c_address">
+            <p>
+                <span class="col-sm-2">收货人：{{$v->consignee}}</span>
+                <span class="col-sm-3">手机号：{{$v->phone}}</span>
+                <span class="col-sm-7">所在地区：{{$v->location}}</span>
+                <span class="col-sm-5">详细地址：{{$v->detailed}}</span>
+                <span class="col-sm-2">地址标签：{{$v->adrlabel}}</span>
+                <span class="col-sm-4">添加时间：{{date('Y-m-d H:i:s',$v->addtime)}}</span>
+                @if($v->defaultadr == 1)
+                <span class="col-sm-1"><span class="label label-info">默认</span></span>
+                @endif
+            </p>
+        </div>
+        @endforeach
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> -->
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- 送货地址模态框 end -->
+
+<style type="text/css">
+    .c_address {
+        margin-bottom: 15px;
+        padding-bottom:5px;
+        border-bottom: dashed 1px #ccc; 
+    }
+    .c_address p {
+        line-height: 1.8em;
+    }
+
+</style>
 @endsection
 
 
@@ -95,6 +185,13 @@
                 radioClass: 'iradio_square-green',
             });
         });
+    </script>
+
+
+
+    <script type="text/javascript">
+        //送货地址模态框js
+
     </script>
    
 @endsection

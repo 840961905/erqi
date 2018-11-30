@@ -63,29 +63,16 @@
                                             <td>{{$v->username}}
                                             </td>
                                             <td>
-                                                @switch($v->account)
-                                                    @case(0)
-                                                        超级管理员
-                                                        @break
-                                                    @case(1)
-                                                        CEO
-                                                        @break
-                                                    @case(2)
-                                                        CTO
-                                                        @break
-                                                    @case(3)
-                                                        COO
-                                                        @break
-                                                    @case(4)
-                                                        正式员工
-                                                        @break
-                                                    @case(5)
-                                                        临时工
-                                                        @break
-                                                @endswitch
+                                                <a href="/admin/admin_role?id={{$v->id}}" class="btn btn-warning">添加角色</a>
                                             </td>
                                             <td ><img src="{{$v->pri}}" alt="" width="100px" style="border-radius: 50%;"></td>
-                                            <td>{{$v->status}}</td>
+                                            <td>
+                                                @if($v->status == 1)
+                                                开启
+                                                @elseif($v->status == 0)
+                                                关闭
+                                                @endif
+                                            </td>
                                             <td>{{date('Y-m-d H:i:s',$v->lasttime)}}</td>
 
                             			 <td class="center ">

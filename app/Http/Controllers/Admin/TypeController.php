@@ -17,8 +17,8 @@ class TypeController extends Controller
     public function index(Request $request)
     {
         //
-         $res = Type::select(DB::raw('*,CONCAT(path,id) as paths'))->where('tname','like','%'.$request->tname.'%')->orderBy('paths')->paginate($request->input('num',10));
-        
+    
+        $res = Type::all();
         foreach($res as $v){
 
             //path  

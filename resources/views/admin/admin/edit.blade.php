@@ -46,27 +46,13 @@
                     </div>
                 </div>
                 <div class="hr-line-dashed"></div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">权限</label>
-
-                    <div class="col-sm-3">
-                        <select class="form-control m-b" name="account">
-                            <option value="0" @if($res->account == 0) selected @endif >超级管理员</option>
-                            <option value="1" @if($res->account == 1) selected @endif >CEO</option>
-                            <option value="2" @if($res->account == 2) selected @endif >CTO</option>
-                            <option value="3" @if($res->account == 3) selected @endif >COO</option>
-                            <option value="4" @if($res->account == 4) selected @endif >正式员工</option>
-                            <option value="5" @if($res->account == 5) selected @endif >临时工</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="hr-line-dashed"></div>
 
                 <div class="form-group draggable ui-draggable">
                    <label class="col-sm-2 control-label">头像</label>
                    <div class="col-sm-7">
-                       <input type="file" name="pri" class="form-control">
-                       <img src="{{$res -> pri}}" alt="" width="100px">
+                        <img class="pic house-a" onclick="houseImgOne(this)" name="house_img_one" id="house_img_one" src="{{$res ->pri}}" width="100px" height="100px">
+                        <input type="file" name="pri" id="house_img_one1"  multiple="multiple" style="display:none;">
+
                    </div>
                 </div>
 
@@ -99,6 +85,29 @@
 
 
 @section('js')
-
-
+<script>
+    var _btnId = '';
+    function houseImgOne(_this){
+        _btnId = $(_this).attr('id');
+        $('#house_img_one1').click();
+        $("#house_img_one1").change(function () {
+            var objUrl = getObjectURL(this.files[0]); //获取图片的路径，该路径不是图片在本地的路径
+            if (objUrl) {
+                $("#" + _btnId).attr("src", objUrl); //将图片路径存入src中，显示出图片ai
+            }
+        });
+    }
+    //建立一个可存取到该file的url
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { 
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { 
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { 
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+</script>
 @endsection

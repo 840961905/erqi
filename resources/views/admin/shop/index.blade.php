@@ -12,7 +12,7 @@
 @section('content')
            
 
-            <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="wrapper wrapper-content animated fadeInRight">
                 <div class="container">
 
                     @if(session('success'))
@@ -83,8 +83,8 @@
                                             <td>{{$v->size}}</td>
                                             <td>{{$v->color}}</td>
                                             <td>{{$v->stock}}</td>
-                                            <td>描述</td>
-                                            <td>图片</td>
+                                            <td><a href="/admin/text?id={{$v->id}}">描述</a></td>
+                                            <td><a href="/admin/imgs?id={{$v->id}}">图片</a></td>
                                             <td>{{$v->status ? '上架' : '下架'}}</td>
                                             <td>
                                                 @switch($v->keywords)

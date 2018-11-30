@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use Hash;
 use App\Model\Admin\Admin;
+use App\Model\Admin\Role;
+use DB;
 
 class AdminController extends Controller
 {
@@ -143,10 +145,6 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //表单验证
-
-        //unlink
-
         $res = $request->except('_token','pri','_method');
         // dd($res);
         if($request->hasFile('pri')){
@@ -159,7 +157,10 @@ class AdminController extends Controller
             $request->file('pri')->move('./uploads/adminpri',$name.'.'.$suffix);
 
             $res['pri'] = '/uploads/adminpri/'.$name.'.'.$suffix;
-
+            // 查找当前用户原头像路径
+            $imgs = Admin::find($id);
+            // 删除原头像
+            unlink('.'.$imgs->pri);
         }
 
         //数据表修改数据
@@ -170,14 +171,10 @@ class AdminController extends Controller
             if($data){
                 return redirect('/admin/admin')->with('success','修改成功');
             }
-
         }catch(\Exception $e){
 
             return back()->with('error','修改失败');
         }
-
-
-
     }
 
     /**
@@ -197,6 +194,10 @@ class AdminController extends Controller
             if($id == 1 || $id == session('uid')){
                 return back()->with('error','你想啥呢？');
             } else {
+                // 查找当前用户原头像路径
+                $imgs = Admin::find($id);
+                // 删除原头像
+                unlink('.'.$imgs->pri);
                 $res = Admin::destroy($id);
                 if($res){
                     return redirect('/admin/admin')->with('success','删除成功');
@@ -208,35 +209,74 @@ class AdminController extends Controller
 
             return back()->with('error','删除失败');
         }
+    }
+    
+    /**
+     * 用户添加角色的页面
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function admin_role(Request $request)
+    {
+        //根据id查询用户
+        $id = $request->id;
+        $res = Admin::find($id);
 
+        // dd($res->roles);
+        $info = [];
+        foreach ($res->roles as $k => $v) {
+            $info[] = $v->id;
+        }
+        // dd($info);
+        // 查询所有角色
+        $roless = Role::all();
 
+        return view('admin.admin.admin_role',[
+            'title'=>'用户添加角色的页面',
+            'res'=>$res,
+            'roles'=>$roless,
+            'info'=>$info
+        ]);
+    }
+    
+    /**
+     * 用户执行添加角色的页面
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function do_admin_role(Request $request)
+    {
+        $id = $request->id;
+        $res = $request->role_id;
+
+        // 删除原来的角色
+        DB::table('admin_role')->where('admin_id',$id)->delete();
+
+        $arr = [];
+        foreach ($res as $k => $v) {
+            $rs = [];
+            $rs['admin_id']=$id;
+            $rs['role_id']=$v;
+            $arr[] = $rs;
+        }
+        // 网数据表里面添加数据
+        $data = DB::table('admin_role')->insert($arr);
+        if($data){
+            return redirect('/admin/admin')->with('success','添加成功');
+        }
     }
 
-    public function ajaxupdate(Request $request)
+    /**
+     * 管理员权限提示页面
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function remind()
     {
-        //判断空 
-
-        //判断用户名是否一样
-
-        //判断位数 6~12
-
-        $res = [];
-
-        $id = $request->ids;
-
-        $res['username'] = $request->uv;
-
-        //修改数据
-        $data = Admin::where('id',$id)->update($res);
-
-        if($data){
-
-            echo 1;
-        } else {
-
-            echo 0;
-        }
-
-
+        // dump('qweqwe');
+        return view('admin.admin.remind',['title'=>'用户权限提示页面']);
     }
 }
