@@ -146,11 +146,11 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">商品小图管理</span> <span class="fa arrow"></span></a>
+                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">商品颜色管理</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="/admin/goods/create">商品小图添加</a>
+                            <li><a href="/admin/color/create">商品颜色添加</a>
                             </li>
-                            <li><a href="/admin/goods">商品查看</a>
+                            <li><a href="/admin/color">商品颜色查看</a>
                             </li>
                             
                         </ul>

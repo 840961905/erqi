@@ -24,7 +24,7 @@ class LoginMiddleware
             session(['pri'=>'']);
             session(['uname'=>'']);
             session(['status'=>'']);
-            return back()->with('error','账户已被锁定，请联系管理员');
+            return back()->with('error','鎮ㄧ殑璐﹀彿宸插仠鐢紝璇疯仈绯荤鐞嗗憳');
             }
         } else {
             return redirect('/admin/login');

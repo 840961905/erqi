@@ -1,0 +1,46 @@
+.bl{padding: 0;height: 575px;}
+.bl .nei1{height: 480px;width: 1200px;margin: 0 auto}
+.bl .one,.two{padding: 0px;}
+.bl .one{width: 480px;}
+.bl .two{width: 700px;margin-left:20px;}
+.bl .two{height: 480px;}
+.bl .one{height: 480px;}
+.bl .one img{width: 450px;height: 450px;margin-left: 15px;}
+.p1{font-size: 20px;}
+.two a{font-size: 14px;}
+.c1{padding-top:20px; height: 120px;background: #f5f5f5; }
+.span1{font-size: 20px;}
+.label1{margin-right: 50px;margin-left: 13px;}
+.dn{border-bottom: 1px solid white;}
+
+/* 第二大行 */
+.nei2{height: 95px;width: 1200px;margin: 0 auto;padding: 0px;}
+.nei2 .yi img{width: 60px;height: 60px;margin-left: 25px;}
+.nei2 .er a{font-size:20px;text-align: center;line-height: 45px;}
+.hh{width: 130px;height: 27px;margin: 0 auto;}
+
+/* 精品推荐 */
+.tuji{background:#f5f5f5;padding: 0px;}
+.tuji.zheshiwenti{width: 1200px;margin: 0 auto;height: 270px;}
+.tuji .zheshiwenti .col-md-2{background: #ffffff;}
+.tuji .zheshiwenti .col-md-2 a img{margin-top: 20px;margin-bottom: 20px;margin-left: 20px;}
+.tuji .zheshiwenti .col-md-2 a p{text-align: center}
+.tuji .zheshiwenti .col-md-2{border:1px solid #f5f5f5}
+
+
+.tuji .zheshiwenti .row p:hover{box-shadow: #3d3d3d 10px 10px 10px 1px;}
+.tuji .pp{color: #d4141d;}
+.tuji .p1{color: #3a3a3a;font-size: 13px;}
+.tuji .p2{color: #989985;}
+
+/* 放大镜子 */
+.move{position: absolute;top:0;left:0;cursor: move;width: 180px;height: 180px; z-index: 1;top:0px;display: none;}
+.right{ display: none;overflow: hidden; box-sizing: border-box;   border:1px solid red;position: absolute ;width: 450px;height: 450px;z-index:1;left: 500px;top: 0px;}
+.right img{position:absolute;}
+.yabi1{color: #d4141d;text-decoration: underline;}
+.p1{color: #3a3a3a;}
+.yabi2{color: #3a3a3a;}
+/*  */
+.yabi3:hover{background: #d5444b;}
+
+.imgs img{width: 60px;height: 60px;}

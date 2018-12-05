@@ -32,7 +32,7 @@
                         </div>
                         <div class="ibox-content ">
                            
-                            <form action="/admin/shop" method="post" role="form" class="form-horizontal m-t col-sm-6" enctype="multipart/form-data">
+                            <form action="/admin/shop" method="post" role="form" class="form-horizontal m-t col-sm-8" enctype="multipart/form-data">
                                 <div class="form-group draggable ui-draggable">
                                     <label class="col-sm-3 control-label">分类名：</label>
                                     <div class="col-sm-9">
@@ -75,7 +75,7 @@
                                 <div class="form-group draggable ui-draggable">
                                     <label class="col-sm-3 control-label">商品编码：</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="bianma" class="form-control" placeholder="商品名称">
+                                        <input type="text" name="bianma" class="form-control" placeholder="商品编码">
                                        
                                     </div>
                                 </div>
@@ -88,10 +88,12 @@
                                    </div>
                                </div>
                                <div class="form-group draggable ui-draggable">
-                                   <label class="col-sm-3 control-label">商品颜色：</label>
+                                   <label class="col-sm-3 control-label">商品规格：</label>
                                    <div class="col-sm-9">
-                                       <input type="text" name="color" class="form-control" placeholder="商品颜色">
-                                      
+                                       @foreach($co as $k=> $vv)
+                                      <label class="checkbox-inline control-label">
+                                       <input type="checkbox"  name="color[]" id="" value="{{$vv->id}}">{{$vv->color}}</label>
+                                       @endforeach
                                    </div>
                                </div>
                                <div class="form-group draggable ui-draggable">
@@ -141,7 +143,8 @@
                                             <input type="radio" checked="" value="3" id="optionsRadios1" name="keywords">新品</label>
                                         <label class="radio-inline">
                                             <input type="radio" value="4" id="optionsRadios2" name="keywords">特惠</label>
-
+                                        <label class="radio-inline">
+                                            <input type="radio" value="5" id="optionsRadios2" name="keywords">其他</label>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>

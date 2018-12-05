@@ -330,11 +330,9 @@
                                             <div class="sc-pro-main clearfix">
                                                 <a href="/product/10086423109158.html#10086794601109" target="_blank"
                                                 class="p-img">
-                                                    <img src='{{$cs[$k]->gimg}}
-                                                    ' alt="">
+                                                    <img src='{{$cs[$k]->gimg}}' alt="">
                                                 </a>
-                                                <div class="tips-1 p-stock-tips" style="display: none;">
-                                                    限购件
+                                                <div class="tips-1 p-stock-tips" style="display: none;">限购件
                                                 </div>
                                                 <ul>
                                                     <li>

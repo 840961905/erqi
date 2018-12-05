@@ -66,11 +66,25 @@
                                         <tr class="gradeX">
                                             <td>{{$v->id}}</td>
                                             <td>{{$v->aname}}</td>
-                                            <td>{{$v->sex}}</td>
+                                            <td>
+                                                @if($v->sex == 0)
+                                                保密
+                                                @elseif($v->sex == 1)
+                                                男
+                                                @elseif($v->sex == 2)
+                                                女
+                                                @endif
+                                            </td>
                                             <td>{{$v->phone}}</td>
                                             <td>{{$v->email}}</td>
                                             <td><img src="{{$v->img}}" alt="" width="100px" style="border-radius: 50%;"></td>
-                                            <td>{{$v->status}}</td>
+                                            <td>
+                                                @if($v->status == 1)
+                                                正常
+                                                @elseif($v->status == 0)
+                                                冻结
+                                                @endif
+                                            </td>
 
                             			 <td class="center ">
 		                                      <a href="/admin/users/{{$v->id}}/edit" class="btn btn-info">修改</a>

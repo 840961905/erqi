@@ -69,6 +69,8 @@ Route::group(['middleware'=>['login','adminper']], function(){
     	// 后台的商品管理
 	Route::resource('admin/shop',"Admin\ShopController");
     
+    // 后台的商品颜色 laoxiao '2018-11-30'
+    Route::resource('admin/color',"Admin\ColorController");
 	// 商品的描述
 	Route::get('/admin/text',"Admin\ShopController@text");
 
@@ -102,8 +104,48 @@ Route::group(['middleware'=>['login','adminper']], function(){
 	Route::resource('/admin/typeads',"Admin\TypeadsController");
 });
 
-Route::group([], function(){
-     Route::get('home/cart','Home\CartController@cart');
 
+//前台首页
+Route::any('/','Home\IndexController@index');
+
+//个人中心
+Route::get('/home/person','Home\PersonController@person');
+
+//前台登录
+Route::get('/home/login','Home\LoginController@index');
+//前台执行登录
+Route::post('/home/dologin','Home\LoginController@dologin');
+
+//前台注册
+Route::get('/home/zhuce','Home\LoginController@zhuce');
+// 发送ajax到手机发送验证码
+Route::post('/home/checkphone','Home\LoginController@checkphone');
+// 发送ajax到手机验证重复
+Route::post('/home/checkrephone','Home\LoginController@checkrephone');
+// 发送ajax到用户验证
+Route::post('/home/checkuser','Home\LoginController@checkuser');
+// 验证手机验证码
+Route::post('/home/checkcode','Home\LoginController@checkcode');
+// 执行注册
+Route::any('/home/dozhuce','Home\LoginController@dozhuce');
+// 显示忘记密码
+Route::get('/home/lose','Home\LoginController@lose');
+// 执行忘记密码
+Route::post('/home/dolose','Home\LoginController@dolose');
+// 执行忘记密码
+Route::post('/home/dochangepass','Home\LoginController@dochangepass');
+
+
+
+Route::group([], function(){
+	// 购物车
+     Route::get('home/cart','Home\CartController@cart');
+     // 首页
+     Route::get('home/index','Home\IndexController@index');
+
+
+     // 商品详情页
+     Route::get('/shop/{id}','Home\ShopController@index');
+     
      Route::post('home/shopcart','Home\CartController@shopcart');
 });

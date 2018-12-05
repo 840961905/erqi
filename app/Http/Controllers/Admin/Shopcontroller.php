@@ -9,6 +9,7 @@ use DB;
 
 use App\Model\Admin\Goods;
 use App\Model\Admin\Goodsimg;
+use App\Model\Admin\Color;
 class Shopcontroller extends Controller
 {
     /**
@@ -21,11 +22,12 @@ class Shopcontroller extends Controller
         //
         $res = Goods::get();
         $rs = Type::get();
-
+        $ys = Color::get();
         return view('admin.shop.index',[
             'title'=>'商品的列表页',
             'res'=>$res,
-            'rs'=>$rs
+            'rs'=>$rs,
+            'ys'=>$ys
         ]);
     }
 
@@ -40,7 +42,8 @@ class Shopcontroller extends Controller
         $rs = Type::select(DB::raw('*,CONCAT(path,id) as paths'))->
         orderBy('paths')->
         get();
-
+        $co = Color::get();
+        
         foreach($rs as $v){
 
             $ps = substr_count($v->path,',')-1;
@@ -49,10 +52,11 @@ class Shopcontroller extends Controller
 
             $v->tname = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;',$ps).'|--'.$v->tname;
         }
-
+         
         return view('admin.shop.add',[
             'title'=>'商品的添加页面',
-            'rs'=>$rs
+            'rs'=>$rs,
+            'co'=>$co
         ]);
     }
 
@@ -66,13 +70,15 @@ class Shopcontroller extends Controller
     {
          //表单验证
 
-        $res = $request->except('_token','gimg');
-
+        
+        $res = $request->except('_token','gimg','color');
+        
+        $res['color'] = implode(',',$request->color);
+     
         //添加数据
         $rs = Goods::create($res);
-
+        
         $id = $rs->id;
-
         //模型关联  一对多
         if($request->hasFile('gimg')){
 

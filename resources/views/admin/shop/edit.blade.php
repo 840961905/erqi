@@ -148,7 +148,8 @@
                                             <input type="radio" checked="" value="3" id="optionsRadios1" name="keywords" @if($res->keywords== 3)checked @endif>新品</label>
                                         <label class="radio-inline">
                                             <input type="radio" value="4" id="optionsRadios2" name="keywords" @if($res->keywords== 4)checked @endif>特惠</label>
-
+                                        <label class="radio-inline">
+                                            <input type="radio" value="5" id="optionsRadios2" name="keywords" @if($res->keywords== 5)checked @endif>其他</label>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>

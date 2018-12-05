@@ -100,7 +100,9 @@
                                                     @case(4)
                                                         特惠
                                                         @break
-
+                                                    @case(5)
+                                                        其他
+                                                        @break
                                                     @default
                                                         
                                                 @endswitch
