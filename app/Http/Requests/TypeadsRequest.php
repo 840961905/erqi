@@ -26,6 +26,7 @@ class TypeadsRequest extends FormRequest
         return [
             'tid' => 'required',      
             'href' => 'required',          
+            'img' => 'required',          
         ];
     }
 
@@ -39,6 +40,7 @@ class TypeadsRequest extends FormRequest
         return [
             'tid.required'  => '商品顶级分类不能为空',
             'href.required'  => '跳转地址不能为空',
+            'img.required'  => '分类图片不能为空',
         ];
     }
 }

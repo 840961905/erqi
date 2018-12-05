@@ -27,6 +27,7 @@ class AdsRequest extends FormRequest
             'title' => 'required',
             'position' => 'required',
             'href' => 'required',
+            'img' => 'required',
            
         ];
     }
@@ -42,6 +43,7 @@ class AdsRequest extends FormRequest
             'title.required'  => '标题不能为空',
             'href.required'  => '跳转地址不能为空',
             'position.required'  => '所在位置不能为空',
+            'img.required'  => '广告图片不能为空',
         ];
     }
 }

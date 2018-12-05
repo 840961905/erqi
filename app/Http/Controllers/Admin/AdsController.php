@@ -95,7 +95,7 @@ class AdsController extends Controller
         ]);
     }
 
-    public function update(AdsRequest $request, $id)
+    public function update(Request $request, $id)
     {
         //
         $res = $request->except('_token','_method','img');

@@ -102,7 +102,7 @@ class TypeadsController extends Controller
         ]);
     }
 
-    public function update(TypeadsRequest $request, $id)
+    public function update(Request $request, $id)
     {
         //
         $res = $request->except('_token','_method','img');

@@ -31,6 +31,16 @@
                             </div>
                         </div>
                         <div class="ibox-content ">
+
+                             @if (count($errors) > 0)
+                                <div class="alert alert-success alert-dismissable">
+                                    <ul>
+                                       @foreach ($errors->all() as $error)
+                                        <li style='list-style:none;font-size:14px'>{{$error}}</li> 
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                            
                             <form action="/admin/shop" method="post" role="form" class="form-horizontal m-t col-sm-8" enctype="multipart/form-data">
                                 <div class="form-group draggable ui-draggable">

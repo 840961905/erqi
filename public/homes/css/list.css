@@ -1,0 +1,30 @@
+/* 文字修改 */
+.wenzi{padding: 0px;padding-top: 10px;background: #ffffff}
+.wenzi p{display: inline;margin-left: 23px;color: #666666}
+.wenzi a{color: #3a3a3a}
+.wenzi span{margin-left: 15px;}
+.wenzi .wenzi1{ width: 1200px;margin: 0 auto;padding-top: 30px;padding-bottom: 15px;background: #ffffff}
+/* 第二行文字 */
+.wenzitwo{padding: 0px;background: #ffffff}
+.wenzitwo p{display: inline;margin-left: 23px;color: #3a3a3a;}
+.wenzitwo .wenzitwo1 span{margin-left: 15px;font-size: 12px;}
+.wenzitwo .wenzitwo1{ width:1170px;margin: 0 auto;padding-top: 15px;padding-bottom:15px;padding-left:35px; background: #ffffff;border: 1px solid #dedede;} 
+.wenzitwo .wenzitwo1 a{color: #3a3a3a;}
+.wenzitwo .wenzitwo1 span a{color:#b0b0b0;}
+.wenzitwo .wenzitwo1 span a:hover{color: #666666}
+.aa span:hover{cursor: pointer;color: #666666}
+/* 设置手机列表不能动 */
+.tupian{background: #ffffff; ;padding: 0px;}
+.tupian .diyiceng{height: 160px;width: 1200px;margin: 0 auto}
+.tupian .diyiceng .row{padding-top: 40px; width: 1200px;}
+.tupian .diyiceng .row .col-md-2{height:360px;border: 1px solid #dedede;padding-left: 10px;width:195px;margin-left:5px;}
+.tupian .diyiceng .row div img{width: 180px;height: 180px;margin-top: 40px}
+.tupian .diyiceng .row div{text-align: center;}
+.tupian .diyiceng .row div p{margin:0;margin-top:20px;font-size: 14px;color: #666666}
+.tupian .diyiceng .row div .p2{color: red;font-weight: 540;font-size: 16px;}
+.tupian .diyiceng .row div span{padding-top: 30px;margin-left: 18px;}
+.tupian .diyiceng .row .col-md-2:hover{border: 1px solid red; }
+/* 设置手机列表不能动 */
+/* 隐藏开始 js使用*/
+.yinshen{display: none;} 
+.chuxian{display: block}

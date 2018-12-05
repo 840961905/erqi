@@ -94,7 +94,7 @@ class SliderController extends Controller
         ]);
     }
 
-    public function update(SliderRequest $request, $id)
+    public function update(Request $request, $id)
     {
         //
         $res = $request->except('_token','_method','img');
@@ -119,6 +119,8 @@ class SliderController extends Controller
        		$slider =  Slider::where('id',$id)->update($res);  
             
             if($slider){
+                return redirect('/admin/slider')->with('success','修改成功');
+            }else{
                 return redirect('/admin/slider')->with('success','修改成功');
             }
 

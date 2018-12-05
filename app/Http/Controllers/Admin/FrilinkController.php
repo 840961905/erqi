@@ -102,6 +102,8 @@ class FrilinkController extends Controller
             
             if($friendlink){
                 return redirect('/admin/friend')->with('success','修改成功');
+            }else{
+                return redirect('/admin/friend')->with('success','修改成功');
             }
 
         }catch(\Exception $e){

@@ -1,0 +1,46 @@
+header .banner {
+  width: 1200px;
+  height: 120px;
+  margin: 50px auto 0;
+}
+header .banner .slide-carousel {
+  margin-bottom: 20px;
+}
+header .banner .slide-2d .item-list li {
+  width: 1200px;
+  height: 120px;
+  transition: all 0.5s ease-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+header .banner .slide-2d .item-list li.item0 {
+  transform: translateX(-1200px);
+}
+header .banner .slide-2d .item-list li.item1 {
+  transform: translateX(0px);
+}
+header .banner .slide-2d .item-list li.item2 {
+  transform: translateX(1200px);
+}
+header .banner .slide-2d .item-list li.item3 {
+  transform: translateX(2400px);
+}
+header .banner .slide-2d .item-list li.item4 {
+  transform: translateX(3600px);
+}
+header .banner .slide-2d .item-list li.item5 {
+  transform: translateX(4800px);
+}
+header .banner .slide-2d .item-list li.item6 {
+  transform: translateX(6000px);
+}
+header .banner .slide-2d .item-list li.item7 {
+  transform: translateX(7200px);
+}
+header .banner .slide-2d .item-list li.item8 {
+  transform: translateX(8400px);
+}
+header .banner .slide-2d .item-list li.item9 {
+  transform: translateX(9600px);
+}

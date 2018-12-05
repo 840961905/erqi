@@ -6,14 +6,20 @@
 	<link rel="stylesheet" href="/homes/css/index.min.css">
 	<link rel="stylesheet" href="/homes/css/ec.core.base.min.css">
 	<script src="/homes/js/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="/homes/slider/less/reset.css">
+    <link rel="stylesheet" href="/homes/slider/less/slide.css">
+    <link rel="stylesheet" href="/homes/slider/less/index.css">
 	<style>
         .tyy{
         	box-shadow: 0 0 46px rgba(0,0,0,0.1);
         	background: #fff;
-        	border-right:0px;
         }
-        
-      
+        .ff:hover{
+        	text-decoration: none;
+        }
+        .channel-nav li :hover{
+        	text-decoration: none;
+        }
         #hdp{
 			width:100%;
 			margin:0 auto;
@@ -725,11 +731,11 @@
 
 				show(ins++);
 
-				if(ins > 8){
+				if(ins > 5){
 					ins = 0;
 				}
 
-			},3000)
+			},3100)
 
 		}
 
@@ -738,7 +744,7 @@
 		//第一张图片显示出来
 		function show(i)
 		{
-			$('#uls li').eq(i).fadeIn(1000).siblings().fadeOut(1000);
+			$('#uls li').eq(i).fadeIn(500).siblings().fadeOut(500);
 			$('#dian span').eq(i).addClass('current').siblings().removeClass('current');
 		}
 
@@ -810,10 +816,7 @@
                                             <div class="fl">
                                             <div id="gg_login_url" class="w-reg">
                                             您好！请                     
-                                            <script>document.write('<a href="javascript:;" rel="nofollow" onclick="pushMemberMsg(\'登录\',\'https://hwid1.vmall.com/CAS/remoteLogin?loginChannel=26000000&reqClientType=26&lang=zh-cn&loginUrl=https%3A%2F%2Fhwid1.vmall.com%2FCAS%2Fportal%2Flogin.html&service=https%3A%2F%2Fwww.vmall.com%2Faccount%2Facaslogin%3Furl%3D'+encodeURIComponent(encodeURIComponent(window.location.href))+'\')">
-                                                登录
-                                            </a>
-                                            ');
+                                            <script>document.write('<a href="javascript:;" rel="nofollow" onclick="pushMemberMsg(\'登录\',\'https://hwid1.vmall.com/CAS/remoteLogin?loginChannel=26000000&reqClientType=26&lang=zh-cn&loginUrl=https%3A%2F%2Fhwid1.vmall.com%2FCAS%2Fportal%2Flogin.html&service=https%3A%2F%2Fwww.vmall.com%2Faccount%2Facaslogin%3Furl%3D'+encodeURIComponent(encodeURIComponent(window.location.href))+'\')"> 登录 </a>');
                                             </script>
                                             <a href="javascript:;" rel="nofollow" onclick="pushMemberMsg('登录','https://hwid1.vmall.com/CAS/remoteLogin?loginChannel=26000000&amp;reqClientType=26&amp;lang=zh-cn&amp;loginUrl=https%3A%2F%2Fhwid1.vmall.com%2FCAS%2Fportal%2Flogin.html&amp;service=https%3A%2F%2Fwww.vmall.com%2Faccount%2Facaslogin%3Furl%3Dhttps%253A%252F%252Fwww.vmall.com%252F%253Fcid%253D9211')">
                                                 登录
@@ -1226,61 +1229,50 @@
         </div>
     </div>
 
-     <!-- 幻灯片2 -->
-  	<div class="layout"> 
-    <!-- 2017-02-15-banner-1200*110-start --> 
-    	<div class="home-banner" id="aaa"> 
-     <!-- 2017-02-15-banner-图片轮换-start --> 
-     		<div class="home-banner-slideshow"> 
-      <!-- 20130903-ad-图片轮换-start --> 
-      			<div class="banner-slideshow"> 
-       				<div id="m-banner"> 
-        				<ul  id="ulss"> 
-						    @foreach($ads as $v)
-				                @if($v->position == 'middle')
-				                    <li><img src="{{$v->img}}" alt=""></li>
-				                @endif
-				            @endforeach  
-				        </ul> 
-       				</div> 
-      		    </div> 
-    		</div>
-     <!-- 2017-02-15-banner-图片轮换-end --> 
-   		</div>
-	</div>
+<header>     <!-- 幻灯片2 -->
+	<div class="banner" style="height:120px">
+        <div id="slide2d" class="slide-carousel slide-2d">
+            <ul  class="item-list clearfix">
+            	@foreach($ads as $v)
+            		@if($v->position == 'middle')
+		                <li>
+		                    <div class="item-content"> 	
+			                     <a>
+		                            <img src="{{$v->img}}" alt="">
+		                        </a>
+                   			</div>
+                		</li>   
+            		@endif
+	            @endforeach           
+            </ul>
+            <!--indicators-->
+           <!--  <div class="indicator-list" style="margin-right: 50px;">
+            	@foreach($ads as $v)
+            		@if($v->position == 'middle')
+                		<a href="javascript:void(0);" data-slide-index="{{$v->id}}" ></a>
+			        @endif
+                @endforeach   
+            </div> -->
+        </div>      
+    </div>
+<header>
 
-    <script>
 
-		var i = 1;
-
-		var inn = null;
-
-		function mov(){
-
-			inn = setInterval(function(){
-
-				sho(i++);
-
-				if(i > 7){
-					i = 0;
-				}
-
-			},3000)
-
-		}
-
-		mov();
-
-		//第一张图片显示出来
-		function sho(a)
-		{
-			$('#ulss li').eq(a).show(2000).siblings().hide(2000);
-		}
-
-		sho(0);
-
-		
-    </script>
+   <!-- <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script> -->
+<script src="/homes/slider/js/slide.min.js"></script>
+<script>
+     $(function(){
+        //2d
+        var  sliderDescArr=[],i=0,len=10;
+        for(;i<len;i++){
+            sliderDescArr.push(new Array(10).join(''+i));
+        }
+        $('#sliderDesc').text(sliderDescArr[0]);
+        $('#slide2d').slideCarsousel({callbackFunc:function(index){
+            $('#sliderDesc1').text(sliderDescArr[index]);
+        }});
+    });
+</script>
 
     <!-- 笔记本电脑 -->
     @foreach($output as $k=>$ql)

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\Type;
+use App\Http\Requests\ShopRequest;
+
 use DB; 
 
 use App\Model\Admin\Goods;
@@ -66,7 +68,7 @@ class Shopcontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ShopRequest $request)
     {
          //表单验证
 
