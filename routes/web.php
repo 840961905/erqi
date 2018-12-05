@@ -110,6 +110,15 @@ Route::any('/','Home\IndexController@index');
 
 //个人中心
 Route::get('/home/person','Home\PersonController@person');
+//个人中心-收货地址管理
+Route::get('/home/person/addr','Home\PersonController@addr');
+//个人中心-我的订单
+Route::get('/home/person/order','Home\PersonController@order');
+//个人中心-我的订单
+Route::post('/home/person/addr/add','Home\PersonController@addradd');
+
+
+
 
 //前台登录
 Route::get('/home/login','Home\LoginController@index');
