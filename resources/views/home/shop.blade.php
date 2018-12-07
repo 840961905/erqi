@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="/homes/shop/ec.core.base.min.css">
 	<script src='/homes/shop/jquery.min.js'></script>
 	<script src='/homes/shop/index.js'></script>
-	<script type="text/javascript" src="/homes/shop/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="/homes/shop/jquery-3.2.1.min.js"></script>
    
     <style>
     	.shortcut {
@@ -28,6 +28,50 @@
 		    .container {
 			    width: 100%;
 			}
+
+
+			#move{
+				width: 160px;
+				height: 160px;
+				position:absolute;
+				left:0px;
+				top:0px;
+				background: url('/homes/img/fdj.png');
+				display:none;
+
+			}
+
+			#big{
+				width:400px;height: 400px;position:absolute;left:480px;top:0px;overflow:hidden;display:none;
+			}
+
+			#bigImg{
+				position:absolute;
+
+			}
+
+		    .topbackdiv {
+		        background: #000;
+		        border: none;
+		        height: 100%;
+		        left: 0;
+		        position: fixed;
+		        top: 0;
+		        width: 100%;
+		        z-index: 10000001;
+		        opacity: .6;
+		        display: none;
+		    }
+		    
+            .box-ct {
+                display: none;
+                border: 1px solid #cecece;
+                visibility: visible;
+			    position: fixed;
+			    top: 200px;
+			    left: 450px;
+			    z-index:10000002;
+            }
 
     </style>
 
@@ -684,136 +728,42 @@
 	<div class="product clearfix">
 	    <div class="left">
 	        <!-- 20170518-商品图片-start -->
-	        <div class="product-gallery positionFixed" style="top: -540px;">
+	        <div class="product-gallery positionFixed" style="    position: relative">
 	            <div class="relative">
 	                <div class="product-gallery-img" id="pic-container">
 	                    <div id="wrap" style="position:relative;">
-	                        <a id="product-img" href="https://res.vmallres.com/pimages//product/6901443256051/800_800_1542767263318mp.png"
-	                        class="cloud-zoom" rel="adjustX: 10, adjustY:0, zoomWidth:400 , zoomHeight:400"
-	                        style="position: relative; display: block;">
-	                            <img src="https://res.vmallres.com/pimages//product/6901443256051/428_428_1542767263318mp.png"
-	                            alt="HUAWEI P20 Pro" style="display: block;">
-	                        </a>
-	                        <div class="mousetrap" style="background-image:url(about:blank);z-index:999;position:absolute;width:450px;height:450px;left:0px;top:0px;">
+	                        
+	                        <div id='small' style="border:1px solid #ddd">
+	                        	<img src="
+                                 @php
+                                   $tu = DB::table('goodsimg')->where('gid',$shops->id)->first();
+                                   echo $tu->gimg;
+                                @endphp
+	                        	" alt="" id='smallImg' width='100%'><div id='move'></div>
 	                        </div>
-	                        <div class="mousetrap" style="background-image: url(&quot;about:blank&quot;); z-index: 999; position: absolute; width: 450px; height: 450px; left: 0px; top: 0px; cursor: move;">
-	                        </div>
-	                    </div>
-	                </div>
-	                <a class="product-gallery-open" onclick="ec.product.videoShow()" id="gallery-video-start">
-	                    开始
-	                </a>
-	                <div id="video-container" class="product-gallery-video" style="display: none;">
-	                    <a class="product-gallery-close" onclick="ec.product.videoHide()" id="gallery-video-close"
-	                    style="display: none;">
-	                        关闭
-	                    </a>
-	                    <div class="vcp-player" style="width: 450px; height: 450px;">
-	                        <div class="vcp-error-tips">
-	                        </div>
-	                        <div class="vcp-loading" style="display: none;">
-	                            <div class="vcp-spinner" role="progressbar" style="position: absolute; width: 0px; z-index: 2000000000; left: 50%; top: 50%;">
-	                                <div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); opacity: 0.25; animation: opacity-60-25-0-11 1s linear 0s infinite normal none running;">
-	                                    <div style="position: absolute; width: 16px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(0deg) translate(16px, 0px); border-radius: 2px;">
-	                                    </div>
-	                                </div>
-	                                <div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); opacity: 0.25; animation: opacity-60-25-1-11 1s linear 0s infinite normal none running;">
-	                                    <div style="position: absolute; width: 16px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(32deg) translate(16px, 0px); border-radius: 2px;">
-	                                    </div>
-	                                </div>
-	                                <div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); opacity: 0.25; animation: opacity-60-25-2-11 1s linear 0s infinite normal none running;">
-	                                    <div style="position: absolute; width: 16px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(65deg) translate(16px, 0px); border-radius: 2px;">
-	                                    </div>
-	                                </div>
-	                                <div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); opacity: 0.25; animation: opacity-60-25-3-11 1s linear 0s infinite normal none running;">
-	                                    <div style="position: absolute; width: 16px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(98deg) translate(16px, 0px); border-radius: 2px;">
-	                                    </div>
-	                                </div>
-	                                <div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); opacity: 0.25; animation: opacity-60-25-4-11 1s linear 0s infinite normal none running;">
-	                                    <div style="position: absolute; width: 16px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(130deg) translate(16px, 0px); border-radius: 2px;">
-	                                    </div>
-	                                </div>
-	                                <div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); opacity: 0.25; animation: opacity-60-25-5-11 1s linear 0s infinite normal none running;">
-	                                    <div style="position: absolute; width: 16px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(163deg) translate(16px, 0px); border-radius: 2px;">
-	                                    </div>
-	                                </div>
-	                                <div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); opacity: 0.25; animation: opacity-60-25-6-11 1s linear 0s infinite normal none running;">
-	                                    <div style="position: absolute; width: 16px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(196deg) translate(16px, 0px); border-radius: 2px;">
-	                                    </div>
-	                                </div>
-	                                <div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); opacity: 0.25; animation: opacity-60-25-7-11 1s linear 0s infinite normal none running;">
-	                                    <div style="position: absolute; width: 16px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(229deg) translate(16px, 0px); border-radius: 2px;">
-	                                    </div>
-	                                </div>
-	                                <div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); opacity: 0.25; animation: opacity-60-25-8-11 1s linear 0s infinite normal none running;">
-	                                    <div style="position: absolute; width: 16px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(261deg) translate(16px, 0px); border-radius: 2px;">
-	                                    </div>
-	                                </div>
-	                                <div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); opacity: 0.25; animation: opacity-60-25-9-11 1s linear 0s infinite normal none running;">
-	                                    <div style="position: absolute; width: 16px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(294deg) translate(16px, 0px); border-radius: 2px;">
-	                                    </div>
-	                                </div>
-	                                <div style="position: absolute; top: -2px; transform: translate3d(0px, 0px, 0px); opacity: 0.25; animation: opacity-60-25-10-11 1s linear 0s infinite normal none running;">
-	                                    <div style="position: absolute; width: 16px; height: 4px; background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(327deg) translate(16px, 0px); border-radius: 2px;">
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <video preload="auto" webkit-playsinline="" playsinline="" x-webkit-airplay="allow"
-	                        src="https://1251250874.vod2.myqcloud.com/439f276avodtransgzp1251250874/d77c09dc7447398155312220161/v.f20.mp4"
-	                        style="width: 450px; height: 450px;">
-	                        </video>
-	                        <div class="vcp-poster" style="display: none;">
-	                            <img class="vcp-poster-pic default">
-	                        </div>
-	                        <div class="vcp-bigplay">
-	                        </div>
-	                        <div class="vcp-controls-panel">
-	                            <div class="vcp-panel-bg">
-	                            </div>
-	                            <div class="vcp-playtoggle">
-	                            </div>
-	                            <span class="vcp-timelabel">
-	                                00:00 / 00:15
-	                            </span>
-	                            <div class="vcp-timeline">
-	                                <div class="vcp-slider">
-	                                    <div class="vcp-slider-track" style="width: 100%;">
-	                                    </div>
-	                                    <div class="vcp-slider-thumb">
-	                                    </div>
-	                                </div>
-	                            </div>
-	                            <div class="vcp-fullscreen-toggle">
-	                            </div>
-	                            <div class="vcp-volume">
-	                                <div class="vcp-volume-bg">
-	                                </div>
-	                                <div class="vcp-slider-vertical">
-	                                    <div class="vcp-slider-track" style="height: 50%;">
-	                                    </div>
-	                                    <div class="vcp-slider-thumb" style="top: 50%;">
-	                                    </div>
-	                                </div>
-	                                <span class="vcp-volume-icon">
-	                                </span>
-	                            </div>
+
+	                        <div id='big' style="border:1px solid #eee;">
+	                        	<img src="
+                                @php
+                                   $tu = DB::table('goodsimg')->where('gid',$shops->id)->first();
+                                   echo $tu->gimg;
+                                @endphp
+	                        	" alt="" id='bigImg'>
 	                        </div>
 	                    </div>
 	                </div>
+	               	
 	            </div>
 	            <div class="product-gallery-nav">
 	                <a href="javascript:;" class="product-gallery-back" onclick="ec.product.imgSlider.prev()">
 	                </a>
 	                <!--不可点击添加class="disabled"-->
 	                <div class="product-gallery-thumbs">
-	                    <ul id="pro-gallerys" style="left: 0px;">
+	                    <ul  style="left: 0px;" id="uls">
 	                    	@foreach($shopimg as $k=>$v)
 	                        <li class="current">
-	                            <a href="javascript:;">
 	                                <img src="{{$v->gimg}}"
 	                                alt="HUAWEI P20 Pro 6GB+128GB 全网通版（极光闪蝶）">
-	                            </a>
 	                        </li>
 	                        @endforeach
 	                    </ul>
@@ -1005,6 +955,15 @@
 	                       {{$shops->bianma}}
 	                    </div>
 	                </div>
+
+	                <div class="product-description clearfix" style="margin-top:10px">
+	                    <label>
+	                        库存
+	                    </label>
+	                    <div class="fl" id="pro-sku-code2">
+	                       {{$shops->stock}}&nbsp;件
+	                    </div>
+	                </div>
 	                <!-- 20171024-商品简介-商品编码-end -->
 	                <div class="hr-5">
 	                </div>
@@ -1057,46 +1016,9 @@
 	                            </ul>
 	                        </div>
 	                    </dl>
-	                    <dl class="product-choose clearfix" id="bundlePackage">
-	                        <label>
-	                            选择套餐
-	                        </label>
-	                        <div class="product-choose-detail  relative" id="bundlePackageSelect">
-	                            <ul>
-	                                <li class="attr3 attr6 attr9 attr12 attr15 attr18 attr21 attr24 attr27 attr30 attr33 attr36 attr39 attr42 attr45 attr48 attr51 attr54 selected"
-	                                data-attrname="套餐" data-attrcode="323374" data-attrid="3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51,54"
-	                                data-skuid="10086494227540,10086987436893,10086224325503,10086658763429,10086848967201,10086994950476,10086661831464,10086995251563,10086143759531,10086111627560,10086349202441,10086295697080,10086587737324,10086968163423,10086189600718,10086538942999,10086128067069,10086152168536">
-	                                    <div class="sku">
-	                                        <a href="javascript:;" title="官方标配">
-	                                            <p>
-	                                                <span>
-	                                                    官方标配
-	                                                </span>
-	                                            </p>
-	                                        </a>
-	                                    </div>
-	                                </li>
-	                            </ul>
-	                            <div id="giftPackageList" class="hide">
-	                            </div>
-	                        </div>
-	                    </dl>
+	                    
 	                </div>
-	                <!--联通合约机套餐-->
-	                <div id="contractLst" class="hide">
-	                    <dl class="product-choose clearfix">
-	                        <label>
-	                            合约机
-	                        </label>
-	                        <div class="product-choose-detail">
-	                            <ul id="contractList-ol">
-	                            </ul>
-	                        </div>
-	                    </dl>
-	                    <form action="/contract/choose-{id}" id="contractForm" class="hide">
-	                        <input type="hidden" value="" id="gifts" name="gifts">
-	                    </form>
-	                </div>
+	           
 	                <dl class="product-choose clearfix" id="giftBuy_dl">
 	                    <label>
 	                        增值业务
@@ -1388,7 +1310,7 @@
 	                            已选择商品:
 	                        </label>
 	                        <div id="pro-select-sku" class="product-selected">
-	                            极光闪蝶 / 全网通 6GB+128GB / 官方标配
+	                            {{$shops->gname}} /{{$shops->size}}
 	                            <div id="giftBuy-selected" class="inline">
 	                                &nbsp;/&nbsp;无增值服务
 	                            </div>
@@ -1396,8 +1318,7 @@
 	                    </div>
 	                    <!-- 20170518-商品简介-已选择商品-end -->
 	                    <!-- 20170518-商品简介-提示-end -->
-	                    <div id="product-tips" class="product-tips hide" style="display: none;">
-	                    </div>
+	                   
 	                    <!-- 20170518-商品简介-提示-end -->
 	                    <!-- 20170518-商品简介-提交操作-start -->
 	                    <div id="product-operation" class="product-operation relative" style="display: block;">
@@ -1431,7 +1352,7 @@
 	                            <div class="product-buttonmain">
 	                                <!-- 20170518-商品简介-按钮-start -->
 	                                <div id="pro-operation" class="product-button clearfix" style="visibility: visible;">
-	                                    <a href="javascript:;" onclick="ec.product.addCart()" class="product-button01">
+	                                    <a href="javascript:;"  class="product-button01" id="addcart" gid="{{$shops->id}}">
 	                                        <span>
 	                                            加入购物车
 	                                        </span>
@@ -1471,32 +1392,7 @@
 	                            </p>
 	                        </div>
 	                    </div>
-	                    <div class="product-deposit clearfix" id="buyProcessIDD" style="display:none">
-	                        <h2>
-	                            购买流程
-	                        </h2>
-	                        <ul>
-	                            <li>
-	                                1.&nbsp;&nbsp;&nbsp;支付订金（
-	                                <span id="startDateIDD">
-	                                    提前锁定购买资格
-	                                </span>
-	                                ）
-	                            </li>
-	                            <li>
-	                                2.&nbsp;&nbsp;&nbsp;支付尾款（
-	                                <span id="balanceStartDateIDD">
-	                                    暂无
-	                                </span>
-	                                ）
-	                            </li>
-	                            <li>
-	                                3.&nbsp;&nbsp;&nbsp;等待发货（按支付尾款时间顺序发货）
-	                            </li>
-	                        </ul>
-	                    </div>
-	                    <div class="gallery-scroll-bottom">
-	                    </div>
+	                    
 	                </div>
 	                <!-- 20170518-商品简介-提交操作-end -->
 	                <!-- 20170518-商品简介-按钮-start -->
@@ -1622,7 +1518,210 @@
 		</div>
 
 	</section>
+    
+  
+	<form action="" method="post" enctype="multipart/form-data">
+	<div id="motai">    
+	     <div class="topbackdiv" id="bj" style="display: none;"></div>
+
+
+		 <div id="ol_box" class="ol_box_4" style="display:none;" >
+		     <div class="box-ct" style="width: 460px;background: #fff;display:block;">
+		         <div class="box-header">
+		             <div class="box-tl">
+		             </div>
+		             <div class="box-tc">
+		                 <div class="box-tc1">
+		                 </div>
+		                 <div class="box-tc2">
+		                     <a href="javascript:;"  title="关闭" class="box-close" onclick="hidediv();">
+		                     </a>
+		                 </div>
+		             </div>
+		             <div class="box-tr">
+		             </div>
+		         </div>
+		         <table width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed;background:#fff;">
+		             <tbody>
+		                 <tr>
+		                     <td class="box-cl">
+		                     </td>
+		                     <td class="box-cc">
+		                         <div class="box-content" style="height: auto;">
+		                             <div class="b">
+		                                 <div class="pro-add-success" gid="" id="jiesuan">
+		                                     <dl>
+		                                         <dt>
+		                                             <s>
+		                                             </s>
+		                                         </dt>
+		                                         <dd>
+		                                             <div class="box-right-2">
+		                                                 <p>
+		                                                     <span class="spming">荣耀畅玩8C 全网通标配版 4GB+32GB（幻夜黑）</span>
+		                                                     成功加入购物车!
+		                                                 </p>
+		                                             </div>
+		                                             <div class="box-button">
+		                                                 <a class="box-cancel" href="javascript:;" onclick="$('#cart-tips').hide()">
+		                                                     再逛逛
+		                                                 </a>
+		                                                 <a href="javascript:;" class="box-ok" id="js">
+		                                                     去结算
+		                                                 </a>
+		                                             </div>
+		                                            
+		                                         </dd>
+		                                     </dl>
+		                                 </div>
+		                             </div>
+		                         </div>
+		                        
+		                     </td>
+		                     <td class="box-cr">
+		                     </td>
+		                 </tr>
+		             </tbody>
+		         </table>
+		         <div class="box-bottom" style="">
+		             <div class="box-bl">
+		             </div>
+		             <div class="box-bc">
+		             </div>
+		             <div class="box-br">
+		             </div>
+		         </div>
+		     </div>
+		 </div>
+
+	</div>
+	</form>
 </body>
+
+
+<script>
+	//移动事件
+	$('#small').mousemove(function(e){
+
+		$('#move').css('display','block');
+		$('#big').css('display','block');
+
+
+		//获取small的左侧偏移量
+		var sl = $('#small').offset().left;
+		var st = $('#small').offset().top;
+
+		//获取x和y的坐标
+		// var x = e.clientX; 
+		// var y = e.clientY;
+
+		var x = e.pageX; 
+		var y = e.pageY;
+
+		//获取move的宽和高
+		var mw = $('#move').width()/2;
+		var mh = $('#move').height()/2;
+
+		//求出 move距离small的偏移量
+		var ml = x - sl - mw;
+		var mt = y - st - mh;
+
+
+		var maxl = $('#small').width()-$('#move').width();
+        
+		var maxt = $('#small').height()-$('#move').height();
+
+		if(ml >= maxl){
+
+			ml = maxl;
+		}
+		if(ml <= 0){
+			ml = 0;
+		}
+
+		if(mt >= maxt){
+
+			mt = maxt;
+		}
+		if(mt <= 0){
+			mt = 0;
+		}
+
+		//获取大图距离big 的偏移量
+		var bl = $('#bigImg').width() / $('#small').width() * ml;
+
+		var bt = $('#bigImg').height() / $('#small').height() * mt;
+
+
+		$('#bigImg').css('left',-bl+'px');
+		$('#bigImg').css('top',-bt+'px');
+
+
+		$('#move').css('left',ml+'px');
+		$('#move').css('top',mt+'px');
+
+
+	})
+
+	//从small移出来
+	$('#small').mouseout(function(){
+
+		$('#move').css('display','none');
+		$('#big').css('display','none');
+
+	})
+
+	//鼠标移到小图上
+	$('#uls').find('img').mouseover(function(){
+
+		$(this).css('border','solid 1px #e53e41 ');
+
+		var srcs = $(this).attr('src');
+
+		//改变small里面的src
+		$('#small').find('img').attr('src',srcs);
+
+		//改变big里面的src
+		$('#big').find('img').attr('src',srcs);
+
+	})
+
+	$('#uls').find('img').mouseout(function(){
+
+		$(this).css('border','solid 1px white');
+	})
+
+</script>
+
+<script>
+
+	function hidediv() {
+	    document.getElementById("bj").style.display = 'none';
+	    document.getElementById("ol_box").style.display = 'none';
+	}
+
+	// 点击加入购物车触发的事件
+	$('#addcart').click(function(){
+	    document.getElementById("bj").style.display = "block";
+	    document.getElementById("ol_box").style.display = "block";
+	    var gid = $(this).attr('gid');
+	    $("#jiesuan").attr('gid',gid);
+
+
+	    var spm = $(this).parents('#product-property-recommand').find('#pro-name').text();
+	    $('.spming').text(spm);
+	   
+	})
+
+
+	$('#js').click(function(){
+		var gid = $('#jiesuan').attr('gid');
+
+		var num = $('#addcart').parents('#product-operation').find('#pro-quantity').val();
+		
+		window.location.href="/addCar?id="+gid+"&num="+num;
+	})
+</script>
 </html>
 
 

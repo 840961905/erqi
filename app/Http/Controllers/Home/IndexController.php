@@ -81,7 +81,7 @@ class IndexController extends Controller
         $ads = Ads::orderBy('addtime', 'desc')->get();
 
          //轮播
-        $sinfo = Slider::orderBy('addtime', 'desc')->take(8)->get();
+        $sinfo = Slider::orderBy('addtime', 'desc')->take(6)->get();
         
 
 

@@ -293,6 +293,8 @@
                 <!---->
                 <div class="hr-20">
                 </div>
+
+                @if($shop)
                 <div class="sall">
                     <div class="sc-list">
                         <div class="sc-pro-title clearfix">
@@ -320,17 +322,20 @@
                         </div>
                         <form id="cart-form" autocomplete="off" method="get">
                             <div class="sc-pro">
-                                @foreach($res as $k=>$v)
-                                <div class="divs" id="shop_{{$v->id}}">
+                                @foreach($shop as $k=>$car)
+                                <div class="divs" id="shop_{{$car['id']}}">
                                     <div class="sc-pro-list clearfix">
                                         <label class="checkbox">
-                                            <input type="checkbox" class="vam che" gid="{{$v->id}}">
+                                            <input type="checkbox" class="vam che" gid="{{$car['goodsinfo']->id}}">
                                         </label>
                                         <div class="sc-pro-area">
                                             <div class="sc-pro-main clearfix">
-                                                <a href="/product/10086423109158.html#10086794601109" target="_blank"
-                                                class="p-img">
-                                                    <img src='{{$cs[$k]->gimg}}' alt="">
+                                                <a href="/shop/{{$car['id']}}" style="width:100px;height:100px; float: left;margin-right: 20px;position: relative;">
+                                                    <img src="@php
+                                                   $tu = DB::table('goodsimg')->where('gid',$car['id'])->first();
+                                                   echo $tu->gimg;
+                                                   @endphp"
+                                                   alt=""  style="width:100px;height:100px;">
                                                 </a>
                                                 <div class="tips-1 p-stock-tips" style="display: none;">限购件
                                                 </div>
@@ -339,7 +344,8 @@
                                                         <a href="/product/10086423109158.html#10086794601109" target="_blank"
                                                         title="" class="p-name">
                                                             <!---->
-                                                            {{$v->gname}}
+                                                            {{$car['goodsinfo']->gname}}
+
                                                         </a>
                                                         <!---->
                                                         <!---->
@@ -347,7 +353,7 @@
                                                     <li>
                                                         <div class="p-price">
                                                             <span>
-                                                                &nbsp;{{$v->price}}
+                                                                &nbsp;{{$car['goodsinfo']->price}}
                                                             </span>
                                                             <!---->
                                                         </div>
@@ -355,12 +361,12 @@
                                                     <li>
                                                         <div class="p-stock">
                                                             <div class="p-stock-area">
-                                                                <input type="number" class="p-stock-text" value="1">
+                                                                <input type="number" class="p-stock-text" value="{{$car['num']}}">
                                                                 <p class="p-stock-btn">
-                                                                    <a href="javascript:;" class="plus">
+                                                                    <a href="javascript:;" class="plus" ids="{{$car['goodsinfo']->id}}">
                                                                         +
                                                                     </a>
-                                                                    <a href="javascript:;" class="minus">
+                                                                    <a href="javascript:;" class="minus" ids="{{$car['goodsinfo']->id}}">
                                                                         −
                                                                     </a>
                                                                 </p>
@@ -368,7 +374,10 @@
                                                         </div>
                                                     </li>
                                                     <li class="p-price-total">
-                                                        <span class="price">&nbsp;{{$v->price}}</span>
+                                                      
+                                                        <span class="price">&nbsp;
+                                                           {{$car['goodsinfo']->price*$car['num']}}
+                                                        </span>
                                                         <!---->
                                                     </li>
                                                     <li>
@@ -378,6 +387,9 @@
                                                     </li>
                                                 </ul>
                                             </div>
+
+
+                                           
                                             <div class="sc-pro-parts">
                                                 <!---->
                                                 <!---->
@@ -390,7 +402,26 @@
                                     <!---->
                                 </div>
                                 @endforeach
-                                
+                                <div id="motai">    
+                                     <div class="topbackdiv" id="bj" style="display: none;"></div>
+                                     <div id="addSuccess" class="topBox" style="display: none;">
+                                            <h1 class="topTitle">
+                                                <span>删除商品</span>
+                                                
+                                            </h1>
+                                            <a class="popCloseBtn" onclick="hidediv();">X</a>
+                                            <div class="p20 tc mt13">
+                                                <span id="centa">你确定要删除该商品?</span>
+
+                                            </div>
+                                            <div class="clearfix popBtn">
+                                                <a href="javascript:;" class="popBuyNowBtn deldel" gid="2" >删除</a>
+
+                                                <a href="" class="pobAddCartBtn ml10" onclick="hidediv();">取消</a>
+                                            </div>
+                                        
+                                     </div>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -440,11 +471,11 @@
                         </div>
                     </div>
                 </div>
-                
-                <!---->
+                @else
+              
 
-                <div class="sc-empty mt20" style="display:none"><span class="icon-minicart"></span> <p>您的购物车里什么也没有哦~</p> <a href="/">去逛逛</a></div>
-
+                <div class="sc-empty mt20" ><span class="icon-minicart"></span> <p>您的购物车里什么也没有哦~</p> <a href="/home/index">去逛逛</a></div>
+                @endif
 
                 <div data-v-f82c3af2="" class="pro-delete">
                     <div data-v-f82c3af2="" class="h">
@@ -466,62 +497,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div data-v-f82c3af2="" class="b h-70">
-                        <ul data-v-f82c3af2="" class="clearfix">
-                            <li data-v-f82c3af2="">
-                                <a data-v-f82c3af2="" target="_blank">
-                                    【新品首发】华为手环 B5 运动版（韵律黑）
-                                </a>
-                            </li>
-                            <li data-v-f82c3af2="">
-                                x1
-                            </li>
-                            <li data-v-f82c3af2="">
-                                ¥999.00
-                            </li>
-                            <li data-v-f82c3af2="">
-                                <a data-v-f82c3af2="" class="pro-delete-btn">
-                                    重新购买
-                                </a>
-                            </li>
-                        </ul>
-                        <ul data-v-f82c3af2="" class="clearfix">
-                            <li data-v-f82c3af2="">
-                                <a data-v-f82c3af2="" target="_blank">
-                                    华为畅享8 3GB+32GB 全网通标配版（粉色）
-                                </a>
-                            </li>
-                            <li data-v-f82c3af2="">
-                                x1
-                            </li>
-                            <li data-v-f82c3af2="">
-                                ¥1099.00
-                            </li>
-                            <li data-v-f82c3af2="">
-                                <a data-v-f82c3af2="" class="pro-delete-btn">
-                                    重新购买
-                                </a>
-                            </li>
-                        </ul>
-                        <ul data-v-f82c3af2="" class="clearfix">
-                            <li data-v-f82c3af2="">
-                                <a data-v-f82c3af2="" target="_blank">
-                                    HUAWEI Mate 10 Pro 6GB+128GB 全网通版（银钻灰）
-                                </a>
-                            </li>
-                            <li data-v-f82c3af2="">
-                                x2
-                            </li>
-                            <li data-v-f82c3af2="">
-                                ¥7998.00
-                            </li>
-                            <li data-v-f82c3af2="">
-                                <a data-v-f82c3af2="" class="pro-delete-btn">
-                                    重新购买
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                  
                     <div data-v-f82c3af2="" class="f">
                         <a data-v-f82c3af2="" class="delete-expand">
                             更多已删除商品
@@ -1134,28 +1110,9 @@
     </div>
 
 
-    <form action="" method="post" enctype="multipart/form-data">
-    <div id="motai">    
-         <div class="topbackdiv" id="bj" style="display: none;"></div>
-         <div id="addSuccess" class="topBox" style="display: none;">
-                <h1 class="topTitle">
-                    <span>删除商品</span>
-                    
-                </h1>
-                <a class="popCloseBtn" onclick="hidediv();">X</a>
-                <div class="p20 tc mt13">
-                    <span id="centa">你确定要删除该商品?</span>
 
-                </div>
-                <div class="clearfix popBtn">
-                    <a href="javascript:;" class="popBuyNowBtn deldel" gid="" >删除</a>
+  
 
-                    <a href="" class="pobAddCartBtn ml10" onclick="hidediv();">取消</a>
-                </div>
-            
-         </div>
-    </div>
-    </form>
 </body>
 <script>
     // 弹出框
@@ -1190,18 +1147,16 @@
 
         var gid = $(this).attr('gid');
         
-       
+        
         $.post('/home/shopcart',{gid:gid},function(data){
             
             
-            if(data != 0){
-                $("#shop_"+data).remove();
-                //rs = $(this).parents('.dvs');
-                
-                //刷新
-               nums()
-            }   
-        })
+             if(data){
+               $("#shop_"+gid).remove();
+                 //刷新
+               window.location.reload(); 
+             };   
+        });
 
     })
 
@@ -1222,9 +1177,21 @@
     // 数量加
     $('.plus').click(function(){
         // 获取数量的值
-        var  pv = $(this).parent().prev().val();
+        var  pv =$(this).parent().prev().val();
         pv++;
         $(this).parent().prev().val(pv);
+        
+        // 发送ajax请求  改变session 里面的数量
+        id = $(this).attr('ids');
+       
+        $.post('carAdd',{id:id},function(data){
+              if(data){
+               
+                
+              }
+        })
+        
+      
 
         // 获取单价
         var prc = $(this).parents('li').prev().text().trim();
@@ -1248,20 +1215,24 @@
 
     // 数量减
     $('.minus').click(function(){
-        // 获取数量的值
-        var  pv = $(this).parent().prev().val();
-        
-        pv--;
+         // 获取数量的值
+         var  pv = $(this).parent().prev().val();
+         pv--;
 
-        if(pv <= 1)
-        {
-            pv = 1;
+         if(pv < 1){
+           return "";
+         }
 
-        }
-        $(this).parent().prev().val(pv);
-        
+         $(this).parent().prev().val(pv);  
+        // 发送ajax请求  改变session 里面的数量
+        id = $(this).attr('ids');
+        $.post('carJian',{id:id},function(data){
+              if(data){
+               
+              }
+        })
 
-
+       
         // 获取单价
         var prc = $(this).parents('li').prev().text().trim();
         
@@ -1360,6 +1331,7 @@
          $('#total').text(sum);
     }
 </script>
+
 
 </html>
 

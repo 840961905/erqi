@@ -1,0 +1,125 @@
+@CHARSET "UTF-8";
+#container{ background: #f7f7f7;}
+#header{
+	/*background: -webkit-linear-gradient(top,#56A1E2, #4971D8);
+	background: -moz-linear-gradient(top, #56A1E2, #4971D8);
+	background: -ms-linear-gradient(#56A1E2 0%,#4971D8 100%);
+	background: -o-linear-gradient(top, #56A1E2, #4971D8);
+	background: linear-gradient(top, #56A1E2, #4971D8);
+	background-color:#F3F3F3;
+	box-shadow: 0 1px 1px #F3F3F3;*/
+}
+/*功能按钮*/
+.udButton{background-image:url(images/func.png);_background-image:url(images/func_ie6.png);}
+.containerItemst{color:#333333;}
+#jumper .udButton{
+	background-image:url(images/icon_19.png);
+	background-position: center 10px;
+}
+
+.containerItemsb:hover{ 
+	background: #F9F9F9;
+	border:1px solid #E8E8E8;
+}
+.leftFunc a,.rightFunc a{background-image: url(images/icons.png);_background-image: url(images/icons_ie6.png);}
+.side{ border-style: solid; border-width: 1px 1px 1px 1px; border-color: #E5E5E5; background: #fff;}
+.bottom{ border-style: solid; border-width: 1px 1px 1px 1px; border-color: #E5E5E5; background-color: #ffffff;}
+
+/* 工具条，输入框，发送按钮，关闭按钮*/
+#toolsbar li{background:url(images/toolsbar.png) no-repeat; box-sizing:border-box; _background:url(images/toolsbar_ie6.png) no-repeat;}
+#toolsbar li#file,
+#toolsbar li#emoticons,
+#toolsbar li#switch,
+#toolsbar li#active,
+#toolsbar li#evaluation{background-image:url(images/icon_03.png); _background:url(images/icon_03_ie6.png) no-repeat; background-repeat: no-repeat;}
+#toolsbar li:hover{border:1px solid #EDEDED;background-color: #F9F9F9; }
+#shortcutkey{ background: url(images/icons.png) 4px -22px no-repeat;_background: url(images/icons_ie6.png) 4px -22px no-repeat;}
+#shortKeyMenu li{ background: #fff;}
+.shortKeyChoose{ background: url(images/icons.png) 4px -316px no-repeat;_background: url(images/icons_ie6.png) 4px -316px no-repeat;}
+#shortKeyMenu a{ color: #666666;background: #fff;}
+#shortKeyMenu a:hover{ color:#fff; background-color: #56A1E2;}
+.footerBox{color:#999999;}
+.footerBox a{color:#3f78b6;}
+#fontSize ul{ background: #fff;}
+#fontSize ul.selectOp{border: 1px solid #ccc;}
+#selectOp li{border-bottom:1px solid #ccc;width:42px;background: none;margin:0;}
+.font_size_value{background:#fff; border: 1px solid #B0B1B2;}
+#enter{background-color:#CA151E; color:#fff; }
+#enter:hover{ background-color: #AB0009;}
+#enter.disable{ background-color:#EFB8BB;}
+#exitChat{
+	background-color:#FFFFFF;
+	border:1px solid #DEDEDE;
+	color:#333333;
+}
+#exitChat:hover{background-color:#3A3A3A; color:#fff;}
+/*历史框气泡*/
+/*气泡主体内容*/
+.lim_operator .lim_bubble{border:1px solid #DEDEDE;background:#ffffff;}
+.lim_visitor .lim_bubble{border:1px solid #00b5e2;background:#00b5e2;}
+.lim_systemTip .lim_bubble{/*border:1px solid #D6ECB7;background:#EEF9E4;*/}
+.lim_bubble a{ color:#3366cc; text-decoration: none;
+/*box-shadow: 0px 1px 0px 0px #EDF7E0;
+      -moz-box-shadow: 0px 1px 0px 0px #EDF7E0;
+      -webkit-box-shadow: 0px 1px 0px 0px #EDF7E0;*/}
+/*气泡角*/
+.lim_radius{ background-image: url(imgs/icon_04.png);_background-image: url(imgs/icon_04_ie6.png); background-repeat: no-repeat;}
+.lim_systemTip .lim_radius{ background-position:0px 0px;}
+.lim_operator .lim_radius{ background-position:0px -26px;}
+.lim_visitor .lim_radius{ background-position:3px 0px;}
+
+.clearfloat{ clear:both; height:0; font-size: 1px; line-height: 0px;}
+.activitytab{background-color:#fff;padding-left:20px;padding-right:20px;border-top: 1px solid #CCCCCC;border-right: 1px solid #CCCCCC;border-left: 1px solid #CCCCCC;}
+.activitytab span.leftBut{border-right: 7px solid #2980B9; border-left: none;}
+.activitytab span.rightBut{border-left: 7px solid #2980B9; border-right: none;}
+.activitytab span.leftBut:hover{border-right: 7px solid #0E96EF;}
+.activitytab span.rightBut:hover{border-left: 7px solid #0E96EF;}
+.activitytab ul li{ background-color: #eee; border-top: 3px solid #eee;}
+.activitytab ul li:hover{ background-color: #ddd; border-top: 3px solid #ddd;}
+.activitytab ul li.active{ border-top: 3px solid #3897e7; color: #2980b9; background-color: #FFFFFF;}
+.interval{float:left;display:block;background:url(images/interval.png) no-repeat;width:2px;height:63px;}
+.left_buts{border-bottom:1px solid #E5E5E5;}
+.left_buts span.hover{color:#3366cc;}
+#newslist {position: absolute;top: 50px;left: 0px;bottom:0px;}
+/*弹出框*/
+.pop{ background: #fff;}
+#preform .btn, .innerPreForm .btn,#popDiv .button{
+	width:180px; height:40px; overflow: hidden; line-height:40px;  font-size:14px; color:#333333; background: #FAFAFA; border:1px solid #BBBBBB;
+}
+.innerPreForm .btn:hover,#popDiv .button:hover{
+	background: #3A3A3A; border:1px solid #3A3A3A; color:#fff;
+}
+#preform .btn.disable, .innerPreForm .btn.disable,#popDiv .button.disable{
+	background: #E6E6E6; border:1px solid #CDCDCD; color:#C1C1C1;
+}
+#innerSurveyForm .survey_close_but{background: url("images/close.png") no-repeat;}
+#innerSurveyForm .survey_close_but:hover{background: url("images/close_hover.png") no-repeat;}
+.cancel{ color:#333333;background: #FAFAFA; border:1px solid #BBBBBB;}
+.submit{ color:#333333;background: #FAFAFA; border:1px solid #BBBBBB;}
+
+#surveyComment label,.surveyComment_bmy label{background-image: url(images/icon_14.png); background-repeat: no-repeat;}
+#surveyComment label,.surveyComment_bmy label{background-position: 0px -166px;}
+#surveyComment label.radio_select,.surveyComment_bmy label.radio_select{ background-position: 0px 0px;}
+
+/*下面是滚动条的样式*/
+.myScrollbarV>div {
+	background:-webkit-gradient(linear, 0 0, 100% 0, from(#EFEBE0), to(#DAD8D2));
+	background: -moz-linear-gradient(top, #EFEBE0, #DAD8D2);
+	background: -ms-linear-gradient(top, #EFEBE0, #DAD8D2);
+	background: -o-linear-gradient(top, #EFEBE0, #DAD8D2);
+	background: linear-gradient(top, #EFEBE0, #DAD8D2);
+	border:1px solid #A4A4A4;
+	box-shadow:inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+.myScrollbarH>div {
+	background:-webkit-gradient(linear, 0 0, 100% 0, from(#EFEBE0), to(#DAD8D2));
+	background: -moz-linear-gradient(top, #EFEBE0, #DAD8D2);
+	background: -ms-linear-gradient(top, #EFEBE0, #DAD8D2);
+	background: -o-linear-gradient(top, #EFEBE0, #DAD8D2);
+	background: linear-gradient(top, #EFEBE0, #DAD8D2);
+	border:1px solid #A4A4A4;
+	box-shadow:inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+.close_box{position: absolute;top:0px; right:-50px; height:50px; width:50px; }
+.close_box{ background: #928F8F url(images/icon_09.png) center center no-repeat;}
+.close_box:hover{background: #646060 url(images/icon_09.png) center center no-repeat;}

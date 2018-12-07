@@ -1,0 +1,62 @@
+/*#history .robotcbox{font-size: 13px;padding:4px 0;}#history .robotcbox label{float:left;}
+#history .robotcbox p{text-indent:0;padding:0px;margin:0px;line-height:1em;}
+#history .robotanswer{padding:2px 0;position:static;margin:0px;line-height:1.5em;}#history .robotanswer h5{font-size:13px;padding:0 0 3px;margin:0;color:#7B94AA;font-weight:normal;text-indent:0px;}
+#history .robotRel li div{display:none;}#history .robotRel li.show div{display:block;padding:5px 0px 10px;}
+#history .robotRel{margin:0px 0;padding:0 10px;line-height:1.2em;}#history .robotRel h4{font-size:13px;padding:0 0 3px 0;margin:0px;width:200px;color:#00A3E4;line-height:1.5em;}#history .robotRel ul.expand{display:block;}
+#history div.robotRel li.hide{display:none;}#history div.robotRel .more{line-height:20px;margin:4px 0;}#history div.robotRel .more a{padding:4px 26px;}
+#history div.live800robot{margin:0;padding: 0px;}
+#history div.robotkefu{margin:0;padding: 0px 0 5px;}
+#history div.robotcbox{margin:0;}
+#history .robotcbox div.an{line-height:1.2em;text-indent:0;padding-left:0px;margin:0px;}
+#history .live800robot{font-weight:bolder;margin:10px 0 0 0;color:#f2691d;font-size:11pt;padding:0px;}
+#history .robotkefu{margin:10px 0 0 0;color:#0f8b00;font-weight:bolder;font-size:11pt;}
+#history .robotkefu .time{color:#a8a8a8;font-weight:normal;display:inline;font-size:11pt;}
+#history .live800robot .time{color:#a8a8a8;font-weight:normal;display:inline;font-size:11pt;}
+#history .robotsurveywrap ol{list-style:none;}
+#history .robotsurveywrap {line-height:1.5em;}
+#history .robotsurveywrap p.survey{padding: 6px 0px;line-height:20px;}
+#history .robotsurveywrap p.survey em{padding:0;margin:0;text-indent:0;font-weight:bolder;font-style:normal;font-size:13px;}
+#history .robotsurveywrap p.survey .top{padding:2px 4px 2px 2px;outline-style:none;}
+#history .robotsurveywrap p.survey .tread{padding:2px 4px 2px 2px;outline-style:none;}
+#history .robotsurveywrap p.survey img{border:none;margin: 0 0 -3px 0;}
+#history .robotsurveyList li {text-indent:0px;}
+
+#history ul.outlineul{display:none;}
+#history .robotsurveyList{margin:0px;padding:0px;}
+#history li.show ul.outlineul{display:block;margin:0 24px;list-style:disc;}
+#history .robotcbox p.standardq {padding:0 0 5px;}
+.ks-suggest-content ol{margin:0px;padding:0px;list-style:none;}
+#history p.robotinfo {font-size: 11pt;color:#848484;text-indent:24px;line-height:120%;}
+.robotdefaultValue{color:gray;}
+#history .robotcbox span{text-indent:0px;}
+#history .live800RobotstaffService{color:blue;cursor:pointer;}
+#history .robotsatisfy{padding-left:5px;}
+#history .robotunsatisfy{padding-left:10px;}
+#history .robotcbox font{line-height:normal;}
+#history .robotinfodiv font{line-height:normal;}
+#history .robotRel li{list-style-type:none;list-style-image:none;}
+#history .robotanswer .outlinesdqsul{list-style:none;}
+#history .robotanswer .outlineTip{margin:5px 0px;}
+.focus-questions {margin: 5px 0px 5px 0px;}
+.focus-questions h3 {color: blue;}
+.focus-question-item, .ajax-loader {margin-left: 24px; font-size: 13px; padding: 5px 0 5px 0;}
+.focus-questions a {color: #006E9C; cursor: pointer;}
+.focus-questions a.over {text-decoration: underline; color: blue;}
+.focus-answer, .ajax-loader {margin-top: 4px; display: none;}
+**/
+/*2013-08-22*/
+/*
+#history .robotRel li .hide{display:none;}
+#history .robotRel li .show{display:block;}
+**/
+#history .radio_group label{ background-image: url(../img/icon_14.png); background-repeat: no-repeat; background-position: 3px -162px; padding:0 10px 0 20px; display: inline-block; line-height:22px;}
+#history .radio_group label.checked{ background-position: 3px -106px;}
+#history .radio_group label input{position: absolute;top:-10000px;}
+
+/*手机端*/
+#history .hotQuestion {}
+#history .hotQuestion ul>li{ color: #26bcc2; line-height: 1; padding: 5px 0;}
+#history .hotQuestion .hotQuestionTitle{line-height: 25px; height:25px;}
+#history .hotQuestion ul li .answer_hotQ{color:#000; line-height: 20px;}
+#history .hotQuestion .hotQuestionTitle span{display: inline-block;min-width:150px}
+#history .hotQuestion .hotQuestionTitle a{ float: right; text-decoration: underline;}

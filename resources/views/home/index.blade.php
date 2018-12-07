@@ -682,7 +682,7 @@
                                  @endforeach
                                 <ul class="subcate-list clearfix">
                                     <li class="subcate-btn">
-                                        <a href="/list-36" target="_blank">
+                                        <a href="/types/{{$one->id}}" target="_blank">
                                             查看全部
                                         </a>
                                     </li>
@@ -1040,7 +1040,12 @@
                                     <li class="grid-items">
                                         <a class="thumb" href="/shop/{{$rx1->id}}" target="_blank" onclick="pushHomeHotGoodsMsg(this,2,'10086772693857')">
                                             <p class="grid-img">
-                                                <img alt="荣耀10青春版 幻彩渐变 2400万AI自拍 6.21英寸高屏占比珍珠屏 全网通 4GB+64GB（渐变蓝）" src="{{$cs[$k]->gimg}}">
+                                                <img alt="荣耀10青春版 幻彩渐变 2400万AI自拍 6.21英寸高屏占比珍珠屏 全网通 4GB+64GB（渐变蓝）" src="
+                                                @php
+                                                   $tu = DB::table('goodsimg')->where('gid',$rx1->id)->first();
+                                                   echo $tu->gimg;
+                                                @endphp
+                                                ">
                                             </p>
                                             <div class="grid-title" style="white-space:nowrap;" >
                                                {{$rx1->gname}}
@@ -1167,7 +1172,12 @@
                                         <a class="thumb" href="/shop/{{$vvv->id}}" target="_blank" onclick="pushGoodsRecommendMsg('10086469441567',this,'1')">
                                             <div class="grid-info">
                                                 <p class="grid-img">
-                                                    <img alt="华为畅享 MAX 4GB+64GB 全网通版（幻夜黑）" src="{{$cs[$k]->gimg}}">
+                                                    <img alt="华为畅享 MAX 4GB+64GB 全网通版（幻夜黑）" src="
+                                                    @php
+                                                      $tu = DB::table('goodsimg')->where('gid',$vvv->id)->first();
+                                                      echo $tu->gimg;
+                                                    @endphp
+                                                    ">
                                                 </p>
                                                 <p class="grid-desc">
                                                     {{$vvv->info}}
@@ -1285,7 +1295,7 @@
                 <ul class="channel-nav fl">
                 	@foreach($ql->child as $qls)
                     <li>
-                        <a href="" target="_blank" class="ff">
+                        <a href="/types/{{$qls->id}}" target="_blank" class="ff">
                            {{$qls->tname}}
                         </a>
                     </li>
@@ -1298,7 +1308,7 @@
                     </span>
                     <span>
                     </span>
-                    <a href="/list-40" target="_blank" onclick="pushFoolMsg('2','笔记本电脑','/list-40')">
+                    <a href="/types/{{$ql->id}}" target="_blank" onclick="pushFoolMsg('2','笔记本电脑','/list-40')">
                         查看更多
                     </a>
                 </div>
@@ -1324,7 +1334,12 @@
                             <a class="thumb"  href="/shop/{{$lougoods->id}}">
                                 <div class="grid-info">
                                     <p class="grid-img">
-                                        <img alt="荣耀MagicBook 14英寸轻薄笔记本电脑 i5-8250U 8GB 256GB 独显（冰河银）" src="https://res1.vmallres.com/pimages//product/6901443233182/428_428_1538989301892mp.png">
+                                        <img alt="荣耀MagicBook 14英寸轻薄笔记本电脑 i5-8250U 8GB 256GB 独显（冰河银）" src="
+                                        @php
+                                           $tu = DB::table('goodsimg')->where('gid',$lougoods->id)->first();
+                                           echo $tu->gimg;
+                                        @endphp
+                                        ">
                                     </p>
                                 </div>
                                 <div class="grid-title" style="padding-top:0px;height:0px; white-space:nowrap;width:200px;overflow:hidden; text-align:center;">

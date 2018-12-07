@@ -144,17 +144,34 @@ Route::post('/home/dolose','Home\LoginController@dolose');
 // 执行忘记密码
 Route::post('/home/dochangepass','Home\LoginController@dochangepass');
 
+//在线客服
+Route::get('/home/customer','Home\CustomerController@index');
+Route::get('/customer/reply','Home\CustomerController@reply');
+Route::get('/customer/replyclick','Home\CustomerController@replyclick');
 
 
 Route::group([], function(){
 	// 购物车
-     Route::get('home/cart','Home\CartController@cart');
+     Route::get('cart','Home\CartController@cart');
      // 首页
      Route::get('home/index','Home\IndexController@index');
 
 
      // 商品详情页
      Route::get('/shop/{id}','Home\ShopController@index');
+
+
+     // 分类详情页面
+     Route::get('/types/{id}','Home\TypesController@index');
      
+     // 删除购物车的商品
      Route::post('home/shopcart','Home\CartController@shopcart');
+     // 加入购物车
+     Route::get('addCar','Home\CartController@addCar');
+
+     Route::post('carAdd','Home\CartController@carAdd');
+
+     Route::post('carJian','Home\CartController@carJian');
+
+
 });
