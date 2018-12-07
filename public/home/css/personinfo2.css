@@ -1,0 +1,273 @@
+@CHARSET "UTF-8";
+input::-ms-clear{display:none;} 
+.btn_midefy_cancel{border-radius: 15px;padding:7px 50px;width: auto;height: 42px;font-weight: normal;font-size: 14px;background-image:none;background-color:RGB(231,231,231);border-width:0 0 2px 0;border-style:solid;border-color:#RGB(231,231,231);text-align:center;color: #000;cursor: pointer;margin-top:5px;}
+.btn_midefy_disable{border-radius: 15px;padding:7px 50px;width: auto;height: 42px;font-weight: normal;font-size: 14px;background-image:none;background-color:#eee;border-width:0 0 2px 0;border-style:solid;border-color:#eee;text-align:center;color: #ddd;cursor: pointer;margin-top:5px;}
+.left{float: left;}
+.main-logo img{margin-top: 0px;}
+.bottom15{margin-bottom: 15px;}
+.global_dialog_confirm_nor.btn2.top30{color: #e73c01;}
+.top10{padding-top: 10px;}
+.docmarginbottom{margin-bottom:20px;}
+.thirdAccountStyle{margin-top: 7px;}
+.btn-des+.ddrop {margin-left: 229px;}
+.ucBaseAgrTitle{font-size: 20px;font-weight: bold;margin-top: 20px;}
+.beforeUCSetLine{margin-top:30px;}
+.ucCountrySide{margin-left: 10px;margin-top: 35px;font-size: 14px;color: #000;}
+.agrIndent{text-indent: 2em;}
+.checkboxFive{width:12px;position: relative;margin-top: 3px;}
+.checkboxFive label {cursor: pointer;position: absolute;width: 12px;height: 12px;top: 0;left: 0;background: #fcfcfc;border:1px solid #ccc;border-radius: 3px;}
+.checkboxFive label:after {opacity: 0.4;content: '';position: absolute;width: 7px;height: 4px;background: transparent;top: 2px;left: 1px;border: 2px solid #fff;border-top: none;border-right: none;-webkit-transform: rotate(-45deg);-moz-transform: rotate(-45deg);-o-transform: rotate(-45deg);-ms-transform: rotate(-45deg);transform: rotate(-45deg);}
+.checkboxFive input[type=checkbox] {display:none;}
+.checkboxFive input[type=checkbox]:checked + label:after {opacity: 1;}
+.checkboxFive label:hover::after {opacity: 0.5;}
+.checkboxFive input[type=checkbox]:checked ~ label {background-color:#007dff;}
+.agrLineH{line-height:180%;color: #000000;}
+.cancelAdMarketAgr{line-height:180%;}
+.docusname {margin: 38px 10px -8px;font-size: 14px;font-weight: bold;color: #29d0d8;}
+
+
+.tbr1{float: right;height: 50px;right: 0px;padding-top: 17px;font-size: 12px;}
+.childLogo1{float: left;height: 50px;width: 157px;display: table;margin-top: 8px;}
+span.logo_text1{font-size: 18px;color: #ffffff;padding-left: 12px;}
+.logo_text1{color:#b7b7b7;}
+
+
+.topbar1{font-size: 14px; background-color:#333;min-width:960px}
+.s1{display: table-cell;height: 30px;vertical-align: middle;}
+.s2{display: table-cell;height: 65px;vertical-align: middle;line-height: 65px;}
+#logoutUrl{color: #ffffff}
+.tbr1 a,.tbr1 span{line-height:34px;}
+.tbr1 span{ padding:0 12px;}
+.tbr1 a:hover{color:#fff;}
+.nav .sel a,.nav li a:hover{color:#007dff;}
+.dtop span{ color:#ff3320;}
+.left1{height: 50px;display: table;}
+.pl{text-align: center;width: 100%;display:none;}
+.pl_visited{text-align: center;width: 100%; display: block;font-size:25px;color: #007dff;margin-top: -10px}
+.btn{color: #007dff}
+.del{color:#ff3320;}
+.others{color:#000;font-weight: bold;font-size:16px;}
+.other #delUser{color:#007dff;}
+
+
+/*行内样式抽取*/
+.showItem{display:block;}
+.hidden{display:none;}
+.userCenter-bindAccount .disable-button,.userCenter-wapBindMobile #forgetByEmailForm .disable-button{color: #aaa;}
+.userCenter-bindAccount #mod-forget-area .form-edit-area{margin-left: auto;margin-right: auto;width:600px; height:300px;border: 0px solid red;}
+.userCenter-bindAccount #mod-forget-area .marginTop0{margin-top:0px;}
+.userCenter-bindAccount #mod-forget-area .getAuthCodeDiv{margin-top:0px;margin-left:10px;}
+
+.userCenter-wapBindMobile #forgetByEmailForm .table-box{border:0px solid blue;}
+.userCenter-wapBindMobile #forgetByEmailForm .noBorder{border:0px solid red;}
+.userCenter-wapBindMobile #forgetByEmailForm .inputAuthCode{width:50%;padding-right:5%;}
+.userCenter-wapBindMobile #forgetByEmailForm .getAuthCode{width:50%;padding-left:5%;}
+.userCenter-wapBindMobile #forgetByEmailForm .getAuthCodeDiv{width:100%;margin-top:10px;}
+.userCenter-wapBindMobile #forgetByEmailForm .getAuthCodeTips{margin-left:-25px;}
+.userCenter-wapBindMobile #forgetByEmailForm .height200{height:200px;}
+.userCenter-wapBindMobile #forgetByEmailForm .width100{width:100%;}
+.userCenter-wapBindMobile #forgetByEmailForm .marginTop10,.userCenter-ucSecurity .marginTop10{margin-top:10px;}
+
+.userCenter-ucInfo .global_dialog_confirm_content,.userCenter-ucInfo .global_dialog_alert_content{padding-top: 0px;}
+
+.userCenter-ucSecurity .userAcctColor{color: #000}
+.userCenter-ucSecurity .thirdAccInfoImg{width: 36px;height: 36px;}
+.userCenter-ucSecurity .accProtectFaq{color:#007dff;margin-left:8px}
+.userCenter-ucSecurity .accProtectFaq:hover{color:#0064cc;}
+.userCenter-ucSecurity .secPhoneTips{color:red}
+
+.userCenter-ucUpdateAg .dialog_div {width: 100%;heigh:30px;text-align:center;margin-top: 10px;}
+.userCenter-ucUpdateAg .dialog_link {color: #00C0F4;text-decoration: none;}
+.userCenter-ucUpdateAg .agrIndent{text-indent: 2em;}
+.userCenter-ucUpdateAg .agrLineH{line-height:150%;color: #000000;font-size:15px;}
+.userCenter-ucUpdateAg .agrLineH a{color:#007dff;text-decoration: none;}
+.userCenter-ucUpdateAg .selectCountry-right{float:right;}
+.userCenter-ucUpdateAg .regAgrTitle{margin-bottom:20px;margin-top:-8px;font-size:16px;}
+.userCenter-ucUpdateAg .checkboxFive{width:11px;position: relative;margin-top: 4px;}
+.userCenter-ucUpdateAg .checkboxFive label {cursor: pointer;position: absolute;width: 12px;height: 12px;top: 0;left: 0;background: #fcfcfc;border:1px solid #ccc;border-radius: 3px;}
+.userCenter-ucUpdateAg .checkboxFive label:after {opacity: 0.4;content: '';position: absolute;width: 7px;height: 4px;background: transparent;top: 2px;left: 1px;border: 2px solid #fff;border-top: none;border-right: none;-webkit-transform: rotate(-45deg);-moz-transform: rotate(-45deg);-o-transform: rotate(-45deg);-ms-transform: rotate(-45deg);transform: rotate(-45deg);}
+.userCenter-ucUpdateAg .checkboxFive input[type=checkbox] {display:none;} 
+.userCenter-ucUpdateAg .checkboxFive input[type=checkbox]:checked + label:after {opacity: 1;}
+.userCenter-ucUpdateAg .checkboxFive label:hover::after {opacity: 0.5;}
+.userCenter-ucUpdateAg .checkboxFive input[type=checkbox]:checked ~ label {background-color:#007dff;}
+.userCenter-ucUpdateAg .adContentPart{margin-left:20px;line-height:180%;}
+.userCenter-ucUpdateAg .adCheckBoxPart{width:13px;float:left;}
+.userCenter-ucUpdateAg .dialog-title {text-align: center;color: #4C4C4C;font-weight: bold;font-size: 24px;}
+.userCenter-ucUpdateAg .box-shadow-in{padding-top:20px; padding-bottom:30px; border-bottom:1px solid #e0e0e0; text-align:center;}
+.userCenter-ucUpdateAg .node-title {margin: 18px 0px 10px;font-size: 14px;font-weight: bold;}
+.userCenter-ucUpdateAg .dialog-button {border-radius: 23px;margin:0 15px;text-decoration: none;vertical-align: top;color: #007dff;height: 42px;line-height: 42px;width: 214px;text-align: center;font-size: 16px;border: 1px solid #ccc;background-color: #f2f2f2;cursor: pointer;display: inline-block;}
+.userCenter-ucUpdateAg .dialog-button:hover {text-decoration: none !important;background: #ddd;}
+.userCenter-ucUpdateAg .box-shadow-in {padding-bottom: 10px;margin-bottom: 10px;border-bottom: 1px solid #e0e0e0;text-align: center}
+.userCenter-ucUpdateAg a {-webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);text-decoration: none;color:#808080;}
+.userCenter-ucUpdateAg .mainContentDIv{border: 0px solid red;width:60%;height:2000px;background-color:white; margin-left: auto;margin-right: auto;padding-top:30px;min-width:600px;}
+.userCenter-ucUpdateAg #mainConten .mainContentDIv-box{border: 0px solid blue;width:80%;margin-left: auto;margin-right: auto;}
+.userCenter-ucUpdateAg #mainConten .marginBottom30{margin-bottom:30px;}
+.userCenter-ucUpdateAg #mainConten .updateAgDiv{border: 0px solid #e0e0e0;padding:0px;margin-top:0px;}
+.userCenter-ucUpdateAg #mainConten .agreementTip{font-size:16px;color:#000}
+.userCenter-ucUpdateAg #mainConten .marginTop20{margin-top: 20px;}
+.userCenter-ucUpdateAg #mainConten .marginLeft30{margin-left: 30px;}
+
+.userCenter-ucUpdateAgWap{height:100%;}
+.userCenter-ucUpdateAgWap .wel_activity{bottom: 50px;width:100%;}
+.userCenter-ucUpdateAgWap .selectCountryImg {display: block;width: 30px;height: 30px;  background-position-y: 12px;background-position-x: 10px;position: relative;top: -8px;}
+.userCenter-ucUpdateAgWap .wapAgree {text-align: center;margin-top: -14px;}
+.userCenter-ucUpdateAgWap .dialog_div {width: 100%;heigh:30px;text-align:center;margin-top: 10px;}
+.userCenter-ucUpdateAgWap #agreement .chooseCountry{margin:16px 16px 0;}
+.userCenter-ucUpdateAgWap #agreement .node-titleFont{color:#000;font-size:16px;}
+.userCenter-ucUpdateAgWap #agreement .marginTop8{margin-top:8px;}
+.userCenter-ucUpdateAgWap #agreement .marginTop5{margin-top:5px;}
+
+.userCenter-upload{background:#fff}
+.userCenter-upload .jcrop-holder #preview-pane {display: block;position: absolute;z-index: 2000; top: 0px;right: -180px;padding: 6px;border: 1px rgba(0,0,0,.4) solid;background-color: white;}
+.userCenter-upload #preview-pane .preview-container {width: 80px;height: 80px;overflow: hidden;} 
+.userCenter-upload .target{width: 170px; height: 170px;}
+.userCenter-upload .target-td{width:170px;}
+.userCenter-upload .target_borderStyle{position:relative;padding:5px; width:160px;height:160px; margin-left: 243px;left:-74px;}
+.userCenter-upload .picCutTb{width:486px; margin:100px 0;}
+.userCenter-upload #BigImage{display:none;}
+.userCenter-upload .preview-pane_1 img{width:120px; border-radius: 50%;}
+.userCenter-upload .picCutTb .dbtn2{display: inline-block; margin-left: 10px;}
+.userCenter-upload .upload-tips{padding:20px 60px 30px 85px;}
+.userCenter-upload #tb_picCutTb_default{margin-top:20px;}
+.userCenter-upload .picCutTb .choosePic{position:relative;float:left;}
+.userCenter-upload .picCutTb .uploadBtn{position:relative;float:right;}
+.detail .dtop{color:#000;font-size:14px}
+.menu.wp{height:60px;line-height:60px}
+.menu .nav li {padding:25px 0px 0px 38px;}
+.accountProtectOpen {border: 0px;color: #999;margin-left: 10px;display: inline-block;height: 35px;line-height: 35px;cursor: default;text-align: center;font-size: 14px;margin-top:7px;}
+.uc-account-des{color:#999;font-size:14px;padding:0px 0px 20px 0px;margin-top:-3px}
+.thirdAccountStyle.detail .dtop{margin-top:15px}
+.detail .dtop{margin-top:5px}
+.margin16{margin-top:16px}
+.ddrop{
+    border: 0px solid #c5c5c5;
+    border-radius: 25px;
+    background-color: #f7f7f7;
+    font-size: 14px;
+    padding: 14px;
+    margin-top: 25px;
+}
+.dptick {
+    width: 12px;
+    height: 6px;
+    display: inline-block;
+    background-image: url(../images/triangle_green.png);
+    background-size: cover;
+    margin-left: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    background-position:0 0;
+    padding:0;
+}
+.sex-line {
+    font-size: 15px;
+    color: rgba(0,0,0,1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 14px 0;
+    position: relative;
+}
+.sex-name {
+    display: block;
+    max-width: 90%;
+}
+.radioUnCheck {
+    padding: 10px;
+    background-image: url(../images/btn_unckeck.png);
+    background-size: cover;
+    position: absolute;
+    right: 0;
+     margin-top: -1px;
+
+}
+.sex-line:after {
+    content: ".";
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+}
+.radioCheck {
+    background-image: url(../images/btn_check.png);
+    background-size: cover;
+    padding: 10px;
+    margin-top: -1px;
+    position: absolute;
+    right: 0
+}
+.line .uctb{padding-left:0;padding-right:0}
+.ptitle2{padding-left:0;padding-right:0}
+.detail .dtop.modifyPwd{margin-top:13px;}
+.dinput-UI5 input{color:#333;font-size:14px}
+.account-panel .detail .dtop{margin-top:14px}
+.completeInfo{margin-top:8px;}
+.line .uctb{padding:16px 0px 16px 0px}
+.mkcl .s2 span{vertical-align:middle}
+.uncheck {
+    vertical-align: middle;
+    margin: 0 10px;
+}
+
+.DFVersion-EMUI6{font-size: 14px;color: #000000;line-height: 1.5;}
+.DFVersion-item-EMUI6{font-size: 14px;color: #000000;line-height: 1.5;}
+.DFVersion-link-EMUI6{font-family: medium;font-size: 14px;color: #007dff!important;line-height: 1.5;}
+.DFVersion-link-EMUI6:hover{color: #0064cc!important;}
+.DFVersion-item-point{display: inline-block;font-size: 25px;margin-top: -15px;vertical-align: middle;text-align: center;color: #000000;}
+.DFVersion-marginFix{margin-top: 16px;}
+.DFVersion-attentionTip{font-weight: bold;}
+
+/*帐号中心--安全中心样式--2.6.1版本css261*/
+.css261 .dtop{display: inline !important;}
+.css261 .ptitle2{padding-top: 20px; padding-bottom: 20px;color:#36383c;font-size:18px;font-weight:normal;}
+.css261 .ptitle2 .subTitle{font-size:14px;color:#999;margin-top:5px;}
+.css261 .setBorderTop{border-top: 1px solid #e5e5e5;}
+.css261 .setBorderBot{border-bottom: 1px solid #e5e5e5;}
+.css261 .width450{width:448px;float:left;}
+.css261 .no_empower_appOrWeb{text-align:center;}
+.css261 .noAppImg{width:100%;margin:0 auto;}
+.css261 .noAppWord{font-size:14px;color:#999;}
+.css261 .appDetail{font-size:12px;color:#007dff;line-height:19px;}
+.css261 .appName{line-height:40px;margin-left:15px;}
+.css261 .appPart .appName{line-height:1;margin-left:0;}
+.css261 .authorityDetail{margin-left:55px;}
+.css261 .authorityDetail p,.times{font-size:14px;color:#999;margin-bottom:8px;}
+.css261 .authorityDetail .tipTitle{color:#333;}
+.css261 .marginT20{margin-top:20px;}
+.css261 .dialog-middle-btn-wrap span{color:#ff3320;}
+.css261 .powerPart{margin-bottom:20px;padding:0 30px}
+
+.css261 .pannel{margin-bottom:20px;padding:0 30px;}
+.css261 .no_empower_appOrWeb{padding:40px 0;}
+.css261 .noAppImg{margin-bottom:15px;}
+.css261  .setBorderTop{border-top:0;}
+.css261 .line{border-top:0;}
+.css261 .pannel{height:100%;}
+.css261 .appPart .appName{text-decoration:none;cursor:auto;}
+.appPart .uctb {padding:18px 0 16px 0;}
+.appPart .uctb img{margin:0px 15px 0 0;}
+
+.birthday_line{background: #efefef;height: 1px;margin: 16px 0px;}
+.agrLineH{line-height: 150%;}
+.div.adCheckBoxPart{display: none;}
+.adContentPart{overflow: hidden;}
+.tip-detail{vertical-align: top;margin-left: 5px;}
+.agrLineH{line-height: 150%;}
+#updateAgreementDiv .birthday_line:first-child{display: none;}
+
+
+.hwid-Notice,.hwid-Notice div{font-size: 14px;color: #000000;line-height: 1.3!important;}
+.hwid-Notice .marginTop8,.marginTop8{margin-top:8px;}
+.hwid-Notice .marginTop16,.marginTop16{margin-top:16px;}
+.hwid-Notice .item-link{font-family: medium;font-size: 14px;color: #007dff !important;line-height: 1.5;}
+.hwid-Notice .item-link:hover{color: #0064cc !important;}
+.dialog-tip-line{padding:0 8px;margin-bottom:8px;}
+/* 个人信息-右上角红色圆�? */
+.menuSlt_info_a{position:relative;}
+.menuSlt_info_circle_red {display:none; border-radius: 50%; background-color: rgb(250, 42, 45); position: absolute; right: -6px; top: 0; width: 6px; height: 6px; z-index: 212; }
+/*生日设置引导弹框*/
+.birthday_set_guide{position: relative; font-size: 14px;color: #999;padding: 14px 18px 14px 22px;}
+.birthday_set_guide .guide_bg {display:none; background-color: rgba(0,0,0,0.8); position: absolute; left: -6px; bottom: 40px; width: 300px; z-index: 1000; border-radius: 5px; }
+.birthday_set_guide .guide_triangle{width:0; height:0; border-width:10px; border-style:solid; border-color:rgba(0,0,0,0.8) transparent transparent transparent; position: absolute; left: 30px; bottom: -20px; }
+.birthday_set_guide .guide_btn_close{width:10px; height:10px;position: absolute;right: 10px;top:10px;background:url(../images/btn_dialog_close.png) no-repeat; cursor:pointer;}
+.birthday_set_guide .guide_content{margin: 6px 0 0 0; color: #fff; font-size: 14px;line-height: 26px;}
+.birthday_set_guide .guide_line{width: 100%;height: 1px;background-color: #fff;position: absolute;bottom: 36px;}
+.birthday_set_guide .guide_set_text{float: right; bottom: -2px; color: #fff; font-size: 13.68px; padding-bottom: 11px; cursor:pointer;}
+#input_languageCode.ddrop-EMU5 .select-text { font-size: 15px;vertical-align: middle;display: inline-block;width: 70px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}

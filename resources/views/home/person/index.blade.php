@@ -6,6 +6,7 @@
         <title>
             @yield('title')
         </title>
+        @section('css')
         <link rel="stylesheet" href="/person/css/index.css" type="text/css">
         <link rel="stylesheet" href="/person/css/per.css" type="text/css">
         <link rel="stylesheet" href="/home/css/bootstrap.min.css" type="text/css">
@@ -13,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="/home/fonts/iconfont.css">
         <script src="/home/js/jquery-1.12.4.js" type="text/javascript"></script>
         <script src="/home/js/bootstrap.min.js" type="text/javascript"></script>
+        @show
     </head>
     <body>
         <!-- 导航 --><!-- 导航顶部 -->
@@ -748,7 +750,7 @@
                     </div>
                 </div>
             </div>
-        </div><!-- 页尾部结束 --><script type="text/javascript">
+        </div><!-- 页尾部结束 -->@section('script')<script type="text/javascript">
     //  滚动条
             console.log($('.yingcang li:first').show()) setInterval(function() {
                 $('.djs li:first').slideUp(800,
@@ -805,5 +807,6 @@
             },
             800)
         </script>
+        @show
     </body>
 </html>

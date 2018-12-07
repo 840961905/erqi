@@ -1,0 +1,75 @@
+@charset "utf-8";
+.topbar{font-size: 14px; background-color:#333;}
+.tp{color:#b7b7b7;}
+.tbl a{padding-right: 30px; line-height:34px;}
+.tbr{float: right; font-size: 12px;}
+.tbr a,.tbr span{line-height:34px;}
+.user{padding:4px 12px; background-position:0 0;}
+.account{padding:10px 0 12px 10px; line-height:1;}
+.tbr span{ padding:0 12px;}
+.tbl a:hover, .tbr a:hover{color:#fff;}
+.menu{color: #333333; line-height:82px;}
+.mnr{float: right; position: relative;}
+.nav li{float:left; padding:42px 0px 26px 38px;}
+.nav li a{font-size: 14px; font-weight:bold; color:#333;}
+.navsign{ height: 5px; width: 5px; position: absolute; top:62px; transition:all 0.32s ease 0s; background-position:0 -50px;}
+.upic{float: left; margin:64px 92px 0 64px;text-align: center; font-size: 14px;}
+.upic img{border-radius:50%; width:160px;height:160px}
+.upic p{margin-top: 10px;}
+.umsg{ margin: 32px 0 90px 297px; text-align: left;}
+.title{font-size: 14px; font-weight: bold; color: #333;margin: 48px 0 12px 22px; }
+.umsg p{font-size: 14px; color: #999; padding:14px 18px 14px 22px; }
+.uinfo{color: #050505; margin-right: 46px;}
+.more{float: right; color: #007dff;}
+.docname{margin: 38px 10px 23px; font-size: 14px; font-weight: bold; color:#29d0d8;}
+.doccont{line-height:22px; margin:0 0px; font-size:14px;}
+.docdate{margin: 30px 10px 24px; font-size: 14px;}
+.lh{padding-bottom:20px;}
+.child-intro{padding:23px 10px; font-size:14px;}
+.child-list li{padding:18px 10px; font-size:14px;}
+.avt{width:36px; height:36px; border-radius:50%; margin:0 7px; vertical-align: middle;}
+.name{margin-left:15px;}
+.age{color:#999; margin-right:10px; margin-top: 10px;}
+.create{padding:18px 20px 43px; font-size:14px;}
+.other li{padding:29px 0px; font-size:14px;}
+.other a{color:#333;}
+.spe-input .dinput{margin:10px 0 20px;}
+.spe-input .ddrop{margin:10px 0 23px;}
+.spe-input .inptips2{padding:0 15px; color:#333;}
+.del-ac p{padding:7px 0; font-size:14px; line-height:16px;}
+.bold{font-weight:bold;}
+.services{padding:7px 15px;}
+.services li{list-style:initial; font-size:14px; padding:1px 0;}
+.dbtn2.del{color: #e73c01;}
+.svlist{padding:36px 25px 26px;}
+.svnode{width: 300px; height: 74px; color: #999999; float: left; position:relative;}
+.svnode a img{vertical-align: middle;}
+.svname{position: absolute; top:5px; left: 66px; width: 202px; }
+.svname a{font-size: 14px; font-weight: bold; color: #333333;}
+.svname p{margin-top: 5px; line-height:14px;}
+.uctb{padding: 18px 0px 16px 0px;}
+.uctb img{ margin:6px 15px 5px 0;}
+.detail p{ color:#999; line-height:19px;}
+.themeName-blue .detail .dtop{ color:#333; font-size:14px;}
+.themeName-huawei .detail .dtop{ color:#000; font-size:14px;}
+.themeName-red .detail .dtop{ color:#000; font-size:14px;}
+.dtop span{ color:#e73c01;}
+.uncheck{ padding:8px; display:inline-block; background-position:0 -100px;}
+/* .switch{ padding:15px 25px; display:inline-block; margin-right:25px;background-position:-100px -100px;cursor: pointer;}.switch.on{ background-position:-200px 0px;} */.detail{margin-left:48px;}.func-list{position: relative;width:100%; font-size: 12px; color: #999999;float: left;}.phone{width: 26px; height: 26px;display: block; background-position: 0 0; margin-top: 5px;}.Email{width: 26px; height: 26px;display: block; background-position: 0 -70px; margin-top: 5px;}.WeChat{width: 26px; height: 26px;display: block; background-position: 0 -145px; margin-top: 5px;}.QQ{width: 26px; height: 26px;display: block; background-position: 0 -213px; margin-top: 5px;}.sina{width: 26px; height: 26px;display: block; background-position: 0 -285px; margin-top: 5px;}.account_p{width: 26px; height: 26px;display: block; background-position: 0 -410px; margin-top: 5px;}.lock_p{width: 26px; height: 26px;display: block; background-position: 0 -480px; margin-top: 5px;}.lock_e{width: 26px; height: 26px;display: block; background-position: 0 -550px; margin-top: 5px;}.modify{width: 26px; height: 26px;display: block; background-position: 0 -620px; margin-top: 5px;}.security{width: 26px; height: 26px;display: block; background-position: 0 -690px; margin-top: 5px;}.uc-btns img{margin-right: 22px;}.cookie-content{padding:25px 30px 30px 20px;}.cookie-content h3{font-size:24px;}.cookie-content p{font-size:14px; line-height:20px;margin-top:25px;}.top30{margin-top: 30px;}.center{text-align: center;}div .btn2{width: 258px;margin-bottom: 10px;}.btn_midefy{border-radius: 15px;padding:7px 50px;width: auto;height: 42px;font-weight: normal;font-size: 14px;background-image:none;background-color:RGB(202,21,30);border-width:0 0 2px 0;border-style:solid;border-color:RGB(202,21,30);text-align:center;color: #fff;cursor: pointer;margin-top:5px;}
+.childLogo{float:left;position: absolute;top: 16px;left: 5px;}
+.logo{position: absolute;top: 15px;left: 120px;width: 200px;}
+.logo_text{position: absolute;top: 30px;left: 135px;width: 200px;}
+.ucEmailAddrAuthTip{font-size: 14px; color:#333; text-align:left; line-height:20px;}
+span.logo_text{font-size: 18px;color: black;padding-left: 22px;font-weight: bold;}
+.themeName-blue .loginAndRegLink {color:#007dff;text-decoration: none;}
+.themeName-huawei .loginAndRegLink {color: #00C0F4;text-decoration: underline;}
+.themeName-red .loginAndRegLink {color: #00C0F4;text-decoration: underline;}
+.themeName-blue .loginAndRegLink:hover {color:#0064cc;text-decoration: none;}
+.themeName-huawei .loginAndRegLink:hover {}
+.themeName-red .loginAndRegLink:hover {}
+.btn-des{float:left;height:40px;line-height:40px;margin-right:20px}
+.adContentPart{margin-left:20px;line-height:180%;}
+.adCheckBoxPart{width:13px;float:left;}
+.switch{padding:15px 25px; display:inline-block;margin-top:10px; margin-right:0px;background-image: url("../images/switch_off.png");background-position:0px 0px;cursor: pointer;}
+.switch.on{ padding:15px 25px; display:inline-block;margin-top:10px; margin-right:0px;background-image: url("../images/switch_on.png");background-position:0px 0px;cursor: pointer;}
+.accountProtectOpen{width:106px}

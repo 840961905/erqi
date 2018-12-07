@@ -41,7 +41,6 @@
 	               <div class="i-login">
 	                 <div class="h">
 	                   <div class="">
-	                     <!-- <script>document.write('<a id="top-index-loginUrl" href="https://hwid1.vmall.com/CAS/remoteLogin?loginChannel=26000000&reqClientType=26&lang=zh-cn&loginUrl=https%3A%2F%2Fhwid1.vmall.com%2FCAS%2Fportal%2Flogin.html&service=https%3A%2F%2Fwww.vmall.com%2Faccount%2Facaslogin%3Furl%3D'+encodeURIComponent(encodeURIComponent(window.location.href))+'" rel="nofollow" onclick="pushLoginMsg(\'登录\',\'\')">请登录</a>');</script> -->
 	                     <script>document.write('<a id="top-index-loginUrl" href="javascript:;" rel="nofollow" onclick="pushLoginMsgInfoPerson(\'登录\',\'\')">请登录</a>');</script>
 	                     <a id="top-index-loginUrl" href="javascript:;" rel="nofollow" onclick="pushLoginMsgInfoPerson('登录','')">请登录</a>
 	                     <a href="https://hwid1.vmall.com/CAS/portal/userRegister/regbyphone.html?service=https://www.vmall.com/account/caslogin&amp;loginChannel=26000000&amp;reqClientType=26&amp;lang=zh-cn" rel="nofollow" onclick="pushLoginMsg('注册','')">&nbsp;&nbsp;注册</a></div>
@@ -55,7 +54,7 @@
 	             <div class="s-dropdown">
 	               <div class="h h-wide" id="up_loginName-hover">
 	                 <a class="icon-dropdown" href="https://www.vmall.com/member?t=1543833733671" rel="nofollow" target="_blank" onclick="pushLoginMsg('已登录','用户名')">
-	                   <span id="up_loginName">{{'qweqewqwe'}}</span></a>&nbsp;</div>
+	                   <span id="up_loginName">{{session('aname')}}</span></a>&nbsp;</div>
 	               <div class="b">
 	                 <!-- 2017-06-19-个人信息-start -->
 	                 <div class="dropdown-i-mall">
@@ -75,12 +74,12 @@
 	                       <img src="https://res.vmallres.com/20181122/images/echannel/bg/bg71.png" class="user-img-shade">
 	                       <p class="user-img">
 	                         <a href="https://www.vmall.com/member?t=15438337336711543833734593" rel="nofollow" timetype="timestamp" target="_blank" onclick="pushLoginMsg('已登录','头像')">
-	                           <img id="customerPic" src="https://res.vmallres.com/20181122/images/echannel/misc/img_not_logged_in.png" alt="默认头像" imgpath="https://res.vmallres.com/20181122/images"></a>
+	                           <img id="customerPic" src="{{session('img')}}" alt="默认头像" imgpath="https://res.vmallres.com/20181122/images"></a>
 	                       </p>
 	                     </div>
 	                     <div class="user-info fl">
 	                       <a href="https://www.vmall.com/member?t=1543833733671timestamp" rel="nofollow" target="_blank" onclick="pushLoginMsg('已登录','用户名')">
-	                         <div class="user-info-name" id="up_loginName_info">{{'qweqweqwe'}}</div></a>
+	                         <div class="user-info-name" id="up_loginName_info">{{session('aname')}}</div></a>
 	                       <div class="user-info-detail clearfix" id="vip-info">
 	                         <a id="authentication_y" class="icon-realname hide" style="display: none;">已实名</a>
 	                         <a id="authentication_n" href="https://www.vmall.com/authmember/accesstoken" rel="nofollow" class="icon-realname disabled hide" onclick="pushLoginMsg('已登录','未实名')" style="display: inline;">未实名</a>
@@ -885,10 +884,10 @@
 		          </div> 
 		          <div class="mc-user-info fl "> 
 		           <div class="name">
-		           {{'asdasdasd'}}
+		           {{session('aname')}}
 		           </div> 
 		           <a href="https://www.vmall.com/member/point" class="link">查看会员权益&nbsp;&gt;</a> 
-		           <a href="javascript:;" onclick="ec.member.myCenter.perCenter()" class="mc-user-btn">帐号中心</a> 
+		           <a href="/home/person/info" class="mc-user-btn">帐号中心</a> 
 		          </div> 
 		          <div class="mc-user-info fl hide">
 		           <!--未登录--> 

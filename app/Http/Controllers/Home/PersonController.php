@@ -17,7 +17,7 @@ class PersonController extends Controller
      */
     public function  person( )
     {
-    	return view('home.person.person',['title'=>'中心']);
+    	return view('home.person.person',['title'=>'个人中心']);
     }
 
 

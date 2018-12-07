@@ -45,10 +45,11 @@ class LoginController extends Controller
 		}
 		
 		//存点信息  session
-        session(['uid'=>$rs->id]);
+        session(['userid'=>$rs->id]);
 		session(['img'=>$rs->img]);
         session(['aname'=>$rs->aname]);
-		session(['status'=>$rs->status]);
+        session(['status'=>$rs->status]);
+		session(['phone'=>$rs->phone]);
 		return redirect('/');
     }
 
