@@ -17,7 +17,7 @@ class PersonController extends Controller
      */
     public function  person( )
     {
-    	return view('home.person.person',['title'=>'个人中心']);
+    	return view('home.person.person',['title'=>'中心']);
     }
 
 
@@ -59,6 +59,7 @@ class PersonController extends Controller
         if(isset($res['defaultFlag'])){
             $xgaires['defaultadr'] = '0';
             Address::where('uid', 1)->update($xgaires);
+            $data_cont['defaultadr'] = '1';
         }
 
         try{
@@ -72,6 +73,144 @@ class PersonController extends Controller
         }
 
     }
+
+
+    //edit
+    public function edit(Request $request)
+    {
+        $res = $request->except('_token','province','area');
+
+
+        $session_id = 1;
+        /*
+          "consignee" => "李晨祯"
+          "phone" => "13001465555"
+          "location" => "北京市(直辖市)  西城区"
+          "detailed" => "兄弟连IT"
+          "adrlabel" => "公司"
+          "defaultFlag" => "1"
+          "idid" => "addr-list-1"
+        */
+
+        //收货人
+        $addr['consignee'] = $res['consignee'];
+        //手机号
+        $addr['phone'] = $res['phone'];
+        //地址
+        $addr['location'] = $res['location'];
+        //详细地址
+        $addr['detailed'] = $res['detailed'];
+        //标签
+        $addr['adrlabel'] = $res['adrlabel'];
+
+        
+        //修改地址的ID
+        $id = substr($res['idid'],10);
+
+        //如果用户是否选择了，设置默认地址,如果选择则修改以前的数据都为 0
+        if(isset($res['defaultFlag'])){
+            $xgaires['defaultadr'] = '0';
+            Address::where('uid', $session_id)->update($xgaires);
+            $addr['defaultadr'] = '1';
+        }else {
+            $addr['defaultadr'] = '0';
+        }
+
+        //数据表修改数据
+        try{
+
+            $data = Address::where('id',$id)->where('uid','=',$session_id)->update($addr);
+            
+            if($data){
+                return redirect('/home/person/addr')->with('success','修改成功');
+            }
+        }catch(\Exception $e){
+
+            return back()->with('error','修改失败');
+        }
+
+
+
+    }
+
+    //ajax_default
+    public function ajax_default()
+    {
+        //获取点击默认的ID
+        $id = substr($_GET['id'],10);
+        //获取 session ID 
+        $session_id = 1;
+
+        //查询是否有默认地址
+        $usum = Address::where('uid','=',$session_id)->where('defaultadr','=','1')->count();
+
+        if($usum != 0){
+            $addmodify['defaultadr'] = '0';
+            $res1 = Address::where('uid','=',$session_id)->update($addmodify);
+            if($res1){
+                $addmodify['defaultadr'] = '1';
+                $res2 = Address::where('id','=',$id)->update($addmodify);
+                $jieg=array(
+                    "zhuangt"=>"1",
+                    "tishi"=>"修改成功",
+                );
+            }
+        }else {
+            $addmodify['defaultadr'] = '1';
+            $res2 = Address::where('id','=',$id)->update($addmodify);
+            $jieg=array(
+                "zhuangt"=>"1",
+                "tishi"=>"修改成功",
+            );
+        }
+
+        return response()->json($jieg);
+    }
+
+
+    //ajax_addrdeldel
+    public function ajax_addrdeldel()
+    {
+        //获取点击默认的ID
+        $id = substr($_GET['id'],10);
+        //获取 session ID 
+        $session_id = 1;
+
+        //判断 session  和 地址 id是否一致
+        $usum = Address::where('id','=',$id)->where('uid','=',$session_id)->count();
+        if($usum == 0){
+            $jieg=array(
+                "zhuangt"=>"0",
+                "tishi"=>"删除失败",
+            );
+            return response()->json($jieg);
+            exit();
+        }
+
+
+
+        $res = Address::destroy($id);
+
+        if($res){
+            $jieg=array(
+                "zhuangt"=>"1",
+                "tishi"=>"删除成功",
+                "id" => "addr-list-".$id,
+            );
+        }else {
+            $jieg=array(
+                "zhuangt"=>"1",
+                "tishi"=>"删除失败",
+            );
+        }
+        
+
+        return response()->json($jieg);
+
+    }
+
+
+
 
 
 

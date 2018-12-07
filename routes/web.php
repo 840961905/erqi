@@ -108,14 +108,6 @@ Route::group(['middleware'=>['login','adminper']], function(){
 //前台首页
 Route::any('/','Home\IndexController@index');
 
-//个人中心
-Route::get('/home/person','Home\PersonController@person');
-//个人中心-收货地址管理
-Route::get('/home/person/addr','Home\PersonController@addr');
-//个人中心-我的订单
-Route::get('/home/person/order','Home\PersonController@order');
-//个人中心-我的订单
-Route::post('/home/person/addr/add','Home\PersonController@addradd');
 
 
 
@@ -150,7 +142,7 @@ Route::get('/customer/reply','Home\CustomerController@reply');
 Route::get('/customer/replyclick','Home\CustomerController@replyclick');
 
 
-Route::group([], function(){
+Route::group(['middleware'=>'homelogin'], function(){
 	// 购物车
      Route::get('cart','Home\CartController@cart');
      // 首页
@@ -172,6 +164,37 @@ Route::group([], function(){
      Route::post('carAdd','Home\CartController@carAdd');
 
      Route::post('carJian','Home\CartController@carJian');
+
+
+	//个人中心
+	Route::get('/home/person','Home\PersonController@person');
+	//个人中心-收货地址管理
+	Route::get('/home/person/addr','Home\PersonController@addr');
+	//个人中心-收货地址管理-设置为默认
+	Route::get('/home/person/addr/ajax_default','Home\PersonController@ajax_default');
+	Route::get('/home/person/addr/ajax_addrdeldel','Home\PersonController@ajax_addrdeldel');
+	Route::post('/home/person/addr/edit','Home\PersonController@edit');
+	//个人中心-我的订单
+	Route::get('/home/person/order','Home\PersonController@order');
+	//个人中心-我的订单
+	Route::post('/home/person/addr/add','Home\PersonController@addradd');
+
+
+
+	// 账号信息 首页
+	Route::get('/home/person/info','Home\PinfoController@index');
+	// 账号信息 显示修改手机号
+	Route::get('/home/person/changephone','Home\PinfoController@changephone');
+	// 账号信息 执行修改手机号
+	Route::post('/home/person/dochangephone','Home\PinfoController@dochangephone');
+	// 账号信息 显示修改邮箱
+	Route::get('/home/person/changeemail','Home\PinfoController@changeemail');
+	// 账号信息 执行修改邮箱
+	Route::post('/home/person/dochangeemail','Home\PinfoController@dochangeemail');
+	// 账号信息 显示修改密码
+	Route::get('/home/person/changepass','Home\PinfoController@changepass');
+	// 账号信息 执行修改密码
+	Route::post('/home/person/dochangepass','Home\PinfoController@dochangepass');
 
 
 });

@@ -31,7 +31,9 @@
                 margin-right: 8px;
                 color: #369;
             }
-
+            .p-state {
+                cursor:pointer;
+            }
 
             .xgai1 td label {margin-right: 10px;}
         </style>
@@ -265,366 +267,6 @@
     </div>
 </div>
 <!-- 2017-06-19-捷径栏-end -->
-
-<textarea id="selectRegion-tips" style="display: none;">&lt;!-- 20151105-全球语言弹出框-width:910px-start --&gt;
-&lt;div class="box-content"&gt;&lt;div class="box-lan-choose"&gt;&lt;dl&gt;&lt;dt&gt;Asia Pacific&lt;/dt&gt;&lt;dd class="box-button"&gt;&lt;a class="box-choose" href="http://www.vmall.hk/"&gt;香港&lt;/a&gt;&lt;a class="box-choose" href="https://www.hihonor.com/in/"&gt;India&lt;/a&gt;&lt;a class="box-choose" href="https://www.hihonor.com/my/"&gt;Malaysia&lt;/a&gt;&lt;/dd&gt;&lt;/dl&gt;&lt;dl class="box-lan-choose-area"&gt;&lt;dt&gt;The United States&lt;/dt&gt;&lt;dd class="box-button"&gt;&lt;a class="box-choose" href="https://www.hihonor.com/us/"&gt;United States&lt;/a&gt;&lt;/dd&gt;&lt;/dl&gt;&lt;dl class="box-lan-choose-area"&gt;&lt;dt&gt;Europe&lt;/dt&gt;&lt;dd class="box-button"&gt;&lt;a class="box-choose" href="https://www.honor.ru/"&gt;Россия&lt;/a&gt;&lt;a class="box-choose" href="https://www.hihonor.com/fr/"&gt;France&lt;/a&gt;&lt;a class="box-choose" href="https://www.hihonor.com/de"&gt;Deutschland&lt;/a&gt;&lt;a class="box-choose" href="https://www.hihonor.com/it/"&gt;Italia&lt;/a&gt;&lt;a class="box-choose" href="https://www.hihonor.com/es/"&gt;España&lt;/a&gt;&lt;a class="box-choose" href="https://www.hihonor.com/uk/"&gt;UK&lt;/a&gt;&lt;/dd&gt;&lt;/dl&gt;&lt;dl class="box-lan-choose-area"&gt;&lt;dt&gt;Middle East&lt;/dt&gt;&lt;dd class="box-button"&gt;&lt;a href="http://www.vmall.hk/" target="_self" textvalue="Saudi Arabia"&gt;&lt;/a&gt;&lt;a class="box-choose" href="https://www.hihonor.com/ae-en/"&gt;United Arab Emirates&lt;/a&gt;&lt;a class="box-choose" href="https://www.hihonor.com/sa-en/"&gt;Saudi Arabia&lt;/a&gt;&lt;/dd&gt;&lt;/dl&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;!-- 20151105-全球语言弹出框-width:910px-end --&gt;
-</textarea>
-
-
-
-
-
-
-<textarea id="micro-cart-tpl" class="hide">&lt;!--#macro microCartList data--&gt;
-&lt;!--#list data.itemInfos as item--&gt;
-		&lt;!--#var classChoose='';--&gt;
-		
-      
-        
-			
-			
-            &lt;!--#var skuId='#'+item.skuId;--&gt;
-            
-           
-            
-             &lt;!--#if (item.subItems &amp;&amp; item.subItems.length &gt; 0)--&gt;
-            &lt;!--#list item.subItems as sub--&gt;
- 				&lt;!--#if ((classChoose) &amp;&amp; (classChoose != "true")  )--&gt;           
-   					&lt;!--#var  classChoose='false';--&gt;
-   					
-   				&lt;!--/#if--&gt;         
-           		&lt;!--#if (sub.itemType == 'S1' || sub.itemType == 'S6')--&gt;
-        				&lt;!--#var  classChoose='true';--&gt;
-   					 &lt;!--#else--&gt;
-            	&lt;!--/#if--&gt;
-           		&lt;!--#if (sub.itemType == 'G' )--&gt;
-        				&lt;!--#var gGift='true';--&gt;
-            	&lt;!--/#if--&gt;
-            	&lt;!--#if (sub.itemType == 'J' )--&gt;
-        				&lt;!--#var jBuy='true';--&gt;
-            	&lt;!--/#if--&gt;
-	        &lt;!--/#list--&gt;
-	       &lt;!--/#if--&gt;
-	       
-	        &lt;!--#if (classChoose == 'true' )--&gt;
-        	    &lt;li class="minicart-pro-item minicart-pro-item-suit &lt;!--#if ( (item.show))--&gt;disabled&lt;!--/#if--&gt;"&gt;
-            &lt;!--#else--&gt;
-                &lt;li class="minicart-pro-item &lt;!--#if ( (item.show)) --&gt;disabled&lt;!--/#if--&gt;"&gt;	
-            &lt;!--/#if--&gt;
-            
-            &lt;div class="pro-info clearfix"&gt;
-           	&lt;!--#if (item.itemType=='B')--&gt;	
-           			
-                    
-                     &lt;!--#if (item.invalidCauseReason == 0) --&gt;
-                        &lt;div class="p-choose"&gt;&lt;i class="&lt;!--#if (item.selected)--&gt;icon-choose&lt;!--#else--&gt;icon-choose-normal&lt;!--/#if--&gt;" id="icon-choose-{#item.itemkd}" onclick="ec.minicart.click(this)" value="{#item.itemCode}" type="{#item.itemType}" data-itemId="{#item.itemId}"&gt;&lt;/i&gt;&lt;/div&gt;
-                        &lt;input class="hide" id="checkbox-{#item.itemkd}" name="bundleIds" value="{#item.itemCode}" data-itemId="{#item.itemId}" type="checkbox" &lt;!--#if (item.selected)--&gt;checked="checked"&lt;!--/#if--&gt; /&gt;
-                        &lt;input class="hide" id="quantity-{#item.itemCode}" value="{#item.qty}" data-type="{#item.itemType}" type="text" &lt;!--#if (item.selected)--&gt;checked="checked"&lt;!--/#if--&gt; /&gt;
-                    &lt;!--#elseif ((item.invalidCauseReason == 7)&amp;&amp;( !item.numblimit   )&amp;&amp;(!item.show) )--&gt;
-                         &lt;div class="p-choose"&gt;&lt;i class="&lt;!--#if (item.selected)--&gt;icon-choose&lt;!--#else--&gt;icon-choose-normal&lt;!--/#if--&gt;" id="icon-choose-{#item.itemkd}" onclick="ec.minicart.click(this)" value="{#item.itemCode}" type="{#item.itemType}" data-itemId="{#item.itemId}"&gt;&lt;/i&gt;&lt;/div&gt;
-                        &lt;input class="hide" id="checkbox-{#item.itemkd}" name="bundleIds" value="{#item.itemCode}" data-itemId="{#item.itemId}" type="checkbox" &lt;!--#if (item.selected)--&gt;checked="checked"&lt;!--/#if--&gt; /&gt;
-                        &lt;input class="hide" id="quantity-{#item.itemCode}" value="{#item.qty}" data-type="{#item.itemType}" type="text" &lt;!--#if (item.selected)--&gt;checked="checked"&lt;!--/#if--&gt; /&gt;
-                    &lt;!--#else--&gt;
-                        &lt;div class="p-choose"&gt;&lt;i class="icon-choose-normal" id="icon-choose-{#item.itemCode}"&gt;&lt;/i&gt;&lt;/div&gt;
-                        &lt;input class="hide" id="checkbox-{#item.itemCode}" name="bundleIds" value="{#item.itemCode}" type="checkbox" /&gt;
-                        &lt;input class="hide" id="quantity-{#item.itemCode}" value="{#item.qty}" data-type="{#item.itemType}" type="text" /&gt;
-                    &lt;!--/#if--&gt;
-                    
-                    &lt;div class="p-img"&gt;
-                        &lt;a href="/product/{#item.photoId}.html{#skuId}" title="" target="_blank" onclick = "pushCartProMsg('{#skuId}','/product/{#item.photoId}.html{#skuId}','{#item_index+1}')"&gt;
-                            &lt;img src="https://res.vmallres.com/pimages/{#item.photoPath}78_78_{#item.photoName}" alt="{#item.itemName}" /&gt;
-                        &lt;/a&gt;
-                    &lt;/div&gt;
-                    
-                    &lt;div class="p-name"&gt;
-                        &lt;a href="/product/{#item.photoId}.html{#skuId}" title="{#item.itemName}" target="_blank" onclick = "pushCartProMsg('{#skuId}','/product/{#item.photoId}.html{#skuId}','{#item_index+1}')"&gt;{#item.itemName}&lt;/a&gt;
-                    &lt;/div&gt;
-           	
-           				
-            &lt;!--#else--&gt;	
-                    &lt;!--#if ((item.invalidCauseReason == 0) &amp;&amp;(!item.bnumblimit) &amp;&amp;(!item.numblimit)) --&gt;
-                    	
-                        &lt;div class="p-choose"&gt;
-                        &lt;!--#if (item.itemType == "P") --&gt;
-                        &lt;i class="&lt;!--#if (item.selected) --&gt;icon-choose&lt;!--#else--&gt;icon-choose-normal&lt;!--/#if--&gt;" id="icon-choose-{#item.itemkd}" onclick="ec.minicart.click(this)" value="{#item.skuId}" type="{#item.itemType}" data-itemId="{#item.itemId}"&gt;&lt;/i&gt;
-                         &lt;input class="hide" name="skuIds" id="checkbox-{#item.itemkd}" value="{#item.skuId}" data-scode="{#item.itemCode}" data-itemId="{#item.itemId}" type="checkbox" &lt;!--#if (item.selected)--&gt;checked="checked"&lt;!--/#if--&gt;&gt;
-            		  &lt;!--#else--&gt;
-                        &lt;i class="&lt;!--#if (item.selected) --&gt;icon-choose&lt;!--#else--&gt;icon-choose-normal&lt;!--/#if--&gt;" id="icon-choose-{#item.itemkd}" onclick="ec.minicart.click(this)" value="{#item.skuId}" type="{#item.itemType}" data-itemId="{#item.itemId}"&gt;&lt;/i&gt;
-                        &lt;input class="hide" name="skuIds" id="checkbox-{#item.itemkd}" value="{#item.skuId}" data-scode="{#item.itemCode}" data-itemId="{#item.itemId}" type="checkbox" &lt;!--#if (item.selected)--&gt;checked="checked"&lt;!--/#if--&gt;&gt;
-                        &lt;!--/#if--&gt;
-                        &lt;/div&gt;
-                        
-                        &lt;input class="hide" id="quantity-{#item.skuId}" value="{#item.qty}" data-type="{#item.itemType}" type="text" &lt;!--#if (item.selected)--&gt;checked="checked"&lt;!--/#if--&gt; /&gt;
-                     
-                     &lt;!--#elseif ((item.invalidCauseReason == 7)&amp;&amp;( !item.numblimit  )&amp;&amp;(!item.show) )--&gt;
-                     
-                                  &lt;div class="p-choose"&gt;
-                        &lt;!--#if (item.itemType == "P") --&gt;
-                        &lt;i class="&lt;!--#if (item.selected) --&gt;icon-choose&lt;!--#else--&gt;icon-choose-normal&lt;!--/#if--&gt;" id="icon-choose-{#item.itemkd}" onclick="ec.minicart.click(this)" value="{#item.skuId}" type="{#item.itemType}" data-itemId="{#item.itemId}"&gt;&lt;/i&gt;
-                         &lt;input class="hide" name="skuIds" id="checkbox-{#item.itemkd}" value="{#item.skuId}" data-scode="{#item.itemCode}" data-itemId="{#item.itemId}" type="checkbox" &lt;!--#if (item.selected)--&gt;checked="checked"&lt;!--/#if--&gt;&gt;
-            		  &lt;!--#else--&gt;
-                        &lt;i class="&lt;!--#if (item.selected) --&gt;icon-choose&lt;!--#else--&gt;icon-choose-normal&lt;!--/#if--&gt;" id="icon-choose-{#item.itemkd}" onclick="ec.minicart.click(this)" value="{#item.skuId}" type="{#item.itemType}" data-itemId="{#item.itemId}"&gt;&lt;/i&gt;
-                        &lt;input class="hide" name="skuIds" id="checkbox-{#item.itemkd}" value="{#item.skuId}" data-scode="{#item.itemCode}" data-itemId="{#item.itemId}" type="checkbox" &lt;!--#if (item.selected)--&gt;checked="checked"&lt;!--/#if--&gt;&gt;
-                        &lt;!--/#if--&gt;
-                        &lt;/div&gt;
-                        
-                        &lt;input class="hide" id="quantity-{#item.skuId}" value="{#item.qty}" data-type="{#item.itemType}" type="text" &lt;!--#if (item.selected)--&gt;checked="checked"&lt;!--/#if--&gt; /&gt;
-                  
-                      
-                    &lt;!--#else--&gt;
-                        &lt;div class="p-choose"&gt;&lt;i class="icon-choose-normal" id="icon-choose-{#item.skuId}"&gt;&lt;/i&gt;&lt;/div&gt;
-                        &lt;input class="hide" name="skuIds" id="checkbox-{#item.skuId}" value="{#item.skuId}" type="checkbox" /&gt;
-                        &lt;input class="hide" id="quantity-{#item.skuId}" value="{#item.qty}" data-type="{#item.itemType}" type="text" /&gt;
-                    &lt;!--/#if--&gt;
-                    
-        			&lt;!--#if ((item.attrsMap)&amp;&amp;(item.attrsMap.package_code)) --&gt;
-        			 &lt;input class="hide" name="newBundle" id="bundle-{#item.itemkd}" value="{#item.attrsMap.package_code}" data-scode="&lt;!--#list item.subItems as sku--&gt;&lt;!--#if ((sku.itemType=='B')||(sku.itemType=='P'))--&gt;{#sku.itemCode},&lt;!--/#if--&gt;&lt;!--/#list--&gt;" type="checkbox" /&gt;
-        			&lt;!--/#if--&gt;
-        			
-        			
-                 	 &lt;div class="p-img"&gt;
-                        &lt;a href="/product/{#item.productId}.html{#skuId}" title="" target="_blank" onclick = "pushCartProMsg('{#skuId}','/product/{#item.productId}.html{#skuId}','{#item_index+1}')"&gt;
-                            &lt;img src="https://res.vmallres.com/pimages/{#item.photoPath}78_78_{#item.photoName}" alt="{#item.itemName}" /&gt;
-                        &lt;/a&gt;
-                    &lt;/div&gt;
-                    
-                    &lt;div class="p-name"&gt;
-                        &lt;a href="/product/{#item.productId}.html{#skuId}" title="{#item.itemName}" target="_blank" onclick = "pushCartProMsg('{#skuId}','/product/{#item.productId}.html{#skuId}','{#item_index+1}')"&gt;{#item.itemName}&lt;/a&gt;
-                    &lt;/div&gt;
-                 &lt;!--/#if--&gt;   
-                    &lt;div class="p-dec"&gt;
-                        &lt;span class="p-slogan"&gt;
-                           
-                        &lt;/span&gt;
-                    &lt;/div&gt;
-                    &lt;div class="p-status"&gt;
-                        
-                        &lt;!--#if (gGift == "true") --&gt;
-                        &lt;!--#list item.subItems as gif--&gt;
-                         &lt;!--#if (gif.itemType=="G")--&gt;
-                        &lt;input type="checkbox" name="giftId" class="hide" value="{#gif.itemCode}" /&gt;
-                        &lt;!--/#if--&gt;
-                        &lt;!--/#list--&gt;
-                        &lt;!--/#if--&gt;
-                        
-                      	&lt;!--#if (   (item.showP)&amp;&amp;( (item.invalidCauseReason==0) ||  ( (item.invalidCauseReason==7)  &amp;&amp; (  !item.numblimit  )  )  )    ) --&gt;
- 						&lt;div class="p-tags"&gt;此商品已失效&lt;/div&gt;              
-                        &lt;!--#else--&gt;
-                        &lt;!--#if (item.invalidCauseReason == 1) --&gt;
-                        &lt;div class="p-tags"&gt;此商品已失效&lt;/div&gt;
-                        &lt;!--#elseif (item.invalidCauseReason == 2) --&gt;
-                        &lt;div class="p-tags"&gt;此商品已失效 &lt;/div&gt;
-                        &lt;!--#elseif (item.invalidCauseReason == 3) --&gt;
-                        &lt;div class="p-tags"&gt;此商品已失效 &lt;/div&gt;
-                        &lt;!--#elseif (item.invalidCauseReason == 4) --&gt;
-                        &lt;div class="p-tags"&gt;此商品已失效 &lt;/div&gt;
-                        &lt;!--#elseif (item.invalidCauseReason == 5) --&gt;
-                        &lt;div class="p-tags"&gt;此商品暂不可购买 &lt;/div&gt;
-                        &lt;!--#elseif (item.invalidCauseReason == 6) --&gt;
-                        &lt;div class="p-tags"&gt;此商品暂时缺货 &lt;/div&gt;
-                        &lt;!--#elseif (item.invalidCauseReason == 7) --&gt;
-                        &lt;div class="p-tags"&gt;此商品限购{#item.invalidCauseLeftValue}件&lt;/div&gt;
-                        &lt;!--#elseif (item.invalidCauseReason == 8) --&gt;
-                        &lt;div class="p-tags"&gt;此商品已失效 &lt;/div&gt;
-                         &lt;!--#elseif (item.invalidCauseReason == 9) --&gt;
-                        &lt;div class="p-tags"&gt;此商品不在本渠道销售&lt;/div&gt;
-                         &lt;!--#elseif (item.invalidCauseReason == 10) --&gt;
-                        &lt;div class="p-tags"&gt;此商品已失效 &lt;/div&gt;
-                        &lt;!--/#if--&gt;
-                        &lt;!--/#if--&gt;
-                        
-                        &lt;div class="p-price"&gt;
-                            &lt;!--#if (item.salePrice != item.originalPrice) --&gt;&lt;s&gt;¥&nbsp;{#item.originalPrice.toFixed(2)}&lt;/s&gt;&nbsp;&nbsp;&lt;!--/#if--&gt;
-                            &lt;b&gt;¥&nbsp;{#item.salePrice.toFixed(2)}&lt;/b&gt;&lt;strong&gt;&lt;em&gt;x&lt;/em&gt;&lt;span&gt;{#item.qty}&lt;/span&gt;&lt;/strong&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            
-					&lt;!--#if ((item.itemType=='B')||(item.itemType=='P'))--&gt;	
-					&lt;div class="p-pack &lt;!--#if (item.show) --&gt;disabled&lt;!--/#if--&gt;"&gt;
-                    &lt;span class="p-mini-tag-suit"&gt;套餐&lt;/span&gt;
-                    &lt;a href="javascript:;" title="&lt;!--#list item.subItems as sku--&gt;&lt;!--#if ((sku.itemType=='B')||(sku.itemType=='P'))--&gt;{#sku.itemName}x{#sku.qty}&lt;!--/#if--&gt;&lt;!--/#list--&gt;"&gt;
-                        &lt;!--#list item.subItems as sku--&gt;
-                        &lt;!--#if ((sku.itemType=='B')||(sku.itemType=='P'))--&gt;
-                        &lt;span&gt;
-                        {#sku.itemName}&lt;em&gt;x{#sku.qty}&lt;/em&gt;
-						&lt;/span&gt;
-						&lt;!--/#if--&gt;	
-                        &lt;!--/#list--&gt;
-                    	&lt;/a&gt;
-                	&lt;/div&gt;
-					&lt;!--/#if--&gt;	
-            		
-            	
-            	
-            
-				&lt;!--#if ((classChoose=='true') || (jBuy=='true'))--&gt;
-                &lt;div class="pro-other clearfix" id={#classChoose}&gt;
-                    &lt;ol&gt;            
-					    &lt;!--#list item.subItems as sub--&gt;
-                        &lt;!--#if (sub.itemType == "S1") --&gt;
-                        
-                        &lt;li class="&lt;!--#if (sub.invalidCauseReason != 0) --&gt;disabled&lt;!--/#if--&gt;"&gt;
-                            &lt;div class="p-title"&gt;
-                                &lt;span class="p-mini-tag-long"&gt;延保&lt;/span&gt;{#sub.itemName}
-                            &lt;/div&gt;
-                            &lt;input class="hide" name="extendIds" value="{#sub.skuId}" data-scode="{#sub.itemCode}" type="checkbox" data-id="{#sub.itemId}" /&gt;
-                            &lt;div class="p-price"&gt;&lt;b&gt;¥&nbsp;{#sub.salePrice.toFixed(2)}&lt;/b&gt;&lt;strong&gt;&lt;em&gt;x&lt;/em&gt;&lt;span&gt;{#item.qty}&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
-                        &lt;/li&gt;
-                       
-                        &lt;!--/#if--&gt;
-                        &lt;!--/#list--&gt;         
-	         	
-	         			  &lt;!--#list item.subItems as sub--&gt;
-                        &lt;!--#if (sub.itemType == "S6") --&gt;
-                       
-                        &lt;li class="&lt;!--#if (sub.invalidCauseReason != 0) --&gt;disabled&lt;!--/#if--&gt;"&gt;
-                            &lt;div class="p-title"&gt;
-                                &lt;span class="p-mini-tag-extend"&gt;碎屏保&lt;/span&gt;{#sub.itemName}
-                            &lt;/div&gt;
-                            &lt;input class="hide" name="accidentIds" value="{#sub.skuId}" data-scode="{#sub.itemCode}" data-id="{#sub.itemId}" type="checkbox" /&gt;
-                            &lt;div class="p-price"&gt;&lt;b&gt;¥&nbsp;{#sub.salePrice.toFixed(2)}&lt;/b&gt;&lt;strong&gt;&lt;em&gt;x&lt;/em&gt;&lt;span&gt;{#item.qty}&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
-                        &lt;/li&gt;
-                        
-                        &lt;!--/#if--&gt;
-                        &lt;!--/#list--&gt;
-            			
-            			&lt;!--#if (jBuy=="true")--&gt;
-                        &lt;input type="hidden" id="preferIds_{#item.skuId}" 
-                        value="&lt;!--#list item.subItems as ea--&gt;&lt;!--#if (ea.itemType == "J") --&gt;{#ea.itemCode},&lt;!--/#if--&gt;&lt;!--/#list--&gt;" 
-                        skuids="&lt;!--#list item.subItems as ea--&gt;&lt;!--#if (ea.itemType == "J") --&gt;{#ea.skuId},&lt;!--/#if--&gt;&lt;!--/#list--&gt;" 
-                        newId="&lt;!--#list item.subItems as ea--&gt;&lt;!--#if (ea.itemType == "J") --&gt;{#ea.itemId},&lt;!--/#if--&gt;&lt;!--/#list--&gt;" /&gt;
-                        &lt;!--/#if--&gt;
-                        
-                        &lt;!--#list item.subItems as sub--&gt;
-                         &lt;!--#if (sub.itemType == "J") --&gt;
-                         
-                        &lt;li class="&lt;!--#if ((sub.Jlost)||(sub.invalidCauseReason!=0)) --&gt;disabled&lt;!--/#if--&gt;"&gt;
-                            &lt;div class="p-title p-add"&gt;
-                                &lt;span class="p-mini-tag-extend"&gt;加价购&lt;/span&gt;{#sub.itemName}
-                            &lt;/div&gt;
-                            &lt;div class="p-price"&gt;
-                                &lt;!--#if (sub.salePrice != sub.originalPrice) --&gt;&lt;s&gt;¥&nbsp;{#sub.originalPrice.toFixed(2)}&lt;/s&gt;&nbsp;&nbsp;&lt;!--/#if--&gt;
-                                &lt;b&gt;¥&nbsp;{#sub.salePrice.toFixed(2)}&lt;/b&gt;&lt;strong&gt;&lt;em&gt;x&lt;/em&gt;&lt;span&gt;{#sub.qty}&lt;/span&gt;&lt;/strong&gt;
-                            &lt;/div&gt;
-                        &lt;/li&gt;
-                        
-                         &lt;!--/#if--&gt;
-                        &lt;!--/#list--&gt;
-            
-      				&lt;/ol&gt;
-      			&lt;/div&gt;	      
-				&lt;!--/#if--&gt;     
-				
-				&lt;!--#if (gGift=="true")--&gt;
-                &lt;input type="hidden" id="gift_sbomCodes_{#item.skuId}" value="&lt;!--#list item.subItems as gift--&gt;&lt;!--#if (gift.itemType == "G") --&gt;{#gift.skuId},&lt;!--/#if--&gt;&lt;!--/#list--&gt;" /&gt;
-                &lt;div class="p-pack"&gt;
-                    &lt;span class="p-mini-tag-suit"&gt;配&lt;/span&gt;
-                    &lt;a href="javascript:;" style="cursor: default;" title="&lt;!--#list item.subItems as gift--&gt;&lt;!--#if (gift.itemType == "G") --&gt;{#gift.itemName}x{#gift.qty*item.qty},&lt;!--/#if--&gt;&lt;!--/#list--&gt;"&gt;
-                        &lt;!--#list item.subItems as gift--&gt;&lt;!--#if (gift.itemType == "G") --&gt;
-                        &lt;span class="&lt;!--#if (gift.invalidCauseReason != 0) --&gt;disabled&lt;!--/#if--&gt;"&gt;
-                        {#gift.itemName}&lt;em&gt;x{#gift.qty*item.qty}&lt;/em&gt;
-                        &lt;/span&gt; 
-						&lt;!--/#if--&gt;					
-                        &lt;!--/#list--&gt;
-                    &lt;/a&gt;
-                &lt;/div&gt;
-                &lt;!--/#if--&gt;
-                     
-            &lt;/li&gt;        
-		
-		
-		  
-       
-      &lt;!--/#list--&gt;
-&lt;!--/#macro--&gt;
-</textarea>
-
-<textarea class="hide" id="ec-binding-phone">    &lt;div id="ec-binding-phone-1" class="ec-binding-phone-box hide"&gt;
-        &lt;!-- 20141011-绑定安全手机号提示-start --&gt;
-        &lt;div class="box-phone01"&gt;
-            &lt;div class="h"&gt;
-                &lt;i&gt;&lt;/i&gt;
-            &lt;/div&gt;
-            &lt;div class="b"&gt;
-                &lt;p class="title"&gt;绑定手机号码&lt;/p&gt;
-                &lt;p&gt;为了给您提供更好的服务，建议您将登录的邮箱帐号进行手机号码绑定，绑定后邮箱帐号和绑定的手机号码都可以作为登录帐号，&lt;em class="red"&gt;不绑定将不能提交订单。&lt;/em&gt;&lt;/p&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class="box-button"&gt;
-            &lt;a class="box-ok" href="javascript:;" id="ec-binding-phone-url-1"&gt;&lt;span&gt;立即绑定&lt;/span&gt;&lt;/a&gt;&lt;/a&gt;
-        &lt;/div&gt;
-        &lt;!-- 20141011-绑定安全手机号提示-end --&gt;
-    &lt;/div&gt;
-    &lt;div id="ec-binding-phone-2" class="ec-binding-phone-box hide"&gt;
-        &lt;!-- 20141424-绑定安全手机号提示-start --&gt;
-        &lt;div class="box-phone01"&gt;
-            &lt;div class="h"&gt;
-                &lt;i&gt;&lt;/i&gt;
-            &lt;/div&gt;
-            &lt;div class="b"&gt;
-                &lt;p class="title"&gt;绑定手机号码&lt;/p&gt;
-                &lt;p&gt;请您在新打开的页面中完成绑定安全手机号操作，完成绑定后请根据您的情况点击下面的按钮。&lt;/p&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class="box-button"&gt;
-            &lt;a class="box-cancel" href="javascript:;" id="ec-binding-phone-url-2"&gt;&lt;span&gt;重新绑定&lt;/span&gt;&lt;/a&gt;
-            &lt;a class="box-ok" href="javascript:;" onclick="ec.binding.resetShow()"&gt;&lt;span&gt;绑定成功&lt;/span&gt;&lt;/a&gt;
-        &lt;/div&gt;
-        &lt;!-- 20141424-绑定安全手机号提示-end --&gt;
-    &lt;/div&gt;
-    &lt;div id="ec-binding-phone-3" class="ec-binding-phone-box hide"&gt;
-        &lt;!-- 20141424-安全手机号绑定提示失败-start --&gt;
-        &lt;div class="box-phone01"&gt;
-            &lt;div class="h"&gt;
-                &lt;i&gt;&lt;/i&gt;
-            &lt;/div&gt;
-            &lt;div class="b"&gt;
-                &lt;p class="title"&gt;对不起，您未成功绑定手机号&lt;/p&gt;
-                &lt;p&gt;为了您在商城正常购物、保护您的权益，请您绑定一个手机号码以享受华为商城的所有服务。&lt;/p&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class="box-button"&gt;
-            &lt;a href="javascript:;" class="box-ok" onclick="ec.binding.showOk()" id="ec-binding-phone-url-3" &gt;&lt;span&gt;立即绑定&lt;/span&gt;&lt;/a&gt;
-        &lt;/div&gt;
-        &lt;!-- 20141424-安全手机号绑定提示失败-end --&gt;
-    &lt;/div&gt;
-    &lt;div id="ec-binding-phone-4" class="ec-binding-phone-box hide"&gt;
-        &lt;!-- 20150824-手机号绑定未绑定-start --&gt;
-        &lt;div class="box-phone01"&gt;
-            &lt;div class="h"&gt;
-                &lt;i&gt;&lt;/i&gt;
-            &lt;/div&gt;
-            &lt;div class="b"&gt;
-                &lt;p class="title"&gt;绑定手机号码&lt;/p&gt;
-                &lt;p&gt;为了给您提供更好的服务，建议您将登录的邮箱帐号进行手机号码绑定，绑定后邮箱帐号和绑定的手机号码都可以作为登录帐号；&lt;em class="red"&gt;自&lt;/em&gt;&lt;em id="bindEndDate4State4" class="red"&gt;&lt;/em&gt;&lt;em class="red"&gt;号起，若不绑定将不能提交订单。&lt;/em&gt;&lt;/p&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class="box-button"&gt;
-            &lt;a class="box-cancel" href="javascript:;" onclick="ec.binding.closeState4();"&gt;&lt;span&gt;下次再说&lt;/span&gt;&lt;/a&gt;
-            &lt;a class="box-ok" href="javascript:;" id="ec-binding-phone-url-4"&gt;&lt;span&gt;立即绑定&lt;/span&gt;&lt;/a&gt;
-        &lt;/div&gt;
-        &lt;!-- 20150824-安全手机号绑定提示失败-end --&gt;
-    &lt;/div&gt;
-    &lt;div id="ec-binding-phone-5" class="ec-binding-phone-box hide"&gt;
-        &lt;!-- 20141424-安全手机号绑定提示失败-start --&gt;
-        &lt;div class="box-phone01"&gt;
-            &lt;div class="h"&gt;
-                &lt;i&gt;&lt;/i&gt;
-            &lt;/div&gt;
-            &lt;div class="b"&gt;
-                &lt;p class="title"&gt;绑定手机号码&lt;/p&gt;
-                &lt;p&gt;您输入的手机已被注册，您可以选择使用手机号重新登录或者重新绑定手机！&lt;/p&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class="box-button"&gt;
-            &lt;a class="box-cancel" href="https://www.vmall.com/account/login" id="ec-binding-phone-reLogin-5"&gt;&lt;span&gt;重新登录&lt;/span&gt;&lt;/a&gt;')
-            &lt;a class="box-ok" href="javascript:;" id="ec-binding-phone-url-5"&gt;&lt;span&gt;重新绑定&lt;/span&gt;&lt;/a&gt;
-        &lt;/div&gt;
-        &lt;!-- 20141424-安全手机号绑定提示失败-end --&gt;
-    &lt;/div&gt;
-</textarea><!-- 2017-02-15-头部-start -->
 <div class="header">
     <div class="layout">
         <div class="left">
@@ -1349,12 +991,12 @@
                             <td>
 								<div class="inline-block vam">
 									<!-- <label style="display: block; position: absolute; cursor: text; float: left; z-index: 2; color: rgb(153, 153, 153);" class="text span-130 ime-disabled" for="mobile">请输入11位手机号码</label> -->
-                                    <input maxlength="20" type="text" name="phone"  class="text span-130 ime-disabled" placeholder="请输入11位手机号码">
+                                    <input maxlength="20" type="text" name="phone" id="phone" class="text span-130 ime-disabled" placeholder="请输入11位手机号码">
 									<!-- <label class="titlebox" for="phone">备选号码：</label> -->
 								</div>
 								<div class="inline-block vam relative">
                                     <!-- <label style="display: block; position: absolute; cursor: text; float: left; z-index: 2; color: rgb(153, 153, 153);" class="text span-310 ime-disabled" for="phone">固话或其他手机号码</label> -->
-                                    <!-- <input maxlength="50" type="text" name="phone" id="phone" class="text span-310 ime-disabled" alt="tel-msg" validator="validator61543976031130" style="z-index: 1;" placeholder="固话或其他手机号码"></div> -->
+                                    <!-- <input maxlength="50" type="text" name="phone" class="text span-310 ime-disabled" alt="tel-msg" validator="validator61543976031130" style="z-index: 1;" placeholder="固话或其他手机号码"></div> -->
 								<div><label id="tel-msg"></label></div>
 			    			</td>
                         </tr>
@@ -1373,6 +1015,7 @@
                 </p>
                 <!-- <p id="place">请选择地区</p> -->
                 <input type="hidden" id="place" name="location" />
+                <p id="xianslocation" style="display:none;">地址：<span id="xianslocationinfo"></span></p>
             </div>
     
 </div>
@@ -1429,6 +1072,7 @@
                         	<td>
                         		<div id="form-edit-button">
                                     {{csrf_field()}}
+                                    <div id="hiddeninpid" style="display:none;"></div>
                         			<input type="submit" id="button-ok" class="button-action-ok" value="添加新地址">
                         			<input type="reset" class="button-action-cancel" value="清&nbsp;&nbsp;空">
                                     <label class="label-info" id="submit-msg"></label>
@@ -1452,7 +1096,7 @@
 				<tr>
 					<th class="col-name">收货人</th>
 					<th class="col-address">收货地址</th>
-					<th class="col-zip">邮编</th>
+					<th class="col-zip">标签</th>
 					<th class="col-tel">手机/电话</th>
 					<th class="col-operate">操作</th>
 				</tr>  
@@ -1476,33 +1120,154 @@
      </tbody>
     </table>
    </div> -->
-   
+
+
+   <div id="dizdiz">
    @foreach($addrdata as $v)
-   <div class="list-group-item" id="myAddress-area-62220812">
+   <div class="list-group-item" id="addr-list-{{$v->id}}">
     <table border="0" cellpadding="0" cellspacing="0">
      <tbody>
       <tr>
        <td class="col-name">{{$v->consignee}}</td>
-       <td class="col-address">{{$v->location}}</td>
-       <td class="col-zip">0310</td>
+       <td class="col-address"><span class="col-address1">{{$v->location}}</span>&nbsp;&nbsp;<span class="col-address2">{{$v->detailed}}</span></td>
+       <td class="col-zip">{{$v->adrlabel}}</td>
        <td class="col-tel"><p>{{$v->phone}}</p></td>
        <td class="col-operate">
-        <p class="p-edit"><a class="" title="编辑"><span>编辑</span></a></p>
-        <p class="p-del"><a class="addrdeldel" title="删除"><span>删除</span></a></p>
+        <p class="p-edit addredit"><a class="" title="编辑"><span>编辑</span></a></p>
+        <p class="p-del addrdeldel"><a title="删除"><span>删除</span></a></p>
         @if($v->defaultadr == '0')
-        <p class="p-state"><span>设置为默认</span></p></td>
+        <p class="p-state setdaddr"><span>设置为默认</span></p></td>
         @else
         <p class="p-state"><span class="default">默认地址</span></p></td>
         @endif
-        
-        
-
       </tr>
      </tbody>
     </table>
    </div>
    @endforeach
+    </div>
+   
 
+    <script type="text/javascript">
+        //地址修改
+        $(".addredit").click(function(){
+            var myeditid = $(this).parent().parent().parent().parent().parent().attr('id');
+            
+            //姓名
+            var consignee = $("#"+myeditid+" .col-name").text();
+            //手机号
+            var aphone = $("#"+myeditid+" .col-tel").text();
+            //地址
+            var aadrlabel = $("#"+myeditid+" .col-address1").text();
+            //地址描述
+            var aadrlabel2 = $("#"+myeditid+" .col-address2").text();
+            //标签
+            var adrlabel = $("#"+myeditid+" .col-zip").text();
+
+
+
+            $("#consignee").val(consignee);
+            $("#phone").val(aphone);
+            $("#xianslocation").css("display","block");
+            $("#xianslocationinfo").text(aadrlabel);
+            $("#address").val(aadrlabel2);
+            //find 查找类名是否存在
+            if($("#"+myeditid).find(".default").length>0){
+                // alert("ok");
+                $(".inputbox").html('<input type="checkbox" checked class="checkbox" name="defaultFlag" value="1" id="myAddress-default"><span>设为默认收货地址</span>');
+
+            }else {
+                $(".inputbox").html('<input type="checkbox" class="checkbox" name="defaultFlag" value="1" id="myAddress-default"><span>设为默认收货地址</span>');
+            }
+
+
+            var xuanz1 = $("input[name='adrlabel']").eq(0).val();
+            var xuanz2 = $("input[name='adrlabel']").eq(1).val();
+            var xuanz3 = $("input[name='adrlabel']").eq(2).val();
+            var xuanz4 = $("input[name='adrlabel']").eq(3).val();
+
+            if(xuanz1 == adrlabel){
+                $("input[name='adrlabel']").eq(0).prop("checked",'true');
+            }
+            if(xuanz2 == adrlabel){
+                // alert('匹配成功');
+                $("input[name='adrlabel']").eq(1).prop("checked",'true');
+                // $("input[name='adrlabel']").eq(0).attr("checked",'false');prop
+                // $("input[name='adrlabel']").eq(2).attr("checked",'false');
+                // $("input[name='adrlabel']").eq(3).attr("checked",'false');
+
+                // $("input[name='adrlabel']").attr("checked",'true');
+                // $("input[name='adrlabel']").eq(1).attr("checked");
+            }
+            if(xuanz3 == adrlabel){
+                $("input[name='adrlabel']").eq(2).prop("checked",'true');
+            }
+            if(xuanz4 == adrlabel){
+                $("input[name='adrlabel']").eq(3).prop("checked",'true');
+            }
+
+            
+            $("#hiddeninpid").html('<input type="hidden" name="idid" value="'+myeditid+'" />');
+            $("#myAddress-form").attr('action','/home/person/addr/edit');
+            $("#button-ok").val("确  定");
+
+        });
+
+
+
+        //删除
+        $(".addrdeldel").click(function(){
+            //获取当前tr ID
+            if(confirm('确实要删除此地址吗?')){
+
+                var myaddrid = $(this).parent().parent().parent().parent().parent().attr('id');
+                
+                $.ajax({
+                    type:'get',    
+                    data:{
+                    'id':myaddrid
+                    },
+                    url:"/home/person/addr/ajax_addrdeldel",
+                }).done(function(res){
+                    //console.log(res);
+                    if(res.zhuangt == 1){
+                        alert(res.tishi);
+                        $("#"+res.id).remove();
+                    }else {
+                        alert(res.tishi);
+                    }
+                }).fail(function(){
+                    console.log("error")
+                })
+            }
+        });
+
+
+        //默认地址修改
+        $(".setdaddr").click(function(){
+            //获取当前tr ID
+            var myaddrid = $(this).parent().parent().parent().parent().parent().attr('id');
+            $.ajax({
+                type:'get',    
+                data:{
+                'id':myaddrid
+                },
+                url:"/home/person/addr/ajax_default",
+            }).done(function(res){
+                // console.log(res);
+                if(res.zhuangt == 1){
+                    alert(res.tishi);
+                    $("#dizdiz .default").parent().html('<p class="p-state setdaddr"><span>设置为默认</span></p>');
+                    $("#"+myaddrid+" .setdaddr").html('<span class="default">默认地址</span>');
+                }else {
+                    alert(res.tishi);
+                }
+            }).fail(function(){
+                console.log("error")
+            })
+        });
+    
+    </script>
   </div>
 </div>
 <textarea class="hide" id="success-tips">	&lt;!-- 20141219-我的地址-编辑成功-start --&gt;
