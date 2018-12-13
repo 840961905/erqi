@@ -15,7 +15,7 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>广告管理 <small>广告修改</small></h5>
+                            <h5>管理 <small>修改</small></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -50,7 +50,7 @@
                                         <select class="form-control m-b" name="tid">
                                             @foreach($tadsinfo as $v)
                                                 @if($v->pid == 0) 
-                                                    <option value="{{$v->id}}" @if($v->pid == $tads->id) selected @endif >{{$v->tname}}</option>
+                                                    <option value="{{$v->id}}" @if($v->id == $adsinfo->tid) selected @endif >{{$v->tname}}</option>
                                                 @endif  
                                             @endforeach 
                                         </select>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="hr-line-dashed"></div> 
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">广告图片</label>
+                                    <label class="col-sm-2 control-label">图片</label>
                                     <div class="col-sm-6">
                                         <img src="{{$adsinfo->img}}" alt="" width="100px" >
                                         <input type="file" class="form-control" name="img">

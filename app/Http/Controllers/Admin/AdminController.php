@@ -197,7 +197,7 @@ class AdminController extends Controller
                 // 查找当前用户原头像路径
                 $imgs = Admin::find($id);
                 // 删除原头像
-                unlink('.'.$imgs->pri);
+                // unlink('.'.$imgs->pri);
                 $res = Admin::destroy($id);
                 if($res){
                     return redirect('/admin/admin')->with('success','删除成功');

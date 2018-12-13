@@ -289,6 +289,26 @@
 	var PH = true;
 	var CV = true;
 
+	
+    // 验证码倒计时
+    var countdown=60; 
+    function settime(obj) { //发送验证码倒计时
+    if (countdown == 0) { 
+        obj.attr('disabled',false); 
+        //obj.removeattr("disabled"); 
+        obj.val("获取验证码");
+        countdown = 60; 
+        return;
+    } else { 
+        obj.attr('disabled',true);
+        obj.val("重新发送(" + countdown + ")");
+        countdown--; 
+    }
+    setTimeout(function() { 
+        settime(obj) }
+        ,1000) 
+    }
+
 
 
 	//用户名
@@ -490,6 +510,8 @@
 					$('input[name=phone]').css('border','solid 1px #e53e41');
 					PH = false;
 				} else {
+			        var obj = $('#but');
+			        settime(obj);
 					$('input[name=phone]').next().text(' *√').css('color','green');
 					$('input[name=phone]').css('border','solid 1px green');
 					PH = true;

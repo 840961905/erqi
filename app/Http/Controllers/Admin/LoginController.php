@@ -143,17 +143,17 @@ class LoginController extends Controller
             $request->file('pri')->move('./uploads/adminpri/',$name.'.'.$suffix);
 
             $res['pri'] = '/uploads/adminpri/'.$name.'.'.$suffix;
-
-        }
-        // 获取当前管理员id
-        $id = $request->id;
-        try{
+            $id = $request->id;
             // 查找当前用户原头像路径
             $imgs = Admin::find($id);
             // 删除原头像
             unlink('.'.$imgs->pri);
             // 修改数据库
             $data = Admin::where('id', $id)->update($res);
+        }
+        // 获取当前管理员id
+        try{
+            
             // 判断成功与否
             if($data){
                 // 将新头像路径存入session

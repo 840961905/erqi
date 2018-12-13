@@ -38,7 +38,7 @@
                     <div class="col-lg-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>分类广告管理 <small>所有分类广告</small></h5>
+                                <h5>管理 <small>所有分类图片</small></h5>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
                                         <i class="fa fa-chevron-up"></i>
@@ -53,7 +53,7 @@
                                             <th>序号</th>
                                             <th>所属顶级分类</th>
                                             <th>跳转地址</th>
-                                            <th>广告图片</th>
+                                            <th>图片</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>

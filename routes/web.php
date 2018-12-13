@@ -195,6 +195,12 @@ Route::group(['middleware'=>'homelogin'], function(){
 	Route::get('/home/person/changepass','Home\PinfoController@changepass');
 	// 账号信息 执行修改密码
 	Route::post('/home/person/dochangepass','Home\PinfoController@dochangepass');
+	// 账号信息 显示修改头像
+	Route::get('/home/person/changeimg','Home\PinfoController@changeimg');
+	// 账号信息 执行修改头像
+	Route::post('/home/person/dochangeimg','Home\PinfoController@dochangeimg');
+	// 用户退出
+	Route::get('/home/logout','Home\LoginController@logout');
 
 
 });

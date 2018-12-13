@@ -43,7 +43,7 @@
 			    </span>
 			</div>
 			<div class="tbr1">	
-				<div class="profile"><img class="profilePic" src="{{session('img')}}"></div>
+				<div class="profile"><img class="profilePic" src="{{session('img')}}" width="24px" height="24px"></div>
 				<a class="account userAccount space-pre" href="/home/person/info">{{session('phone')}}</a>
 				<span> | </span>
 				<a id="logoutUrl" href="/home/logout">退出</a>
@@ -63,14 +63,7 @@
 				<li data-menu="1" class="sel">
 				<a href="/home/person/info">帐号与安全</a>				
 				</li>
-				<li data-menu="2" class="">
-					<a class="menuSlt_info_a" href="">个人信息
-						<span class="menuSlt_info_circle_red"></span>
-					</a>
-				</li>
-				<li data-menu="3" class=""><a href="">三加一服务</a></li>
-				<li data-menu="5" class=""><a href="">安全中心</a></li>
-				<li data-menu="4" class=""  id="setting_btn"><a href="">设置</a></li>					
+				<li data-menu="4" class=""  id="setting_btn"><a href="">设置</a></li>
 			</ul>
 			<b class="navsign" style="display:none"></b>
 		</div>
@@ -128,6 +121,22 @@
 					<img class="l" src="/homes/img/modify.png">
 					<div class="detail">
 						<p class="dtop modifyPwd">修改密码</p>
+					</div>	
+				</div>
+			</div>
+
+			<div class="line">
+				<div class="uctb mkcl">
+					<div class="r">
+						<label for="">
+							<a href="/home/person/changeimg">
+								<span id="cpsw" class="btn completeInfo">修改</span>
+							</a>
+						</label>
+					</div>
+					<img class="l" src="{{session('img')}}" width="36px" height="36px">
+					<div class="detail">
+						<p class="dtop modifyPwd">修改头像</p>
 					</div>	
 				</div>
 			</div>

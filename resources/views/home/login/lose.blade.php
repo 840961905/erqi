@@ -264,6 +264,24 @@
 		});
 	var PH = true;
 	var CV = true;
+    // 验证码倒计时
+    var countdown=60; 
+    function settime(obj) { //发送验证码倒计时
+    if (countdown == 0) { 
+        obj.attr('disabled',false); 
+        //obj.removeattr("disabled"); 
+        obj.val("获取验证码");
+        countdown = 60; 
+        return;
+    } else { 
+        obj.attr('disabled',true);
+        obj.val("重新发送(" + countdown + ")");
+        countdown--; 
+    }
+    setTimeout(function() { 
+        settime(obj) }
+        ,1000) 
+    }
 
 	//手机号
 	$('input[name=phone]').focus(function(){
@@ -333,6 +351,9 @@
 		} else {
 			$.post('/home/checkrephone',{phone:phv},function(data){
 				if (data == '1') {
+                    
+                    var obj = $('#but');
+                    settime(obj);
 					$('input[name=phone]').next().text(' *√').css('color','green');
 					$('input[name=phone]').css('border','solid 1px green');
 					PH = true;
@@ -405,6 +426,8 @@
 		//var flag = 1   var flag = 0
 		return false;
 	})
+
+
 
 
 </script>

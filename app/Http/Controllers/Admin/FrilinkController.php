@@ -62,15 +62,6 @@ class FrilinkController extends Controller
     public function show($id)
     {
         //
-        $res = Friend::destroy($id);
-
-        if($res){
-
-            echo 1;
-        } else {
-
-            echo 0;
-        }
     }
 
    
@@ -118,7 +109,7 @@ class FrilinkController extends Controller
 
         $id = $request->gid;
 
-        $res = DB::table('Friend')->where('id',$id)->delete();
+        $res = DB::table('friend')->where('id',$id)->delete();
 
 
         if($res){

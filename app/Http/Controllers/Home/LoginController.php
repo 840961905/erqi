@@ -49,7 +49,8 @@ class LoginController extends Controller
 		session(['img'=>$rs->img]);
         session(['aname'=>$rs->aname]);
         session(['status'=>$rs->status]);
-		session(['phone'=>$rs->phone]);
+        session(['phone'=>$rs->phone]);
+		session(['email'=>$rs->email]);
 		return redirect('/');
     }
 
@@ -231,5 +232,21 @@ class LoginController extends Controller
         	session(['changename'=>'']);
             return redirect('/home/lose')->with('error','修改失败');
     	}
+    }
+
+    /**
+     * 用户退出
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function logout()
+    {
+        session(['userid'=>'']);
+        session(['img'=>'']);
+        session(['aname'=>'']);
+        session(['status'=>'']);
+        session(['phone'=>'']);
+        session(['email'=>'']);
+        return redirect('/');
     }
 }

@@ -17,7 +17,7 @@ class TypeadsController extends Controller
         $adsinfo = Typeads::all();
         $tadsinfo = Type::all();
     	return view('admin.typeads.index',[
-    		'title'=>'商品顶级分类广告管理',
+    		'title'=>'商品顶级分类图片管理',
             'adsinfo'=>$adsinfo,
     		'tadsinfo'=>$tadsinfo
     	]);
@@ -29,7 +29,7 @@ class TypeadsController extends Controller
 		//echo 111;
         $tadsinfo = Type::all();
 		return view('admin.typeads.add',[
-            'title'=>'分类广告添加',
+            'title'=>'分类图片添加',
             'tadsinfo'=>$tadsinfo
         ]);
 	}
@@ -91,11 +91,10 @@ class TypeadsController extends Controller
     {
         //
         $adsinfo = Typeads::where('id',$id)->first();
-        $tads = Type::find($id);
+        $tads = Type::find($adsinfo['tid']);
         $tadsinfo = Type::all();
-        //dd( $tadsinfo);
         return view('admin.typeads.edit',[
-            'title'=>'分类广告修改',
+            'title'=>'分类图片修改',
             'adsinfo'=>$adsinfo,
             'tads'=>$tads,
             'tadsinfo'=>$tadsinfo

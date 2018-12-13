@@ -10,6 +10,7 @@ use App\Model\Admin\Goodsimg;
 
 use App\Model\Admin\Slider;
 use App\Model\Admin\Ads;
+use App\Model\Admin\Friend;
 
 
 
@@ -83,7 +84,23 @@ class IndexController extends Controller
          //轮播
         $sinfo = Slider::orderBy('addtime', 'desc')->take(6)->get();
         
+        //友情连接
 
+        $sum = Friend::all()->count();
+
+        $num = ceil($sum / 5); 
+
+        $finfo = [];
+
+        for ($i=0; $i < $num; $i++) { 
+
+           $f = Friend::orderBy('addtime', 'desc')->skip(5*$i)->take(5)->get();
+
+           $finfo[] = $f;
+
+        }
+
+        //dd($finfo);
 
         return view('home.index',[
             'title'=>'首页',
@@ -93,73 +110,8 @@ class IndexController extends Controller
             'sinfo'=>$sinfo,
             'jp'=>$jp,
             'rx'=>$rx,
-            'cs'=>$cs
+            'cs'=>$cs,
+            'finfo'=>$finfo
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
