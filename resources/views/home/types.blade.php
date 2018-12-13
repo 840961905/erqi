@@ -526,7 +526,7 @@
 	    <div class="layout">
 	        <div class="left">
 	            <!-- 2017-02-15-logo-start -->
-	            <div class="logo"><a href="https://www.vmall.com/index.html" title="Vmall.com - 华为商城" onclick="pushLogoClickMsg('https://res.vmallres.com/pimages//sale/2018-11/x9a6U8WW0bhrA7u0FIlY.png','https://www.vmall.com/index.html')"><img src="https://res.vmallres.com/pimages//sale/2018-11/x9a6U8WW0bhrA7u0FIlY.png" alt="Vmall.com - 华为商城"></a></div>
+	            <div class="logo"><a href="/"><img src="https://res.vmallres.com/pimages//sale/2018-11/x9a6U8WW0bhrA7u0FIlY.png" alt="Vmall.com - 华为商城"></a></div>
 	            <!-- 2017-02-15-logo-end -->
 	            
 	            <!-- 2017-06-19-导航-start --> 
@@ -621,32 +621,7 @@
 					_paq.push(["trackLink","300020202", "link", value]);
 				}
 	        </script>
-	        <div class="right">
-	            <!-- 2017-02-15-搜索条-焦点为search-form增加className:hover -start -->
-	            <div class="search-bar relative" id="searchBar-area">
-	                <div class="search-bar-form" id="search-bar-form">
-	                   <form method="get" onsubmit="return search(this)">
-	                        <input type="text" class="text" maxlength="200" id="search-kw" autocomplete="off">
-	                        <input type="submit" class="button" value="搜索">
-	                            <input type="hidden" id="channelType" name="channelType" value="0">
-	                        <input type="hidden" id="default-search" value="nova 3i|荣耀 Note10">
-	                    </form>
-	                </div>
-	                <div class="search-bar-key" id="search-bar-key">
-	                    <div class="searchBar-key">
-	                        <a href="/search?keyword=荣耀Magic2" target="_blank" rel="nofollow">荣耀Magic2</a>
-	                        <a href="/search?keyword=HUAWEI Mate 20" target="_blank" rel="nofollow">HUAWEI Mate 20</a>
-	                      </div>
-	                </div>
-	                 <div id="search-history" class="search-bar-history hide">
-	                	<p>
-	                        <label>历史记录</label><span id="cleanUp" class="search-history-btn">清除</span>
-	                    </p>
-	                    <ul id="search-history-list"></ul>
-	                </div>
-	            <div id="AutocompleteContainter_b5ce4" "="" style="top: 94px; left: 953.5px;"><div class="autocomplete-w1"><div class="autocomplete" id="Autocomplete_b5ce4" style="display: none; width: 290px; max-height: 400px;"></div></div></div></div>
-	            <!-- 2017-02-15-搜索条-end -->
-	        </div>
+	       
 	        </div>
 	    </div>
     </div>
@@ -656,8 +631,8 @@
         <!--面包屑 -->
     	<div class="breadcrumb-area fcn">
     			<a href="/" title="首页">首页</a>&nbsp;&gt;&nbsp;
-    		
-    		<span>通用配件</span>
+
+    		<span>{{$type->tname}}</span>
     	</div>
     </div>
     <div class="hr-10"></div>
@@ -672,9 +647,9 @@
     			<div class="p-default">
     				<ul>
     					@if($ding  == 1)
-                        <li id="first-category" class="selected"><a href="/list-54">全部</a></li>
+                        <li id="first-category" class="selected"><a href="#">全部</a></li>
                         @else
-                        <li id="first-category" ><a href="/list-54">全部</a></li>
+                        <li id="first-category" ><a href="#">全部</a></li>
                         @endif
     					<!--<li class="selected"><a href="javascript:;">全部</a></li>-->
     				</ul>
@@ -688,10 +663,11 @@
     				</div>
     				<!-- 一行的高度为30px,显示n行，p-expand的高度为nx30 -->
     				<div class="p-expand">
-    					<ul class="clearfix">	
+    					<ul class="clearfix">
+
     					    @foreach($fl as $k=>$vv)
 
-    	                    <li><a href="/list-56">{{$vv->tname}}</a></li>
+    	                    <li><a href="/types/{{$vv->id}}">{{$vv->tname}}</a></li>
     	                    @endforeach
     					</ul>
     				</div>
@@ -738,7 +714,7 @@
                     @foreach($goods as $k=>$v)
     				<li>
     					<div class="pro-panels">
-    						<p class="p-img"><a target="_blank" href="/product/10086036065155.html" title="L型Type-c金属编织数据线" onclick="pushListProClickMsg('3102030007001')"><img alt="L型Type-c金属编织数据线" src="
+    						<p class="p-img"><a target="_blank" href="/shop/{{$v->id}}" title="L型Type-c金属编织数据线" ><img alt="L型Type-c金属编织数据线" src="
                                   @php
                                     $tu = DB::table('goodsimg')->where('gid',$v->id)->first();
                                     echo $tu->gimg;
@@ -746,7 +722,7 @@
 
     							"></a></p>
     						<p class="p-name">
-    							<a target="_blank" href="/product/10086036065155.html" title="L型Type-c金属编织数据线" onclick="pushListProClickMsg('3102030007001')">
+    							<a target="_blank" href="/shop/{{$v->id}}">
     								<span>{{$v->gname}}</span>
     								<span class="red">为游戏而生</span>
     							</a>
@@ -771,7 +747,7 @@
     		</div>
     		<!-- 20140727-商品列表-end -->
     		<!-- 分页-start -->
-    		<div id="list-pager-54" class="pager">
+    		<!-- <div id="list-pager-54" class="pager">
     					<input id="pageTotal" value="7" type="hidden">
     				    <ul id="page_ul">
     						<li class="pgNext link first first-empty">|&lt;</li>
@@ -802,7 +778,7 @@
     						<li class="pgNext link last">&gt;|</li>
     						<li class="text quickPager"><select id="pageChecked"><option value="1" selected="">1</option><option value="2">2</option></select></li>
     					</ul>
-    	    </div>
+    	    </div> -->
         </div><!-- 20140726-频道-列表-end -->
         
     </div>

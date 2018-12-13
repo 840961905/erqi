@@ -19,7 +19,7 @@ class TypesController extends Controller
         $type = \DB::table('type')->where('id',$id)->first();
         
         $fl = \DB::table('type')->where('pid','=',$type->pid)->get();
-       
+        
         // 将path 路径转换成数组
         $arr = explode(',',$type->path);
         
@@ -34,10 +34,10 @@ class TypesController extends Controller
                 foreach ($suogoods as $key=>$value) {
                    $newArr[] = $value->id;
                 }
-                $goods = \DB::table('goods')->whereIn('tid',$newArr)->get();
+                $goods = \DB::table('goods')->whereIn('tid',$newArr)->where('status','=','1')->get();
                 break;
             case '2':
-                $goods = \DB::table('goods')->where('tid',$id)->get();
+                $goods = \DB::table('goods')->where('tid',$id)->where('status','=','1')->get();
                 break;
         }
         

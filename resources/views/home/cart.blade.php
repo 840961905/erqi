@@ -232,6 +232,23 @@
                     </div>
                     <div class="s-main s-main-no-minicart">
                         <ul>
+                            @if(session('userid'))
+                            <li>
+                                <div class="header-toolbar">
+                                    <div class="header-toolbar-item">
+                                        <div class="i-login">
+                                            <div class="h">
+                                                <a href="javascript:;">
+                                              &nbsp;&nbsp;欢迎{{session('aname')}}登陆本网站
+                                                </a>
+                                                <a href="">个人中心</a>
+                                                <a href="/home/logout">退出</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            @else
                             <li>
                                 <div class="header-toolbar">
                                     <div class="header-toolbar-item">
@@ -248,6 +265,7 @@
                                     </div>
                                 </div>
                             </li>
+                            @endif
                             <li>
                                 <a href="/member/order" timetype="timestamp" target="_blank">
                                     我的订单
@@ -283,18 +301,23 @@
                 </div>
             </div>
             <!-- 中间 -->
-            <div class="layout ">
+            <div class="layout " style="margin-bottom:20px">
+               @if(!session('userid'))
                 <div class="login-prompt">
                     您还没有登录！登录后可查看之前加入的商品
-                    <a href="javascript:;" rel="nofollow">
+                    <a href="/home/login" rel="nofollow">
                         登录
                     </a>
                 </div>
+                @else
+                @endif
                 <!---->
                 <div class="hr-20">
                 </div>
 
                 @if($shop)
+
+                <form action="/jiesuan" method="post">
                 <div class="sall">
                     <div class="sc-list">
                         <div class="sc-pro-title clearfix">
@@ -320,110 +343,108 @@
                                 </li>
                             </ul>
                         </div>
-                        <form id="cart-form" autocomplete="off" method="get">
-                            <div class="sc-pro">
-                                @foreach($shop as $k=>$car)
-                                <div class="divs" id="shop_{{$car['id']}}">
-                                    <div class="sc-pro-list clearfix">
-                                        <label class="checkbox">
-                                            <input type="checkbox" class="vam che" gid="{{$car['goodsinfo']->id}}">
-                                        </label>
-                                        <div class="sc-pro-area">
-                                            <div class="sc-pro-main clearfix">
-                                                <a href="/shop/{{$car['id']}}" style="width:100px;height:100px; float: left;margin-right: 20px;position: relative;">
-                                                    <img src="@php
-                                                   $tu = DB::table('goodsimg')->where('gid',$car['id'])->first();
-                                                   echo $tu->gimg;
-                                                   @endphp"
-                                                   alt=""  style="width:100px;height:100px;">
-                                                </a>
-                                                <div class="tips-1 p-stock-tips" style="display: none;">限购件
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="/product/10086423109158.html#10086794601109" target="_blank"
-                                                        title="" class="p-name">
-                                                            <!---->
-                                                            {{$car['goodsinfo']->gname}}
+                        <div class="sc-pro">
+                            @foreach($shop as $k=>$car)
+                            <div class="divs" id="shop_{{$car['id']}}">
+                                <div class="sc-pro-list clearfix">
+                                    <label class="checkbox">
+                                        <input type="checkbox" class="vam che" gid="{{$car['goodsinfo']->id}}" name="goods[]" value="{{$car['id']}}" id="sel">
+                                    </label>
+                                    <div class="sc-pro-area">
+                                        <div class="sc-pro-main clearfix">
+                                            <a href="/shop/{{$car['id']}}" style="width:100px;height:100px; float: left;margin-right: 20px;position: relative;">
+                                                <img src="@php
+                                               $tu = DB::table('goodsimg')->where('gid',$car['id'])->first();
+                                               echo $tu->gimg;
+                                               @endphp"
+                                               alt=""  style="width:100px;height:100px;">
+                                            </a>
+                                            <div class="tips-1 p-stock-tips" style="display: none;">限购件
+                                            </div>
+                                            <ul>
+                                                <li>
+                                                    <a href="/product/10086423109158.html#10086794601109" target="_blank"
+                                                    title="" class="p-name">
+                                                        <!---->
+                                                        {{$car['goodsinfo']->gname}}
 
-                                                        </a>
-                                                        <!---->
-                                                        <!---->
-                                                    </li>
-                                                    <li>
-                                                        <div class="p-price">
-                                                            <span>
-                                                                &nbsp;{{$car['goodsinfo']->price}}
-                                                            </span>
-                                                            <!---->
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="p-stock">
-                                                            <div class="p-stock-area">
-                                                                <input type="number" class="p-stock-text" value="{{$car['num']}}">
-                                                                <p class="p-stock-btn">
-                                                                    <a href="javascript:;" class="plus" ids="{{$car['goodsinfo']->id}}">
-                                                                        +
-                                                                    </a>
-                                                                    <a href="javascript:;" class="minus" ids="{{$car['goodsinfo']->id}}">
-                                                                        −
-                                                                    </a>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="p-price-total">
-                                                      
-                                                        <span class="price">&nbsp;
-                                                           {{$car['goodsinfo']->price*$car['num']}}
+                                                    </a>
+                                                    <!---->
+                                                    <!---->
+                                                </li>
+                                                <li>
+                                                    <div class="p-price">
+                                                        <span>
+                                                            &nbsp;{{$car['goodsinfo']->price}}
                                                         </span>
                                                         <!---->
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;" seed="cart-item-del" class="del" >
-                                                            删除
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="p-stock">
+                                                        <div class="p-stock-area">
+                                                            <input type="number" class="p-stock-text" value="{{$car['num']}}" ids="{{$car['goodsinfo']->id}}">
+                                                            <p class="p-stock-btn">
+                                                                <a href="javascript:;" class="plus" ids="{{$car['goodsinfo']->id}}">
+                                                                    +
+                                                                </a>
+                                                                <a href="javascript:;" class="minus" ids="{{$car['goodsinfo']->id}}">
+                                                                    −
+                                                                </a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="p-price-total">
+                                                  
+                                                    <span class="price">&nbsp;
+                                                       {{$car['goodsinfo']->price*$car['num']}}
+                                                    </span>
+                                                    <!---->
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" seed="cart-item-del" class="del" >
+                                                        删除
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
 
 
-                                           
-                                            <div class="sc-pro-parts">
-                                                <!---->
-                                                <!---->
-                                                <!---->
-                                                <!---->
-                                                <!---->
-                                            </div>
+                                       
+                                        <div class="sc-pro-parts">
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <!---->
                                         </div>
                                     </div>
-                                    <!---->
                                 </div>
-                                @endforeach
-                                <div id="motai">    
-                                     <div class="topbackdiv" id="bj" style="display: none;"></div>
-                                     <div id="addSuccess" class="topBox" style="display: none;">
-                                            <h1 class="topTitle">
-                                                <span>删除商品</span>
-                                                
-                                            </h1>
-                                            <a class="popCloseBtn" onclick="hidediv();">X</a>
-                                            <div class="p20 tc mt13">
-                                                <span id="centa">你确定要删除该商品?</span>
-
-                                            </div>
-                                            <div class="clearfix popBtn">
-                                                <a href="javascript:;" class="popBuyNowBtn deldel" gid="2" >删除</a>
-
-                                                <a href="" class="pobAddCartBtn ml10" onclick="hidediv();">取消</a>
-                                            </div>
-                                        
-                                     </div>
-                                </div>
+                                <!---->
                             </div>
-                        </form>
+                            @endforeach
+                            <div id="motai">    
+                                 <div class="topbackdiv" id="bj" style="display: none;"></div>
+                                 <div id="addSuccess" class="topBox" style="display: none;">
+                                        <h1 class="topTitle">
+                                            <span>删除商品</span>
+                                            
+                                        </h1>
+                                        <a class="popCloseBtn" onclick="hidediv();">X</a>
+                                        <div class="p20 tc mt13">
+                                            <span id="centa">你确定要删除该商品?</span>
+
+                                        </div>
+                                        <div class="clearfix popBtn">
+                                            <a href="javascript:;" class="popBuyNowBtn deldel" gid="2" >删除</a>
+
+                                            <a href="" class="pobAddCartBtn ml10" onclick="hidediv();">取消</a>
+                                        </div>
+                                    
+                                 </div>
+                            </div>
+                        </div>
                     </div>
                     <div id="total_tool">
                     </div>
@@ -438,10 +459,18 @@
                                     删除
                                 </a>
                             </div>
+                             {{csrf_field()}}
                             <div class="sc-total-btn ">
-                                <a href="javascript:;">
-                                    立即结算
-                                </a>
+                                <input id="qujiesuan" type="submit" value="立即结算" style="
+                                width: 180px;
+                                    height: 60px;
+                                    line-height: 60px;
+                                    display: block;
+                                    background: #ca151e;
+                                    font-size: 18px;
+                                    color: #fff;
+                                    text-align: center;
+                                ">
                             </div>
                             <div class="sc-total-price">
                                 <p>
@@ -458,11 +487,7 @@
                                     </em>
                                 </p>
                                 <div class="total-choose">
-                                    已选择
-                                    <em>
-                                        <span class="nums">0</span>
-                                    </em>
-                                    件商品，优惠：
+                                    优惠：
                                     <span>
                                         ¥&nbsp;0.00
                                     </span>
@@ -471,13 +496,14 @@
                         </div>
                     </div>
                 </div>
+                </form>
                 @else
               
 
                 <div class="sc-empty mt20" ><span class="icon-minicart"></span> <p>您的购物车里什么也没有哦~</p> <a href="/home/index">去逛逛</a></div>
                 @endif
 
-                <div data-v-f82c3af2="" class="pro-delete">
+               <!--  <div data-v-f82c3af2="" class="pro-delete">
                     <div data-v-f82c3af2="" class="h">
                         <h2 data-v-f82c3af2="">
                             已删除商品
@@ -502,9 +528,9 @@
                         <a data-v-f82c3af2="" class="delete-expand">
                             更多已删除商品
                         </a>
-                        <!---->
+                       
                     </div>
-                </div>
+                </div> -->
             </div>
             
             
@@ -1289,6 +1315,14 @@
     $('.p-stock-text').blur(function(){
         // 获取数量
         var su = $(this).val();
+        
+         // 发送ajax请求  改变session 里面的数量
+        id = $(this).attr('ids');
+        $.post('carValue',{id:id},function(data){
+              if(data){
+               
+              }
+        })
         // 获取单价
         var dj = parseFloat($(this).parents('li').prev().text().trim());
         
@@ -1332,7 +1366,17 @@
     }
 </script>
 
+<!-- <script>
 
+  $('#qujiesuan').click(function(){
+      if($('#sel').is(":checked")){
+        location.href="/jiesuan";
+      }else{
+        confirm('您还没有选择商品!');
+      }
+  })
+
+</script> -->
 </html>
 
 

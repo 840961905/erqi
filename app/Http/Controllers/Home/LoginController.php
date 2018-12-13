@@ -247,6 +247,7 @@ class LoginController extends Controller
         session(['status'=>'']);
         session(['phone'=>'']);
         session(['email'=>'']);
+	session(['shop'=>'']);
         return redirect('/');
     }
 }

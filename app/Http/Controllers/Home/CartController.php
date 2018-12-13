@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Home;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use App\Model\Admin\Goods;
 use App\Model\Admin\Goodsimg;
+use App\User;
 use DB;
+use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
@@ -32,7 +32,7 @@ class CartController extends Controller
         // 遍历session中的商品
         $shop = session('shop');
         
-        
+     
         // 修改数量
         foreach ($shop as $key => $value) {
             if($value['id']==$id){
@@ -124,4 +124,58 @@ class CartController extends Controller
 
         echo 1;
     }
+    
+
+    // 购物车失去焦点值发生改变
+    public function carValue(Request $request)
+    {
+        // 获取修改的id
+        $id = $request->input('id');
+
+        // 遍历session中的商品
+        $shop = session('shop');
+        
+        // 修改数量
+        foreach ($shop as $key => $value) {
+            if($value['id']==$id){
+                $shop[$key]['num'] = $shop[$key]['num'];
+            }
+        }
+        // 将数据写入到session中 
+        $request->session()->put('shop',$shop);
+
+        echo 1;
+    }
+
+   
+    public function jiesuan(Request $request)
+    {
+        // 接收到商品的数据
+        $idArr = $request->input('goods');
+
+        
+        if($idArr == null){
+              return redirect('cart');
+        }else{
+            // 读取session
+            $shop = session('shop');
+            // 声明新数组
+            $newArr = array();
+
+            foreach ($idArr as $key => $value) {
+                foreach ($shop as $k => $v) {
+                    if($v['id']==$value){
+                        $newArr[] = $v;
+                    }
+                }
+            }
+
+        }
+        
+        return view('home.jiesuan',[
+            'newshop'=>$newArr
+        ]);
+    }
+
+
 }

@@ -142,7 +142,7 @@ Route::get('/customer/reply','Home\CustomerController@reply');
 Route::get('/customer/replyclick','Home\CustomerController@replyclick');
 
 
-Route::group(['middleware'=>'homelogin'], function(){
+
 	// 购物车
      Route::get('cart','Home\CartController@cart');
      // 首页
@@ -160,11 +160,14 @@ Route::group(['middleware'=>'homelogin'], function(){
      Route::post('home/shopcart','Home\CartController@shopcart');
      // 加入购物车
      Route::get('addCar','Home\CartController@addCar');
-
+ 	// 商品数量的加
      Route::post('carAdd','Home\CartController@carAdd');
+ 	// 商品数量的减
+ 	Route::post('carJian','Home\CartController@carJian');
+ 	// 商品改值
+ 	Route::post('carValue','Home\CartController@carValue');
 
-     Route::post('carJian','Home\CartController@carJian');
-
+Route::group(['middleware'=>'homelogin'], function(){
 
 	//个人中心
 	Route::get('/home/person','Home\PersonController@person');
@@ -202,5 +205,7 @@ Route::group(['middleware'=>'homelogin'], function(){
 	// 用户退出
 	Route::get('/home/logout','Home\LoginController@logout');
 
-
+    // 结算
+    Route::post('jiesuan','Home\CartController@jiesuan');
+    
 });

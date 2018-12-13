@@ -10,7 +10,6 @@ use App\Model\Admin\Goodsimg;
 
 use App\Model\Admin\Slider;
 use App\Model\Admin\Ads;
-use App\Model\Admin\Friend;
 
 
 
@@ -40,6 +39,9 @@ class IndexController extends Controller
      */
     public function index()
     {
+        
+        $shop = session('shop');
+        
 
         // 处理左侧数据分类
         $types = \DB::table('type')->get();
@@ -57,14 +59,13 @@ class IndexController extends Controller
         }
        
         // 精品推荐 keywords = 3
-        $jp = \DB::table('goods')->where('keywords','3')->limit(5)->get();
+        $jp = \DB::table('goods')->where('keywords','3')->where('status','=','1')->limit(5)->get();
 
         // 热销单品  keywords= 1，2
-        $rx = \DB::table('goods')->where('keywords','<=','2')->get();
+        $rx = \DB::table('goods')->where('keywords','<=','2')->where('status','=','1')->limit(8)->get();
        
         // 取出分类数组前两条数据  array_slice
         $output = array_slice($type, 0,2); 
-        
         
         // 处理手机和电脑的商品
         foreach ($type as $key => $value) {
@@ -74,7 +75,7 @@ class IndexController extends Controller
            }
            
            // 查询对应的商品
-           $value->goods = \DB::table("goods")->whereIn("tid",$newArr)->limit(9)->get();
+           $value->goods = \DB::table("goods")->whereIn("tid",$newArr)->where('status','=','1')->limit(9)->get();
           
         }
 
@@ -84,23 +85,7 @@ class IndexController extends Controller
          //轮播
         $sinfo = Slider::orderBy('addtime', 'desc')->take(6)->get();
         
-        //友情连接
 
-        $sum = Friend::all()->count();
-
-        $num = ceil($sum / 5); 
-
-        $finfo = [];
-
-        for ($i=0; $i < $num; $i++) { 
-
-           $f = Friend::orderBy('addtime', 'desc')->skip(5*$i)->take(5)->get();
-
-           $finfo[] = $f;
-
-        }
-
-        //dd($finfo);
 
         return view('home.index',[
             'title'=>'首页',
@@ -111,7 +96,73 @@ class IndexController extends Controller
             'jp'=>$jp,
             'rx'=>$rx,
             'cs'=>$cs,
-            'finfo'=>$finfo
+            'shop'=>$shop
         ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

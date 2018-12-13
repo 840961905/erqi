@@ -47,6 +47,7 @@
 
 			#bigImg{
 				position:absolute;
+			
 
 			}
 
@@ -69,10 +70,43 @@
                 visibility: visible;
 			    position: fixed;
 			    top: 200px;
-			    left: 450px;
+			    left: 558px;
 			    z-index:10000002;
             }
+            .dn{
+            	display: none;
+            }
+            .db{
+            	display: block;
+            }
 
+            .ys{
+            	color: #00c3f5;
+                border-bottom: 2px solid #00c3f5;
+            }
+             
+            .user{
+			    text-align: center;
+			    float: left;
+			    width: 130px;
+			            }
+			            .ProDetaliCon dl {
+			    float: left;
+			    padding: 15px;
+			    border: 1px solid #ddd;
+			    width: 608px;
+			}
+			.ProDetaliCon dt {
+			    float: left;
+			    width: 70px;
+			    line-height: 22px;
+			}
+			.ProDetaliCon dd {
+			    width: 518px;
+			    word-break: break-all;
+			    float: left;
+			    line-height: 22px;
+			}
     </style>
 
 </head>
@@ -590,7 +624,7 @@
 	    <div class="layout">
 	        <div class="left">
 	            <!-- 2017-02-15-logo-start -->
-	            <div class="logo"><a href="https://www.vmall.com/index.html" title="Vmall.com - 华为商城" onclick="pushLogoClickMsg('https://res.vmallres.com/pimages//sale/2018-11/x9a6U8WW0bhrA7u0FIlY.png','https://www.vmall.com/index.html')"><img src="https://res.vmallres.com/pimages//sale/2018-11/x9a6U8WW0bhrA7u0FIlY.png" alt="Vmall.com - 华为商城"></a></div>
+	            <div class="logo"><a href="/"><img src="https://res.vmallres.com/pimages//sale/2018-11/x9a6U8WW0bhrA7u0FIlY.png" alt="Vmall.com - 华为商城"></a></div>
 	            <!-- 2017-02-15-logo-end -->
 	            
 	            <!-- 2017-06-19-导航-start --> 
@@ -719,8 +753,28 @@
     <!-- 面包屑 -->
     <div class="g">
     	<!--面包屑 -->
-    	<div class="breadcrumb-area fcn"><a href="/" title="首页"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首页</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;&gt;&nbsp; </font></font><a href="/list-36" title="手机"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手机</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;&gt;&nbsp; </font></font><a href="/list-285" title="HUAWEI P系列"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HUAWEI P系列</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;&gt;&nbsp;
-     </font></font><span id="bread-pro-name"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HUAWEI P20 Pro 6GB+128GB全网通版（极光闪蝶）</font></font></span></div>
+    	<div class="breadcrumb-area fcn">
+		    <a href="/" title="首页">
+		        <font style="vertical-align: inherit;">
+		            <font style="vertical-align: inherit;">
+		                首页
+		            </font>
+		        </font>
+		    </a>
+		    <font style="vertical-align: inherit;">
+		        <font style="vertical-align: inherit;">
+		            &nbsp;&gt;&nbsp;
+		        </font>
+		    </font>
+		   
+		    <span id="bread-pro-name">
+		        <font style="vertical-align: inherit;">
+		            <font style="vertical-align: inherit;">
+		                {{$shops->gname}}
+		            </font>
+		        </font>
+		    </span>
+		</div>
     </div>
 
     <div class="hr-10"></div>
@@ -733,7 +787,7 @@
 	                <div class="product-gallery-img" id="pic-container">
 	                    <div id="wrap" style="position:relative;">
 	                        
-	                        <div id='small' style="border:1px solid #ddd">
+	                        <div id='small'>
 	                        	<img src="
                                  @php
                                    $tu = DB::table('goodsimg')->where('gid',$shops->id)->first();
@@ -742,13 +796,13 @@
 	                        	" alt="" id='smallImg' width='100%'><div id='move'></div>
 	                        </div>
 
-	                        <div id='big' style="border:1px solid #eee;">
+	                        <div id='big'>
 	                        	<img src="
                                 @php
                                    $tu = DB::table('goodsimg')->where('gid',$shops->id)->first();
                                    echo $tu->gimg;
                                 @endphp
-	                        	" alt="" id='bigImg'>
+	                        	" alt="" id='bigImg' style="width:1200px;height:1150px;">
 	                        </div>
 	                    </div>
 	                </div>
@@ -978,20 +1032,29 @@
 	                        </label>
 	                        <div class="product-choose-detail ">
 	                            <ul>
+	                            @php
+                            	$yss = explode(',',$shops->color);
+                            	@endphp
+                                  
+                                @foreach($yss as $c)
+                                @foreach($ys as $v)
+	                            @if($c == $v->id)
 	                                <li class="attr1 attr13" data-attrname="颜色" data-attrcode="152138" data-attrid="1,13"
 	                                data-skuid="10086494227540,10086848967201">
 	                                    <div class="sku">
-	                                        <a href="javascript:;" title="亮黑色">
-	                                            <img src="https://res.vmallres.com/pimages//product/6901443227907/40_40_1542767389853mp.png"
-	                                            alt="亮黑色">
+	                                        <a href="javascript:;" title=" {{$v->color}}">
 	                                            <p>
 	                                                <span>
-	                                                    亮黑色
+					                                    	  {{$v->color}}
 	                                                </span>
 	                                            </p>
 	                                        </a>
 	                                    </div>
 	                                </li>
+									
+									@endif
+                                @endforeach
+                                @endforeach
 	                            </ul>
 	                        </div>
 	                    </dl>
@@ -1396,41 +1459,7 @@
 	                </div>
 	                <!-- 20170518-商品简介-提交操作-end -->
 	                <!-- 20170518-商品简介-按钮-start -->
-	                <div class="product-support">
-	                    <ul>
-	                        <li>
-	                            <a href="https://www.vmall.com/recycle" target="_blank" class="product-button-oldnew">
-	                            </a>
-	                            <div class="product-support-detial product-oldnew-detail hide">
-	                                <div class="product-support-detialmain">
-	                                    <p>
-	                                        <label>
-	                                            以旧换新，
-	                                        </label>
-	                                        <a href="https://www.vmall.com/recycle" target="_blank" style="color:red">
-	                                            最高送1300元购机立减券
-	                                        </a>
-	                                    </p>
-	                                </div>
-	                            </div>
-	                        </li>
-	                        <li>
-	                            <a class="product-button-code">
-	                            </a>
-	                            <div class="product-support-detial product-code-detail hide">
-	                                <div class="product-support-detialmain">
-	                                    <p>
-	                                        用手机扫码进行购买
-	                                    </p>
-	                                    <div id="product_wap">
-	                                        <canvas width="118" height="118">
-	                                        </canvas>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </li>
-	                    </ul>
-	                </div>
+	               
 	                <!-- 20170518-商品简介-按钮-end -->
 	            </div>
 	        </div>
@@ -1441,7 +1470,7 @@
     <div class="detailTab anim detailFastFloat" id="detailFast">
 		<div class="fixedContainer">
 			<ul class="clearfix">
-				<li class="current">
+				<li class="current1">
 					<a href="javascript:;">商品详情</a>
 				</li>
 				<li class="">
@@ -1450,7 +1479,7 @@
 				<li class="">
 					<a href="javascript:;">常见问题</a>
 				</li>
-				<li class="">
+				<li class="comment">
 					<a href="javascript:;">评论</a>
 				</li>
 			</ul>
@@ -1482,7 +1511,7 @@
 			<div class="detailTab" id="detailTabFixed">
 				<div class="fixedContainer">
 					<ul class="clearfix">
-						<li class="current">
+						<li class="current1">
 							<a href="javascript:;">商品详情</a>
 						</li>
 						<li class="">
@@ -1491,7 +1520,7 @@
 						<li class="">
 							<a href="javascript:;">常见问题</a>
 						</li>
-						<li class="">
+						<li class="comment">
 							<a href="javascript:;">评论</a>
 						</li>
 					</ul>
@@ -1514,12 +1543,115 @@
 												
 				</div>
 			</div>
-
 		</div>
+        <div class="bg-gray tit4" style="margin-top:20px;">
+            <div id="pro-tab-evaluate-content" class="layout">
+            	@if($arr['commentTot'])
+                <div class="product-score clearfix">
+                    <div class="product-score-average">
+                        <label>
+                            好评度
+                        </label>
+                        <p id="pro-evaluate-avgSorce">
+                            {{round($arr['goodTot']/$arr['commentTot']*100)}}
+                            <em style="position: absolute;top: 47%;left:119px;">
+                               %
+                            </em>
+                        </p>
+                    </div>
+                    <div class="product-score-impress">
+                        <label>
+                            买家印象
+                        </label>
+                        <div class="product-score-impress-info">
+                            <ul id="pro-score-impress" class="clearfix">
+                            	<li>
+                            	    <a href="javascript:;">
+                            	        <em>
+                            	            总评
+                            	        </em>
+                            	        <span>
+                            	            {{$arr['commentTot']}}
+                            	        </span>
+                            	    </a>
+                            	</li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <em>
+                                            好评
+                                        </em>
+                                        <span>
+                                            {{$arr['goodTot']}}
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <em>
+                                            差评
+                                        </em>
+                                        <span>
+                                            {{$arr['chaTot']}}
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <em>
+                                            中评
+                                        </em>
+                                        <span>
+                                            {{$arr['zhongTot']}}
+                                        </span>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                @endif
+            </div>
+        </div>
 
+        <ol class="clearfix">
+        	@foreach($comment as $k=>$cv)
+			<li class="clearfix" style="margin-left:200px;margin-top:20px; margin-bottom:20px;">
+				@foreach($users as $k=>$uv)
+				@if($cv->uid==$uv->id)
+				<div class="user">
+					<div class="userIcon">
+						<img src="{{$uv->img}}" alt="">
+					</div>
+					<div>
+						{{$uv->aname}}
+					</div>
+				</div>
+				@else
+				@endif
+				@endforeach
+				<div class="ProDetaliCon clearfix">
+					<dl>
+						<dt>商品星级：</dt>
+						<dd style="color:red">&nbsp;{{str_repeat("⭐",$cv->star)}}</dd>
+						<dt>评论内容：</dt>
+						<dd>&nbsp;{{$cv->content}}</dd>
+						<dt>评论日期：</dt>
+						<dd>{{date("Y-m-d H:i:s",$cv->time)}}</dd>
+						<dt>客服回复：</dt>
+						<dd>亲爱的客户：您好！非常感谢您对格力的厚爱与支持。欢迎您再次光临格力商城。祝您生活愉快！天天开心！ </dd>
+						<dt>追加评论：</dt>
+						<dd>&nbsp;</dd>
+					</dl>
+					<!-- ::after -->
+				</div>
+				<!-- ::after -->
+			</li>
+			@endforeach
+        </ol>
 	</section>
     
-  
+    
 	<form action="" method="post" enctype="multipart/form-data">
 	<div id="motai">    
 	     <div class="topbackdiv" id="bj" style="display: none;"></div>
@@ -1690,9 +1822,7 @@
 
 		$(this).css('border','solid 1px white');
 	})
-
 </script>
-
 <script>
 
 	function hidediv() {
@@ -1720,6 +1850,27 @@
 		var num = $('#addcart').parents('#product-operation').find('#pro-quantity').val();
 		
 		window.location.href="/addCar?id="+gid+"&num="+num;
+	})
+</script>
+
+<script>
+	$('.comment').click(function()
+	{
+		$('.detailContent').addClass('dn');
+		$('.bg-gray').addClass('db');
+	    $('.detailContent').removeClass('db');
+		$(this).find("a").addClass('ys');
+        $('.current1').find("a").removeClass('ys');
+	});
+
+	$('.current1').click(function()
+	{
+		$('.bg-gray').addClass('dn');
+		$('.detailContent').addClass('db');
+
+		$('.comment').find("a").removeClass('ys');
+		$(this).find("a").addClass('ys');
+
 	})
 </script>
 </html>
