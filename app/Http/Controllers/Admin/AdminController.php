@@ -46,7 +46,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //表单验证
+        //表单验证    
      /*   $this->validate($request, [
             'username' => 'required|regex:/^\w{6,16}$/',
             'password' => 'required|regex:/^\S{6,12}$/',
