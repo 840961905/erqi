@@ -1,15 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 //后台的登录
 Route::any('/admin/login','Admin\LoginController@login');
 Route::any('/admin/dologin','Admin\LoginController@dologin');
@@ -184,26 +174,26 @@ Route::group(['middleware'=>'homelogin'], function(){
 
 
 
-	// 账号信息 首页
-	Route::get('/home/person/info','Home\PinfoController@index');
-	// 账号信息 显示修改手机号
-	Route::get('/home/person/changephone','Home\PinfoController@changephone');
-	// 账号信息 执行修改手机号
-	Route::post('/home/person/dochangephone','Home\PinfoController@dochangephone');
-	// 账号信息 显示修改邮箱
-	Route::get('/home/person/changeemail','Home\PinfoController@changeemail');
-	// 账号信息 执行修改邮箱
-	Route::post('/home/person/dochangeemail','Home\PinfoController@dochangeemail');
-	// 账号信息 显示修改密码
-	Route::get('/home/person/changepass','Home\PinfoController@changepass');
-	// 账号信息 执行修改密码
-	Route::post('/home/person/dochangepass','Home\PinfoController@dochangepass');
-	// 账号信息 显示修改头像
-	Route::get('/home/person/changeimg','Home\PinfoController@changeimg');
-	// 账号信息 执行修改头像
-	Route::post('/home/person/dochangeimg','Home\PinfoController@dochangeimg');
-	// 用户退出
-	Route::get('/home/logout','Home\LoginController@logout');
+	// // 账号信息 首页
+	// Route::get('/home/person/info','Home\PinfoController@index');
+	// // 账号信息 显示修改手机号
+	// Route::get('/home/person/changephone','Home\PinfoController@changephone');
+	// // 账号信息 执行修改手机号
+	// Route::post('/home/person/dochangephone','Home\PinfoController@dochangephone');
+	// // 账号信息 显示修改邮箱
+	// Route::get('/home/person/changeemail','Home\PinfoController@changeemail');
+	// // 账号信息 执行修改邮箱
+	// Route::post('/home/person/dochangeemail','Home\PinfoController@dochangeemail');
+	// // 账号信息 显示修改密码
+	// Route::get('/home/person/changepass','Home\PinfoController@changepass');
+	// // 账号信息 执行修改密码
+	// Route::post('/home/person/dochangepass','Home\PinfoController@dochangepass');
+	// // 账号信息 显示修改头像
+	// Route::get('/home/person/changeimg','Home\PinfoController@changeimg');
+	// // 账号信息 执行修改头像
+	// Route::post('/home/person/dochangeimg','Home\PinfoController@dochangeimg');
+	// // 用户退出
+	// Route::get('/home/logout','Home\LoginController@logout');
 
     // 结算
     Route::post('jiesuan','Home\CartController@jiesuan');
