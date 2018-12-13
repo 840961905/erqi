@@ -207,5 +207,18 @@ Route::group(['middleware'=>'homelogin'], function(){
 
     // 结算
     Route::post('jiesuan','Home\CartController@jiesuan');
-    
+    // 结算提交订单
+    Route::post('jiesuan_submit','Home\CartController@jiesuan_submit');
+    // 订单付款
+    Route::post('jiesuan_payment','Home\CartController@jiesuan_payment');
+
+    //订单取消ajax  cancel
+    Route::get('/jiesuan/order_cancel','Home\CartController@order_cancel');
+    //订单确认收货 ajax order_okgoods
+    Route::get('/jiesuan/order_okgoods','Home\CartController@order_okgoods');
+    //订单评价
+    Route::get('/jiesuan/order_evaluate/{id}','Home\CartController@order_evaluate');
+    //订单评价提交
+    Route::post('/jiesuan/order_evaluate_tijiao','Home\CartController@order_evaluate_tijiao');
+
 });

@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 
 
 use App\Model\Admin\Address;
+use App\Model\Admin\Orders;
+use App\Model\Admin\Goods;
+use App\Model\Admin\Goodsimg;
 class PersonController extends Controller
 {
     //
@@ -22,10 +25,12 @@ class PersonController extends Controller
 
 
     //收货地址管理
-    public function addr()
+    public function addr(Request $request)
     {
+        //获取 session userid 用户ID
+        $session_id = $request->session()->get('userid');
         //向 Address地址表 查询当前的 用户ID
-        $addr_data = Address::where('uid','=','1')->get();
+        $addr_data = Address::where('uid','=',$session_id)->get();
 
         return view('home.person.addr.index',[
             'title'=>'收货地址管理',
@@ -216,9 +221,49 @@ class PersonController extends Controller
 
 
     //我的订单
-    public function order()
+    public function order(Request $request)
     {
-        return view('home.person.order.index',['title'=>'我的订单']);
+        //获取 session userid 用户ID
+        $session_id = $request->session()->get('userid');
+
+        if (isset($_GET['pid'])) {
+            $orders_data = Orders::select("orders.*","goods.gname as goodsid")
+            ->where("uid","=",$session_id)
+            ->where("orders.status","=",$_GET['pid'])
+            ->join("goods","goods.id","=","orders.gid")
+            ->orderBy('time','desc')
+            ->get();
+        }else {
+            $orders_data = Orders::select("orders.*","goods.gname as goodsid")
+            ->where("uid","=",$session_id)
+            ->join("goods","goods.id","=","orders.gid")
+            ->orderBy('time','desc')
+            ->get();
+        }
+        
+
+        // dd($orders_data);
+
+
+        $newArr = array();
+        foreach ($orders_data as $key => $value) {
+            $newArr[$value->code] = $value;
+        }
+
+
+        // dd($orders_data);
+
+
+        $goods_data = Goods::get();
+        //dd($goods_data);
+        // dump($orders_data);
+        // dd($orders_data);
+        //dd($newArr);
+        return view('home.person.order.index',[
+            'title'=>'我的订单',
+            'ordersdata' => $orders_data,
+            'res' => $newArr
+            ]);
     }
 
 

@@ -13,7 +13,76 @@
     <script src="/homes/js/jquery-3.2.1.min.js"></script><!--[if lte IE 6]><script>ol.isIE6=true;</script><![endif]--><!--[if IE 7]><script>ol.isIE7=true;</script><![endif]--><!--[if IE 8]><script>ol.isIE8=true;</script><![endif]-->
 
  
- 
+<style type="text/css">
+    /*星星样式*/
+.content{ width:600px; margin:0 auto; padding-top:20px;}
+.title1{ font-size:14px; background:#dfdfdf; padding:10px; margin-bottom:10px;}
+.block{ width:100%; margin:0 0 20px 0; padding-top:10px; padding-left:50px; line-height:21px;}
+.block .star_score{ float:left;}
+.star_list{height:21px;margin:50px; line-height:21px;}
+.block p,.block .attitude{ padding-left:20px; line-height:21px; display:inline-block;}
+.block p span{ color:#C00; font-size:16px; font-family:Georgia, "Times New Roman", Times, serif;}
+.star_score { background:url(http://www.17sucai.com/preview/217732/2016-04-20/startScore2/images/stark2.png); width:160px; height:21px;  position:relative; }
+.star_score a{ height:21px; display:block; text-indent:-999em; position:absolute;left:0;}
+.star_score a:hover{ background:url(http://www.17sucai.com/preview/217732/2016-04-20/startScore2/images/stars2.png);left:0;}
+.star_score a.clibg{ background:url(http://www.17sucai.com/preview/217732/2016-04-20/startScore2/images/stars2.png);left:0;}
+#starttwo .star_score { background:url(http://www.17sucai.com/preview/217732/2016-04-20/startScore2/images/starky.png);}
+#starttwo .star_score a:hover{ background:url(http://www.17sucai.com/preview/217732/2016-04-20/startScore2/images/starsy.png);left:0;}
+#starttwo .star_score a.clibg{ background:url(http://www.17sucai.com/preview/217732/2016-04-20/startScore2/images/starsy.png);left:0;}
+/*星星样式*/
+.show_number{ padding-left:50px; padding-top:20px;}
+.show_number li{ width:240px; border:1px solid #ccc; padding:10px; margin-right:5px; margin-bottom:20px;}
+.atar_Show{background:url(http://www.17sucai.com/preview/217732/2016-04-20/startScore2/images/stark2.png); width:160px; height:21px;  position:relative; float:left; }
+.atar_Show p{ background:url(http://www.17sucai.com/preview/217732/2016-04-20/startScore2/images/stars2.png);left:0; height:21px; width:134px;}
+.show_number li span{ display:inline-block; line-height:21px;}
+
+
+    .order-evaluation-textarea{
+      position:relative;
+      width: 784px;
+      height: 210px;
+    }
+    .order-evaluation-textarea textarea{
+      width:793px;
+      height:178px;
+      border:1px solid #e8e8e8;
+      position:absolute;
+      top:0;
+      left:0;
+      line-height:22px;
+      padding:15px;
+      color:#666;
+    }
+    .order-evaluation-textarea span{
+      position:absolute;
+      bottom:10px;
+      font-size:12px;
+      color:#999;
+      right:10px;
+    }
+    .order-evaluation-textarea span em{
+      color:#e84c3d;
+    }
+    .order-evaluation>input{
+      width:154px;
+      height:48px;
+      border-radius: 6px;
+      display: block;
+      text-align: center;
+      line-height:48px;
+      background:#f36a5a;
+      float:left;
+      margin-top:20px;
+      color:#fff;
+      font-size:14px;
+      border:0px;
+    }
+
+</style>
+
+
+
+</style>
 
 <!--<script src="//webpublic.vmall.com/csrftoken.js?20180824"></script>-->
 
@@ -333,7 +402,7 @@
     <div class="fl">
         <h2><span>我的订单</span></h2>
     </div>
-    <div class="fr">
+    <!-- <div class="fr">
     	<div class="ec-tab" id="ec-tab">
     		<ul>
     			<li class="current"><a><span>最近六月内订单<em id="count-seltime-0" style="display: none;">0</em></span></a></li>
@@ -341,215 +410,15 @@
     		</ul>
     		<div class="ec-tab-arrow" style="width: 124px; left: 0px;"></div>
     	</div>
-    </div>
+    </div> -->
 </div>
 <!-- 20141212-栏目-end -->
-<!-- 20141222-我的订单-订单类别-start -->
-<div class="myOrder-cate" id="myOrder-cate">
-	<ul>
-		<li class="current"><a href="/home/person/order"><span>全部有效订单<em></em></span></a></li>
-		<li>
-			<a href="?pid=1">
-				<span>
-					待支付
-					<em id="count-seltime-2" class="hide" data-num="0">
-							0 
-					</em>
-				</span>
-			</a>
-		</li>
-		<em id="count-seltime-2-wechat" style="display:none">
-				0
-		</em> 
-		<em id="count-seltime-3-wechat" style="display:none">
-				0
-		</em> 
-		<li><a href="?pid=4"><span>待评价<em id="nocommentNum" data-num="0" data-his="0" style="display: none;">0</em></span></a></li>
-		<li><a href="?pid=2"><span>待收货<em id="count-seltime-3" class="hide" data-num="0">0</em></span></a></li>
-		<li><a href="?pid=3"><span>已完成</span></a></li>
-		<!-- <li><a><span>已取消</span></a></li> -->
-	</ul>
-</div>
 
-<!-- 20141222-我的订单-订单类别-end -->
 <!-- 20141222-我的订单-列表-start -->
 <div class="myOrder-record" id="myOrders-list-content">
-	<!-- 20141222-我的订单-列表-订单合并-start -->
-	<div class="myOrder-control" id="myOrder-control-bottom-up" style="display: none;">
-		<label class="inputbox" for="checkAllBox">
-			<input class="checkbox" type="checkbox" id="checkAllBox" name="checkAllBox"><span>全选</span>
-		</label>
-		<a class="button-operate-merge-pay" id="topButton"><span>合并支付</span></a>
-	</div>
-	<!-- 20141222-我的订单-列表-订单合并-end -->
-	<div class="list-group-title">
-		<table border="0" cellpadding="0" cellspacing="0">
-			<thead>
-				<tr>
-					<th class="col-pro">商品</th>
-					<th class="col-price">单价/元</th>
-					<th class="col-quty">数量</th>
-					<th class="col-pay">实付款/元</th>
-					<th class="col-operate">订单状态及操作</th>
-				</tr>
-			</thead>
-		</table>
-	</div>
+	
 
 
-    
-    @foreach($res as $v)
-    <div class="list-group code{{$v->code}}" id="list-group">
-        <div class="list-group-item">
-            <div class="o-info">
-                <div class="col-info">
-                    <!-- <input type="checkbox" class="checkbox" name="payCheck" paymentstatus="2" clearorder="false" value="11272519456" /> -->
-                    <span class="o-date">{{date('Y-m-d H:i:s',$v->time)}}</span>
-                    <span class="o-no">订单号：<a href="/member/order-11272519456?isHisData=1" title="11272519456">{{$v->code}}</a></span>
-                </div>
-                @switch($v->status)
-                     @case(1)
-                    <div class="col-state">
-                        待处理&nbsp;|&nbsp;待支付
-                    </div>
-                    @break
-
-                    @case(2)
-                    <div class="col-state">
-                        待确认&nbsp;|&nbsp;待收货
-                    </div>
-                    @break
-
-                    @case(3)
-                    <div class="col-state">
-                        已完成
-                    </div>
-                    @break
-
-                    @case(4)
-                    <div class="col-state">
-                        待评价
-                    </div>
-                    @break
-                @endswitch
-            </div>
-            @foreach($ordersdata as $va)
-            
-            <div class="o-pro">
-                <table border="0" cellpadding="0" cellspacing="0">
-                    <tbody>
-                        @if($v->code == $va->code)
-                        <tr>
-                            <td class="col-pro-img"><p class="p-img"><a href="/product/10086983017283.html#10086258120116" target="_blank" onclick="pushProMsg(10086258120116,'300130101')"><img class="nocomment-2601010077502" alt="荣耀Magic2 魔法全视屏 麒麟980AI芯片 屏内指纹 超广角AI三摄 全网通 6GB+128GB 渐变黑" src="
-                                @php
-                               $tu = DB::table('goodsimg')->where('gid',$va->gid)->first();
-                               echo $tu->gimg;
-                            @endphp" /></a></p></td>
-                            <td class="col-pro-info"><p class="p-name"><a target="_blank" class="nocomment-2601010077502" href="/product/10086983017283.html#10086258120116" onclick="pushProMsg(10086258120116,'300130101')">{{$va->goodsid}}</a></p></td>
-                            <td class="col-price"><em>&yen;</em><span>{{$va->price}}</span></td>
-                            <td class="col-quty">{{$va->num}}</td>
-                            <td rowspan="1" class="col-pay"><p><em>&yen;</em><span>{{$va->price * $va->num}}</span></p></td>
-                            <td class="col-operate" rowspan="2">
-
-                                @switch($va->status)
-                                     @case(1)
-                                    <p class="p-button">
-                                        <a class="button-operate-pay" href="/payment/order-11272519456"><span>立即支付</span></a>
-                                    </p>
-                                    <p class="p-link">
-                                        <a href='javascript:cancel("{{$v->code}}");'>取消订单</a>
-                                    </p>
-                                    @break
-
-                                    @case(2)
-                                    <div class="col-state">
-                                        <p class="p-link" id="order_{{$va->id}}">
-                                            <a href='javascript:okgoods("{{$va->id}}");'>确认收货</a>
-                                        </p>
-                                    </div>
-                                    @break
-
-                                    @case(3)
-                                    <div class="col-state">
-                                        已完成
-                                    </div>
-                                    @break
-
-                                    @case(4)
-                                    <div class="col-state">
-                                        <a href="/jiesuan/order_evaluate/{{$va->id}}">待评价</a>
-                                    </div>
-                                    @break
-                                @endswitch
-
-
-
-                                
-                            </td>
-                        </tr>
-                        @endif
-                    </tbody>
-                </table>
-            </div>
-            
-            @endforeach
-        </div>
-    </div>
-    @endforeach
-
-
-<script type="text/javascript">
-
-    // cancel 订单取消
-    function cancel(val)
-    {
-        $.ajax({
-            type:'get',    
-            data:{
-            'id':val
-            },
-            url:"/jiesuan/order_cancel",  
-        }).done(function(res){
-            if(res.zhuangt == 0){
-                // console.log(res);
-                alert(res.tishi);
-                $(".code"+res.codeid).remove();
-            }else {
-                alert(res.tishi);
-            }
-        }).fail(function(){
-            console.log("error")
-        })
-    }
-
-
-    //okgoods 确认收货
-    function okgoods(val)
-    {
-        var tips=confirm("是否确认收货？");
-        if(tips==true)
-        {
-            $.ajax({
-                type:'get',    
-                data:{
-                'id':val
-                },
-                url:"/jiesuan/order_okgoods",
-            }).done(function(res){
-                if(res.zhuangt == 0){
-                    // console.log(res);
-                    alert(res.tishi);
-                    $("#order_"+res.goodsid).html('<a href="'+res.goodsid+'">待评价</a>');
-                }else {
-                    alert(res.tishi);
-                }
-            }).fail(function(){
-                console.log("error")
-            })
-        }
-    }
-
-</script>
 <!-- 
 	<div class="list-group" id="list-group">
 
@@ -557,6 +426,55 @@
 			<div class="list-group-empty">您暂时没有相关记录。</div>
 	</div>
  -->
+    <form action="/jiesuan/order_evaluate_tijiao" method="post">
+        <p class="title1">本次交易，乖，摸摸头 给您留下了什么印象呢？</p>
+        <div id="starttwo" class="block clearfix">
+            <div  class="star_score"></div>
+            <p style="float:left;">您的评分：<span class="fenshu"></span> 分
+                <textarea class="fenshu" style="display:none;" name="fen"></textarea>
+            </p>
+        </div>
+        <div class="order-evaluation-textarea">
+            <input type="hidden" value="{{$idid}}" name="id" />
+            <textarea name="content" id="TextArea1" onkeyup="words_deal();" ></textarea>
+            <span>还可以输入<em id="textCount">140</em>个字</span>
+        </div>
+        <div class="order-evaluation">
+            <!-- <a href="javascript:;" rel="external nofollow" id="order_evaluation">评价完成</a> -->
+            {{csrf_field()}}
+            <input type="submit" value="评价完成" />
+        </div>
+    </form>
+    <script type="text/javascript" src="http://www.17sucai.com/preview/217732/2016-04-20/startScore2/js/startScore.js"></script>
+    <script>
+     scoreFun($("#startone"))
+     scoreFun($("#starttwo"),{
+           fen_d:22,//每一个a的宽度
+           ScoreGrade:5//a的个数 10或者
+         })
+
+       //评价字数限制
+  function words_deal()
+  {
+    var curLength=$("#TextArea1").val().length;
+    if(curLength>140)
+    {
+      var num=$("#TextArea1").val().substr(0,140);
+      $("#TextArea1").val(num);
+      alert("超过字数限制，多出的字将被截断！" );
+    }
+    else
+    {
+      $("#textCount").text(140-$("#TextArea1").val().length);
+    }
+  }
+  $("#order_evaluation").click(function(){
+    $("#order_evaluate_modal").html("感谢您的评价！么么哒(* ￣3)(ε￣ *)").show().delay(3000).hide(500);
+  })
+
+    </script>
+
+
 
 
 
